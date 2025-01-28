@@ -13,6 +13,6 @@ permalink: /links/
 <h2>Links</h2>
 <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('http://mayaferrandiz.com', '_blank')">Portfolio</div>
 <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('http://mayaferrandiz.com/roadmap', '_blank')">Roadmap</div>
-<div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('https://github.com/mayaferrandiz', '_blank')">
+<div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('https://github.com/mayanayza', '_blank')">
 Github</div>
 </div>
