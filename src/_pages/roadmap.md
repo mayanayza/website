@@ -20,6 +20,6 @@ Nothing currently in backlog
 | Project | Description |
 |---------|-------------|
 | <a href='http://mayaferrandiz.com/luna' target='_blank'>🦋 Luna</a> | A content syndication tool for artists and creative technologists |
-| <a href='http://mayaferrandiz.com/website' target='_blank'>🌐 Website</a> |  |
+| <a href='http://mayaferrandiz.com/website' target='_blank'>🌐 Website</a> | My website! |
 | <a href='http://mayaferrandiz.com/paralysis' target='_blank'>🌫️ Paralysis</a> | Regret and the triumph of finding oneself. |
 | <a href='http://mayaferrandiz.com/transit-time-script' target='_blank'>🚲 Transit Time Script</a> | Automatic calendar blocking while you're going to be in-transit |
