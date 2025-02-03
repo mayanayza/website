@@ -1,7 +1,7 @@
 #-------------------------------
 # General Site Settings
 baseurl: "" # The subpath of your site, e.g. /blog
-url: "maya.cloud" # The base hostname & protocol for your site, e.g. http://example.com
+url: "https://maya.cloud" # The base hostname & protocol for your site, e.g. http://example.com
 
 
 #-------------------------------

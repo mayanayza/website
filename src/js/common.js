@@ -15,21 +15,29 @@ document.addEventListener("DOMContentLoaded", function() {
   /* =======================
   // Menu and Search
   ======================= */
-  menuOpenIcon.addEventListener("click", () => {
-    menuOpen();
-  });
-
-  menuCloseIcon.addEventListener("click", () => {
-    menuClose();
-  });
-
-  searchOpenIcon.addEventListener("click", () => {
-    searchOpen();
-  });
-
-  searchCloseIcon.addEventListener("click", () => {
-    searchClose();
-  });
+  if (menuOpenIcon){
+    menuOpenIcon.addEventListener("click", () => {
+      menuOpen();
+    });  
+  }
+  
+  if (menuCloseIcon){
+    menuCloseIcon.addEventListener("click", () => {
+      menuClose();
+    });  
+  }
+  
+  if (searchOpenIcon){
+    searchOpenIcon.addEventListener("click", () => {
+      searchOpen();
+    });  
+  }
+  
+  if (searchCloseIcon){
+    searchCloseIcon.addEventListener("click", () => {
+      searchClose();
+    });  
+  }
 
   function menuOpen() {
     menuList.classList.add("is-open");
