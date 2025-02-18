@@ -8,7 +8,8 @@ permalink: /roadmap/
 
 | Project | Description |
 |---------|-------------|
-| 🗿 Monolith |  |
+| 🗿 Monolith | Concepts of mulitiplicity, parts, and the experience of living with Disassociative Identity Disorder (DID). |
+| ⿻ AidNet | Creating decentralized trust networks for mutual aid |
 | 🌱 Plant Autowater | Just another high maintenance thing I do to be low maintenance... |
 
 ## Backlog
