@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Paralysis
-tagline: The triumph of finding self-love.
+tagline: The triumph of finding self-love
 date: '2024-07-30'
 tags:
 - Art
@@ -23,7 +23,7 @@ image: /media/paralysis/images/paralysis_2.JPG
 </div>
 
 <video controls>
-  <source src="/media/paralysis/videos/paralysis.mp4" type="video/webm">
+  <source src="/media/paralysis/videos/paralysis_1.webm" type="video/webm">
 </video>
 
 <model-viewer src="/media/paralysis/models/paralysis.glb" auto-rotate camera-controls></model-viewer>
