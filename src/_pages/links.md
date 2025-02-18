@@ -10,6 +10,9 @@ hide_header: true
 <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('https://maya.cloud/luna', '_blank')">
     Luna
 </div>
+<div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('https://maya.cloud/monolith', '_blank')">
+    Monolith
+</div>
 <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('https://maya.cloud/paralysis', '_blank')">
     Paralysis
 </div>
