@@ -7,9 +7,6 @@ hide_header: true
 
 <div class="links-container" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; width: 100%;">
 <h2>Featured Work</h2>
-<div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('https://maya.cloud/luna', '_blank')">
-    Luna
-</div>
 <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('https://maya.cloud/monolith', '_blank')">
     Monolith
 </div>
