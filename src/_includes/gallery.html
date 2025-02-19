@@ -31,7 +31,7 @@
         position: relative;
         height: 400px;
         margin-bottom: 20px;
-        background: #000000;
+        background: transparent;
     }
 
     .main-image {
@@ -114,21 +114,40 @@
         height: 100%;
         pointer-events: none;
         z-index: 1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
     }
 
     .thumbnails-container::before {
         left: 0;
-        background: linear-gradient(to right, #000000, transparent);
+        background: linear-gradient(to right, rgba(var(--bg-color), 1), rgba(var(--bg-color), 0));
     }
 
     .thumbnails-container::after {
         right: 0;
-        background: linear-gradient(to left, #000000, transparent);
+        background: linear-gradient(to left, rgba(var(--bg-color), 1), rgba(var(--bg-color), 0));
+    }
+
+    .thumbnails-container.show-left-fade::before {
+        opacity: 1;
+    }
+
+    .thumbnails-container.show-right-fade::after {
+        opacity: 1;
     }
 </style>
 
 <script>
     (function() {
+        // Get the computed background color of the page
+        const computedStyle = getComputedStyle(document.body);
+        const bgColor = computedStyle.backgroundColor;
+        
+        // Convert RGB color to array of values
+        const rgb = bgColor.match(/\d+/g);
+        if (rgb) {
+            document.documentElement.style.setProperty('--bg-color', rgb.join(', '));
+        }
         const mainImage = document.querySelector('.main-image');
         const thumbnails = document.querySelectorAll('.thumbnail');
         const thumbnailsScroll = document.querySelector('.thumbnails-scroll');
@@ -151,6 +170,11 @@
             let scrollPosition = index * thumbnailWidth;
             scrollPosition = Math.max(0, Math.min(scrollPosition, maxScroll));
             thumbnailsScroll.style.transform = `translateX(-${scrollPosition}px)`;
+            
+            // Update fade visibility based on scroll position
+            const container = thumbnailsScroll.parentElement;
+            container.classList.toggle('show-left-fade', scrollPosition > 0);
+            container.classList.toggle('show-right-fade', scrollPosition < maxScroll);
         }
 
         const thumbnailWrappers = document.querySelectorAll('.thumbnail-wrapper');
