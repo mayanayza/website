@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Paralysis
-tagline: The triumph of finding self-love
+tagline: Self-discovery and self-love
 date: '2024-07-30'
 tags:
 - Art
