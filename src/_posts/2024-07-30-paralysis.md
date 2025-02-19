@@ -13,6 +13,7 @@ image: /media/paralysis/images/paralysis_2.JPG
 
 
 
+
 <div class="gallery-box">
   <div class="gallery">
     <img src="/media/paralysis/images/paralysis_2.JPG">
@@ -27,3 +28,5 @@ image: /media/paralysis/images/paralysis_2.JPG
 </video>
 
 <model-viewer src="/media/paralysis/models/paralysis.glb" auto-rotate camera-controls></model-viewer>
+
+<iframe frameborder="0" src="/media/monster/embeds/no-embed/monster-food.html" id="food-paralysis"></iframe>
