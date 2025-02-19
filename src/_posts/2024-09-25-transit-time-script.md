@@ -5,6 +5,7 @@ tagline: Automatic calendar blocking while you're going to be in-transit
 date: 2024-09-25
 tags:
 - Automation
+- Tools
 featured: false
 featured_code: "    }\n  }\n}\n\nfunction removeTimedReminders(calendarId, eventId)\
   \ {\n  try {\n    // Fetch the event\n    const event = Calendar.Events.get(calendarId,\
