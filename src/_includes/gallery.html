@@ -3,9 +3,11 @@
 
 <div class="gallery-container">
     <div class="main-image-container">
-        <button class="nav-button prev">←</button>
-        <img class="main-image" src="{{ images[0] | relative_url }}" alt="" data-lightense="false">
-        <button class="nav-button next">→</button>
+        <div style="position: relative; width: 100%;">
+            <button class="nav-button prev">←</button>
+            <img class="main-image" src="{{ images[0] | relative_url }}" alt="" data-lightense="false">
+            <button class="nav-button next">→</button>
+        </div>
     </div>
     <div class="thumbnails-container">
         <div class="thumbnails-scroll">
