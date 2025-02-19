@@ -18,6 +18,7 @@ featured_code: "    }\n  }\n}\n\nfunction removeTimedReminders(calendarId, event
   \  } catch (error) {\n    console.error(`Failed to update event reminders: ${error.message}`);\n\
   \  }\n"
 code_language: javascript
+gallery_images: []
 ---
   [View on GitHub](https://github.com/mayanayza/transit-time-script){:target="_blank"}
 
