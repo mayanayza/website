@@ -10,8 +10,10 @@
     <div class="thumbnails-container">
         <div class="thumbnails-scroll">
             {% for image in images %}
-            <div class="thumbnail {% if forloop.first %}active{% endif %}">
-                <img src="{{ image | relative_url }}" alt="">
+            <div class="thumbnail-wrapper">
+                <div class="thumbnail {% if forloop.first %}active{% endif %}">
+                    <img src="{{ image | relative_url }}" alt="">
+                </div>
             </div>
             {% endfor %}
         </div>
@@ -29,7 +31,7 @@
         position: relative;
         height: 400px;
         margin-bottom: 20px;
-        background: #f5f5f5;
+        background: #000000;
     }
 
     .main-image {
@@ -84,6 +86,12 @@
         cursor: pointer;
         opacity: 0.6;
         transition: opacity 0.3s;
+        pointer-events: none;
+    }
+    
+    .thumbnail-wrapper {
+        pointer-events: auto;
+        cursor: pointer;
     }
 
     .thumbnail img {
@@ -110,12 +118,12 @@
 
     .thumbnails-container::before {
         left: 0;
-        background: linear-gradient(to right, white, transparent);
+        background: linear-gradient(to right, #000000, transparent);
     }
 
     .thumbnails-container::after {
         right: 0;
-        background: linear-gradient(to left, white, transparent);
+        background: linear-gradient(to left, #000000, transparent);
     }
 </style>
 
@@ -145,8 +153,13 @@
             thumbnailsScroll.style.transform = `translateX(-${scrollPosition}px)`;
         }
 
-        thumbnails.forEach((thumbnail, index) => {
-            thumbnail.addEventListener('click', () => updateImage(index));
+        const thumbnailWrappers = document.querySelectorAll('.thumbnail-wrapper');
+        thumbnailWrappers.forEach((wrapper, index) => {
+            wrapper.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                updateImage(index);
+            });
         });
 
         prevButton.addEventListener('click', () => {
