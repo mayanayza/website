@@ -12,6 +12,7 @@
     font-weight: 400;
     font-display: block;
     font-style:normal
+    font-size:18;
   }
 
 body, html {
@@ -155,6 +156,10 @@ body, html {
     let messageClickListener;
     let messageQueue = []
     const defaultMessages = [
+      {
+        body:"i'm bored! play with me by tapping or clicking on my window pls >:)",
+        nextTrigger:'timed'
+      },
       {
         body:"i'll tell you a secret if you feed me enough cookies...",
         nextTrigger:'timed'
