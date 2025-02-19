@@ -29,9 +29,15 @@
 
     .main-image-container {
         position: relative;
-        height: 400px;
+        width: 100%;
         margin-bottom: 20px;
         background: transparent;
+    }
+    
+    .main-image-container::before {
+        content: '';
+        display: block;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio */
     }
 
     .main-image {
@@ -54,11 +60,16 @@
         padding: 15px;
         cursor: pointer;
         z-index: 2;
-        transition: background 0.3s;
+        transition: opacity 0.5s;
+        opacity: 1;
     }
 
     .nav-button:hover {
         background: rgba(0, 0, 0, 0.8);
+    }
+    
+    .main-image-container:not(:hover) .nav-button.fade-out {
+        opacity: 0;
     }
 
     .prev {
@@ -102,7 +113,7 @@
 
     .thumbnail.active {
         opacity: 1;
-        border: 2px solid #007bff;
+        border: 2px solid rgba(255,128,171,1);
     }
 
     .thumbnails-container::before,
@@ -207,5 +218,11 @@
         });
 
         updateImage(0);
+        
+        // Handle nav button fade
+        const navButtons = document.querySelectorAll('.nav-button');
+        setTimeout(() => {
+            navButtons.forEach(button => button.classList.add('fade-out'));
+        }, 2000);
     })();
 </script>
