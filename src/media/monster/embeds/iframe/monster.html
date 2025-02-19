@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+
+  @font-face {
+    font-family: Gluten;
+    src: url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500') format('woff2');
+    font-weight: 100 900;
+    font-display: swap;
+    font-style:normal
+  }
+
+body, html {
+  margin: 0;
+  overflow: hidden; /* Prevent scrolling */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#backgroundContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+#backgroundImage {
+  width: 100%;
+  height: 100%;
+  object-position: top;
+  z-index: 1;
+}
+
+#monster {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 32px;
+  background: no-repeat 0 0;
+  transition: transform 0.3s ease-in-out;
+  will-change: transform, background-position;
+  z-index: 2;
+}
+
+#messageBubbleContainer {
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 3;
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  #messageBubbleContainer {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    max-width: 90%;
+    margin: 6%;
+    text-align: left;
+  }
+  #messageBubble {
+    font-size: 20px;
+    padding: 10px 20px;
+    line-height:20px;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  #messageBubbleContainer {
+    position: absolute;
+    bottom:0px;
+    height:20vh;
+    margin: 0px;
+    padding: 0px 3px 0px 3px;
+    box-sizing: border-box;
+  }
+  #backgroundContainer {
+    height:80vh;
+  }
+  #messageBubble {
+    font-size: 12px;
+    padding: 5px 10px;
+    line-height: 12px;
+  }
+}
+
+#messageBubble {
+  display: inline-block;
+  color: black;
+  font-family: Gluten, sans-serif;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 30px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  opacity: 0;
+  transition: opacity 0.2s ease-in, opacity 3s ease-out;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Hunger Counter */
+#hungerCounter {
+  text-align: right;
+  font-size: 20px;
+  background-color: white;
+  padding: 2px 5px;
+  border-radius: 10px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  margin: 1%;
+  opacity: 1;
+  z-index: 20;
+}
+  </style>
+</head>
+<body>
+  <div id="backgroundContainer">
+    <img id="backgroundImage" src="/media/monster/embeds/monster-background.webp" alt="Background">
+    <div id="monster"></div>
+    <div id="hungerCounter"></div>
+  </div>
+  <div id="messageBubbleContainer">
+    <div id="messageBubble"></div>
+  </div>
+  <script>
+    const monster = document.getElementById('monster');
+    const messageBubble = document.getElementById('messageBubble');
+    const hungerCounter = document.getElementById('hungerCounter');
+    let monsterX = window.innerWidth / 2; // Monster's initial X position
+    let destinationX = monsterX; // Destination X position based on cursor or touch drag
+    let previousMonsterX = monsterX; // To calculate actual movement
+    let isDragging = false; // Track if user is dragging on mobile
+
+    let movementThreshold;
+    const touchThreshold = 10;
+    const cursorThreshold = 5;
+    let direction = 0; // left: -1, right: 1, idle = 0
+
+    const hungerDepletionPerJump = 10;
+    const hungerDepletionPerScreenWalk = 10;
+    let walkedDistance = 0;
+
+    let lastMessageTime = Date.now();
+    let messageFadeTimeout;
+    let messageClickListener;
+    let messageQueue = []
+    const defaultMessages = [
+      {
+        body:"i'll tell you a secret if you feed me enough cookies...",
+        nextTrigger:'timed'
+      },
+      {
+        body:"i think there's at least one cookie somewhere in her <a href=\"javascript:void(0)\" onclick=\"window.top.location.href='https://maya.cloud/portfolio'; return false;\">portfolio</a>",
+        nextTrigger:'click'
+      },
+      {
+        body:"what are you still doing here? go find me some cookies >:)",
+        nextTrigger:'timed'
+      },
+      {
+        body:"cookies pleaseeeeee 🥺",
+        nextTrigger:'timed'
+      }
+    ];
+
+    const hungerStates = {
+      overfull: {
+        name: 'overfull',
+        upperBound: Infinity,
+        lowerBound: 81,
+        speed: 2,
+        jumpHeight: 75,
+        messages:[
+          {
+            body:"yummmm thanks for all the cookies! email me at <a href=\"javascript:void(0)\" onclick=\"window.top.location.href='mailto:monster@maya.cloud'; return false;\">monster@maya.cloud</a> for a surprise <3",
+            nextTrigger:'click'
+          }
+        ]
+      },
+      full: { 
+        name: 'full', 
+        upperBound: 80, 
+        lowerBound: 31, 
+        speed: 2, 
+        jumpHeight: 75, 
+        messages:[
+          {
+            body:"maya hid cookies all over her website and if you find them all i'll be the happiest monster in the worldddd!!",
+            nextTrigger:'timed'
+          },
+          {
+            body:"i'm pretty sure cookies look like 🍪 and you can click on them to feed me!",
+            nextTrigger:'timed'
+          },
+        ]
+      },
+      hungry: { 
+        name: 'hungry', 
+        upperBound: 30, 
+        lowerBound: 1, 
+        speed: 1, 
+        jumpHeight: 37.5, 
+        messages:[
+          {
+            body: "i'm getting hungry...",
+            nextTrigger: 'timed'
+          }
+        ]
+      },
+      empty: { 
+        name: 'empty', 
+        upperBound: 0, 
+        lowerBound: -Infinity, 
+        speed: 0, 
+        jumpHeight: 0, 
+        messages:[
+          {
+            body: "i'm hungry! i'm not doing anything else until you feed me a cookie >:(",
+            nextTrigger: 'timed'
+          },
+          {
+            body: "i'm pretty sure cookies look like 🍪 and you can click on them to feed me >:(",
+            nextTrigger: 'timed'
+          },
+
+        ]
+      }
+    }
+
+    let hunger = parseInt(localStorage.getItem('monsterHunger')) || 0; // Persist hunger
+    let currentHungerState;
+    let hungerStateUpdateTimeout;
+    let speed;
+    let jumpHeight;
+    let message;
+
+    const animations = {
+      idle: { 
+        frames: 4, 
+        frameInterval: 200, 
+        url: '/media/monster/embeds/Pink_Monster_Idle_4.png', 
+        name: 'idle' 
+      },
+      walk: { 
+        frames: 6, 
+        frameInterval: 100, 
+        url: '/media/monster/embeds/Pink_Monster_Walk_6.png', 
+        name: 'walk' 
+      },
+      run: { 
+        frames: 6, 
+        frameInterval: 100, 
+        url: '/media/monster/embeds/Pink_Monster_Run_6.png', 
+        name: 'run' 
+      },
+      jump: { 
+        frames: 8, 
+        frameInterval: 80, 
+        url: '/media/monster/embeds/Pink_Monster_Jump_8.png', 
+        name: 'jump' 
+      }
+    };
+    let currentAnimation;
+    let totalFrames;
+    let frameInterval;
+    let lastFrameTime = Date.now();
+    let currentFrame = 0;
+
+    // Update message display function
+    function updateMessage() {
+      if (messageQueue.length === 0) {
+        if (currentHungerState.name === 'empty' || currentHungerState.name === 'overfull') {
+          messageQueue.push(...currentHungerState.messages);
+        } else {
+          messageQueue.push(...defaultMessages);
+        }
+      }
+
+      const message = messageQueue.shift();
+
+      document.removeEventListener('click', updateMessage);
+
+      if (messageBubble.innerText !== message.body) {
+        messageBubble.style.visibility = 'hidden'; // Start hidden
+        messageBubble.style.opacity = 0;
+
+        setTimeout(() => {
+          messageBubble.innerHTML = message.body; // Update the text
+          messageBubble.style.visibility = 'visible'; // Ensure visibility
+          messageBubble.style.opacity = 1; // Fade in the message
+        }, 500);
+      }
+
+      setTimeout(() => {
+        if (message.nextTrigger === 'timed') {
+          setTimeout(updateMessage, 5000);
+        } else if (message.nextTrigger == 'click') {
+          document.addEventListener('click', updateMessage);
+        }
+      }, 500);
+    }
+
+    // Queue up next hunger state for next update interval
+    function setHungerState() {
+      for (let key in hungerStates) {
+        const state = hungerStates[key];
+        if (hunger > state.lowerBound && hunger <= state.upperBound) {
+
+          if (currentHungerState === undefined) messageQueue.unshift(...state.messages);
+          else if (state.name !== currentHungerState.name){
+            if (currentHungerState.name === 'empty' || state.name === 'empty' || currentHungerState.name === 'overfull' || state.name === 'overfull') messageQueue = []
+            messageQueue.unshift(...state.messages);
+          }
+          currentHungerState = state;
+
+          speed = currentHungerState.speed;
+          jumpHeight = currentHungerState.jumpHeight;
+
+          if (currentHungerState.name === 'empty') {
+            switchAnimation(animations.idle);
+            hungerCounter.innerText = "";
+            hungerCounter.style.opacity = 0
+          } else {
+            hungerCounter.style.opacity = 1
+            hungerCounter.innerText = "🍪".repeat( Math.ceil(hunger/10) );
+          }
+
+        }
+      }
+    }
+
+    // Store hunger in localStorage
+    function saveHunger() {
+      localStorage.setItem('monsterHunger', hunger);
+    }
+
+    // Handle hunger replenishment
+    function handleHungerReplenished() {
+      const foodCollected = localStorage.getItem('foodCollected');
+      if (foodCollected) {
+        hunger = localStorage.getItem('monsterHunger');
+        localStorage.removeItem('foodCollected');
+        saveHunger();
+        setHungerState();
+      }
+    }
+
+    // Handle hunger depletion from walking
+    function depleteHungerFromMove() {
+      const distanceTraveled = Math.abs(monsterX - previousMonsterX);
+      walkedDistance += distanceTraveled;
+      previousMonsterX = monsterX; // Update to the current position
+
+      if (walkedDistance >= window.innerWidth) {
+        hunger -= hungerDepletionPerScreenWalk;
+        walkedDistance = 0; // Reset walked distance
+        saveHunger();
+        setHungerState();
+      }
+    }
+
+    function depleteHungerFromJump() {
+      if (hunger > 0) {
+        hunger -= hungerDepletionPerJump;
+        saveHunger();
+        setHungerState();
+      }
+    }
+
+    // Animation frame updater
+    function updateFrame() {
+      const now = Date.now();
+      if (now - lastFrameTime > frameInterval) {
+        currentFrame = (currentFrame + 1) % totalFrames;
+        lastFrameTime = now;
+        monster.style.backgroundPosition = `-${currentFrame * 32}px 0`;
+      }
+      requestAnimationFrame(updateFrame);
+    }
+
+    // Switch animation function
+    function switchAnimation(animation) {
+      if (currentAnimation === undefined || currentAnimation.name !== animation.name){
+        monster.style.backgroundImage = `url('${animation.url}')`;
+        totalFrames = animation.frames;
+        frameInterval = animation.frameInterval;
+        currentAnimation = animation;
+        currentFrame = 0; // Reset frame to start
+      }
+    }
+
+    function updateDirection() {
+      const deltaX = destinationX - monsterX;
+
+      if (currentAnimation.name === 'idle') direction = 0;
+      else if (deltaX < 0 && direction !== -1) {
+        monster.style.transform = 'scaleX(-1)';
+        direction = -1;
+      } else if (deltaX > 0 && direction !== 1) {
+        monster.style.transform = 'scaleX(1)';
+        direction = 1;
+      }
+    }
+
+    function moveTo(x) {
+      monsterX += x;
+      monster.style.left = `${monsterX}px`;
+    }
+
+    function setMoveAnimation(){
+      if (currentHungerState.name === 'hungry') switchAnimation(animations.walk);
+      else if (currentHungerState.name === 'full' || currentHungerState.name === 'overfull') switchAnimation(animations.run);
+      else if (currentHungerState.name === 'empty') switchAnimation(animations.idle);
+    }
+
+    // Move the monster based on destinationX
+    function moveMonster() {
+      if (speed > 0) {
+        const deltaX = destinationX - monsterX;
+
+        if (currentAnimation.name === 'jump') moveTo(speed * direction);
+        else if (currentAnimation.name === 'idle' && Math.abs(deltaX) > movementThreshold) setMoveAnimation()
+        else {
+          if (Math.abs(deltaX) > movementThreshold) {
+            setMoveAnimation();
+            updateDirection();
+            depleteHungerFromMove();
+            moveTo(speed * Math.sign(deltaX));
+          }
+          else switchAnimation(animations.idle);
+        }
+      }
+      requestAnimationFrame(moveMonster);
+    }
+
+    // Jump the monster
+    function jumpMonster() {
+      if (jumpHeight > 0) {
+        if (currentAnimation.name !== 'jump') {
+          updateDirection();
+          depleteHungerFromJump();
+          switchAnimation(animations.jump);
+
+          // Apply jump transformation
+          monster.style.transform += ' translateY(-75px)';
+
+          setTimeout(() => {
+            monster.style.transform = monster.style.transform.replace(' translateY(-75px)', '');
+
+            setTimeout(() => {
+              if (Math.abs(destinationX - monsterX) > movementThreshold) setMoveAnimation()
+              else switchAnimation(animations.idle);
+            }, animations.jump.frameInterval * animations.jump.frames / 2);
+          }, animations.jump.frameInterval * animations.jump.frames / 2);
+        }
+      }
+    }
+
+    function sendIframeSize(height = document.documentElement.scrollHeight, width = document.documentElement.scrollWidth) {
+      try {
+        const iframeId = window.frameElement?.id ? window.frameElement.id : 'defaultFood';
+        const parentHeight = window.parent.document.documentElement.scrollHeight;
+
+        if (height !== parentHeight) {
+          window.parent.postMessage(
+            {
+              type: 'resizeIframe',
+              iframeId: iframeId,
+              height: height,
+              width: width
+            },
+            '*'
+          );
+        }
+      } catch (error) {
+        console.error("Failed to send iframe size:", error);
+      }
+    }
+
+    // Mouse and touch event listeners
+    document.addEventListener('mousemove', (e) => {
+      movementThreshold = cursorThreshold;
+      destinationX = e.pageX - 16;
+    });
+
+    document.addEventListener('click', () => {
+      movementThreshold = cursorThreshold;
+      jumpMonster();
+    });
+
+    document.addEventListener('touchstart', (e) => {
+      movementThreshold = touchThreshold;
+      isDragging = false;
+      destinationX = e.touches[0].pageX - 16;
+    });
+
+    document.addEventListener('touchmove', (e) => {
+      movementThreshold = touchThreshold;
+      isDragging = true;
+      destinationX = e.touches[0].pageX - 16;
+    });
+
+    document.addEventListener('touchend', () => {
+      movementThreshold = touchThreshold;
+      if (!isDragging) {
+        jumpMonster();
+      }
+    });
+
+    window.addEventListener('load', () => sendIframeSize());
+    window.addEventListener('resize', () => sendIframeSize());
+
+    // Initial monster state
+    switchAnimation(animations.idle);
+    setHungerState();
+    updateMessage();
+    saveHunger();
+
+    // Periodic updates
+    setInterval(handleHungerReplenished, 1000);
+
+    updateFrame();
+    requestAnimationFrame(moveMonster);
+
+  </script>
+</body>
+</html>
