@@ -20,7 +20,7 @@ hide_header: true
 
 <div class="links-container" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; width: 100%;">
 
-## Featured
+<h2>Featured</h2>
 
 <div class="button button--primary" style="width: 100%; display: flex; align-items: center; padding: 0; height: 3.5rem; position: relative;" onclick="window.open('', '_blank')">
   <div class="button-image" style="height: 100%; margin: 0; padding: 0; position: absolute; left: 0;">
@@ -36,16 +36,34 @@ hide_header: true
 </div>
 <br />
 
-## Upcoming
+<h2>Upcoming</h2>
 
-| Project | Description |
-|---------|-------------|
-| ⿻ AidNet | Creating decentralized trust networks for mutual aid |
-| 🌱 Plant Autowater | Just another high maintenance thing I do to be low maintenance... |
+<table>
+  <thead>
+    <tr>
+      <th>Project</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        ⿻ AidNet
+      </td>
+      <td>Creating decentralized trust networks for mutual aid</td>
+    </tr>
+    <tr>
+      <td>
+        🌱 Plant Autowater
+      </td>
+      <td>Just another high maintenance thing I do to be low maintenance...</td>
+    </tr>
+  </tbody>
+</table>
 
 <br />
 
-## Links
+<h2>Links</h2>
 
 <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('/roadmap', '_blank')">Roadmap</div>
 <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('/', '_blank')">Portfolio</div>
