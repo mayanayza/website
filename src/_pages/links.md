@@ -19,7 +19,9 @@ hide_header: true
 {% endif %}
 
 <div class="links-container" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; width: 100%;">
-<h2>Featured</h2>
+
+## Featured
+
 <div class="button button--primary" style="width: 100%; display: flex; align-items: center; padding: 0; height: 3.5rem; position: relative;" onclick="window.open('', '_blank')">
   <div class="button-image" style="height: 100%; margin: 0; padding: 0; position: absolute; left: 0;">
     <img src="/media/monolith/images/IMG_7333.JPG" alt="monolith" style="height: 3.5rem; width: auto; margin: 0; padding: 0; display: block;">
@@ -34,7 +36,7 @@ hide_header: true
 </div>
 <br />
 
-<h2>Upcoming</h2>
+## Upcoming
 
 | Project | Description |
 |---------|-------------|
@@ -42,7 +44,9 @@ hide_header: true
 | 🌱 Plant Autowater | Just another high maintenance thing I do to be low maintenance... |
 
 <br />
-<h2>Links</h2>
+
+## Links
+
 <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('/roadmap', '_blank')">Roadmap</div>
 <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('/', '_blank')">Portfolio</div>
 <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('', '_blank')">Github</div>
