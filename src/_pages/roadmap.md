@@ -6,15 +6,11 @@ permalink: /roadmap/
 
 ## In Progress
 
-| Project | Description |
-|---------|-------------|
 | ⿻ AidNet | Creating decentralized trust networks for mutual aid |
 | 🌱 Plant Autowater | Just another high maintenance thing I do to be low maintenance... |
 
 ## Backlog
 
-| Project | Description |
-|---------|-------------|
 | 🍆 Gstudy 1 |  |
 
 ## Complete
