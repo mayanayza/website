@@ -22,13 +22,13 @@ hide_header: true
 <h2>Featured Work</h2>
 <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('', '_blank')">
   <div class="button-image">
-    <img src="/Users/mayaferrandiz/Documents/projects/website/src/media/monolith/images/images/IMG_7333.JPG" alt="monolith">
+    <img src="/media/monolith/images/IMG_7333.JPG" alt="monolith">
   </div>
     Monolith
 </div>
 <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('', '_blank')">
   <div class="button-image">
-    <img src="/Users/mayaferrandiz/Documents/projects/website/src/media/paralysis/images/images/paralysis_2.JPG" alt="paralysis">
+    <img src="/media/paralysis/images/paralysis_2.JPG" alt="paralysis">
   </div>
     Paralysis
 </div>
@@ -41,10 +41,10 @@ hide_header: true
 | ⿻ AidNet | Creating decentralized trust networks for mutual aid |
 | 🌱 Plant Autowater | Just another high maintenance thing I do to be low maintenance... |
 
+<div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('/roadmap', '_blank')">Roadmap</div>
 
 <h2>Links</h2>
 <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('/', '_blank')">Portfolio</div>
-<div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('/roadmap', '_blank')">Roadmap</div>
 <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('', '_blank')">Github</div>
 
 <!-- <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('https://dev.to/mayanayza', '_blank')">Dev.to</div>
