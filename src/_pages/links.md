@@ -17,7 +17,7 @@ hide_header: true
   </ul>
 </div>
 {% endif %}
-
+<br />
 <div class="links-container" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; width: 100%;">
 
 <h2>Featured</h2>
@@ -60,8 +60,6 @@ hide_header: true
     </tr>
   </tbody>
 </table>
-
-<br />
 
 <h2>Links</h2>
 
