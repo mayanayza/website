@@ -39,12 +39,6 @@ hide_header: true
 <h2>In the Works</h2>
 
 <table>
-  <thead>
-    <tr>
-      <th>Project</th>
-      <th>Description</th>
-    </tr>
-  </thead>
   <tbody>
     <tr>
       <td>
