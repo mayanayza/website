@@ -20,15 +20,15 @@ hide_header: true
 
 <div class="links-container" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; width: 100%;">
 <h2>Featured Work</h2>
-<div class="button button--primary" style="width: 100%; display: flex; align-items: center; padding: 0; height: 56px;" onclick="window.open('', '_blank')">
-  <div class="button-image" style="height: 100%; margin: 0; padding: 0; display: flex;">
-    <img src="/media/monolith/images/IMG_7333.JPG" alt="monolith" style="height: 56px; width: auto; margin: 0; padding: 0; display: block;">
+<div class="button button--primary" style="width: 100%; display: flex; align-items: center; padding: 0; height: 3.5rem; position: relative;" onclick="window.open('', '_blank')">
+  <div class="button-image" style="height: 100%; margin: 0; padding: 0; position: absolute; left: 0;">
+    <img src="/media/monolith/images/IMG_7333.JPG" alt="monolith" style="height: 3.5rem; width: auto; margin: 0; padding: 0; display: block;">
   </div>
   <span style="flex: 1; text-align: center; padding: 0.5rem;">Monolith</span>
 </div>
-<div class="button button--primary" style="width: 100%; display: flex; align-items: center; padding: 0; height: 56px;" onclick="window.open('', '_blank')">
-  <div class="button-image" style="height: 100%; margin: 0; padding: 0; display: flex;">
-    <img src="/media/paralysis/images/paralysis_2.JPG" alt="paralysis" style="height: 56px; width: auto; margin: 0; padding: 0; display: block;">
+<div class="button button--primary" style="width: 100%; display: flex; align-items: center; padding: 0; height: 3.5rem; position: relative;" onclick="window.open('', '_blank')">
+  <div class="button-image" style="height: 100%; margin: 0; padding: 0; position: absolute; left: 0;">
+    <img src="/media/paralysis/images/paralysis_2.JPG" alt="paralysis" style="height: 3.5rem; width: auto; margin: 0; padding: 0; display: block;">
   </div>
   <span style="flex: 1; text-align: center; padding: 0.5rem;">Paralysis</span>
 </div>
