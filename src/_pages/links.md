@@ -5,6 +5,8 @@ permalink: /links/
 hide_header: true
 ---
 
+<p>NYC-based artist & creative technologist creating kinetic sculptures out of synthetic flesh materials and robotics to examine the body, identity, trauma, emotion & gender. Outside art, I love automation, furniture restoration & city adventures.</p>
+
 
 {% if site.data.settings.social %}
 <div class="social">
