@@ -35,11 +35,13 @@ hide_header: true
 <br />
 
 <h2>Upcoming</h2>
+
 | Project | Description |
 |---------|-------------|
 | ⿻ AidNet | Creating decentralized trust networks for mutual aid |
 | 🌱 Plant Autowater | Just another high maintenance thing I do to be low maintenance... |
 
+<br />
 <h2>Links</h2>
 <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('/roadmap', '_blank')">Roadmap</div>
 <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('/', '_blank')">Portfolio</div>
