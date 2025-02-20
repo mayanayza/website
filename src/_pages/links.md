@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Maya's Links <3
+title: Maya's Links
 permalink: /links/
 hide_header: true
 ---
@@ -36,7 +36,7 @@ hide_header: true
 </div>
 <br />
 
-<h2>Upcoming</h2>
+<h2>In the Works</h2>
 
 <table>
   <thead>
@@ -61,11 +61,7 @@ hide_header: true
   </tbody>
 </table>
 
-<h2>Links</h2>
-
 <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('/roadmap', '_blank')">Roadmap</div>
-<div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('/', '_blank')">Portfolio</div>
-<div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('', '_blank')">Github</div>
 
 <!-- <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('https://dev.to/mayanayza', '_blank')">Dev.to</div>
 <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('https://cara.app/mayanayza/', '_blank')">Cara</div>
