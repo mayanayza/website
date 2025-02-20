@@ -57,7 +57,7 @@ hide_header: true
 
 <h2>Links</h2>
 
-<div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('', '_blank')">Portfolio</div>
+<div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('/', '_blank')">Portfolio</div>
 
 <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('/roadmap', '_blank')">Roadmap</div>
 
