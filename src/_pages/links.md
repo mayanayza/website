@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Links
+title: Maya's Links <3
 permalink: /links/
 hide_header: true
 ---
