@@ -20,15 +20,15 @@ hide_header: true
 
 <div class="links-container" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; width: 100%;">
 <h2>Featured Work</h2>
-<div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('https://maya.cloud/monolith', '_blank')">
+<div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('', '_blank')">
   <div class="button-image">
-    <img src="/Users/mayaferrandiz/Documents/projects/website/src/media/monolith/images/images/IMG_7333.JPG" alt="">
+    <img src="/Users/mayaferrandiz/Documents/projects/website/src/media/monolith/images/images/IMG_7333.JPG" alt="monolith">
   </div>
     Monolith
 </div>
-<div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('https://maya.cloud/paralysis', '_blank')">
+<div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('', '_blank')">
   <div class="button-image">
-    <img src="/Users/mayaferrandiz/Documents/projects/website/src/media/paralysis/images/images/paralysis_2.JPG" alt="">
+    <img src="/Users/mayaferrandiz/Documents/projects/website/src/media/paralysis/images/images/paralysis_2.JPG" alt="paralysis">
   </div>
     Paralysis
 </div>
@@ -38,8 +38,8 @@ hide_header: true
 <h2>Upcoming Work</h2>
 | Project | Description |
 |---------|-------------|
-|  | Creating decentralized trust networks for mutual aid |
-|  | Just another high maintenance thing I do to be low maintenance... |
+| ⿻ AidNet | Creating decentralized trust networks for mutual aid |
+| 🌱 Plant Autowater | Just another high maintenance thing I do to be low maintenance... |
 
 
 <h2>Links</h2>
