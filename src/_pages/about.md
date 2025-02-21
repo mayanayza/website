@@ -1,32 +1,15 @@
 ---
 layout: page
-title: Maya's Links
-permalink: /links/
+title: About
+permalink: /about/
 hide_header: true
 ---
 
+# Hi, I'm !
 
-{% if site.data.settings.social %}
-<div class="social">
-  <ul class="social__list list-reset">
-    {% for social in site.data.settings.social %}
-    <li class="social__item">
-      <a class="social__link" href="{{ social.link }}" target="_blank" rel="noopener" aria-label="{{ social.name }} link"><i class="{{ social.icon }}"></i></a>
-    </li>
-    {% endfor %}
-  </ul>
-</div>
-{% endif %}
-<br />
-<div class="links-container" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; width: 100%;">
+I’m a queer artist and creative technologist based in NYC.
+
+I create viscerally engaging sculptures that evoke two essential qualities of life: flesh and motion. I work with leather, silicone, latex, and other synthetic flesh analogues, and use microcontrollers and robotics techniques to bring my sculptures to life. The core themes of my work focus on intersections between identity, trauma, emotion, gender, and the body. My work achieves a synthesis between organic materials and technology that challenges viewers to confront their own relationships with embodiment and identity.
 
 
-Nothing currently in progress
-
-<div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('/roadmap', '_blank')">View Full Roadmap</div>
-
-<!-- <div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('https://dev.to/mayanayza', '_blank')">Dev.to</div>
-<div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('https://cara.app/mayanayza/', '_blank')">Cara</div>
-<div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('https://hackaday.io/mayanayza', '_blank')">Hackaday.io</div>
-<div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('https://www.hackster.io/mayanayza', '_blank')">Hackster.io</div>
-</div> -->
+When I’m not in the studio you can find me spending time with friends and loved ones or channeling my creative energy towards furniture restoration, apartment decor, and home automation projects.

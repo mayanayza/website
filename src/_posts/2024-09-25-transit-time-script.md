@@ -7,6 +7,7 @@ tags:
 - Automation
 - Tools
 featured: false
+gallery_images: []
 featured_code: "    }\n  }\n}\n\nfunction removeTimedReminders(calendarId, eventId)\
   \ {\n  try {\n    // Fetch the event\n    const event = Calendar.Events.get(calendarId,\
   \ eventId);\n\n    if (event.reminders && event.reminders.overrides) {\n      //\
@@ -19,7 +20,6 @@ featured_code: "    }\n  }\n}\n\nfunction removeTimedReminders(calendarId, event
   \  } catch (error) {\n    console.error(`Failed to update event reminders: ${error.message}`);\n\
   \  }\n"
 code_language: javascript
-gallery_images: []
 ---
   [View on GitHub](https://github.com/mayanayza/transit-time-script){:target="_blank"}
 
