@@ -15,7 +15,8 @@ images:
 - /media/paralysis/images/paralysis_5.jpg
 videos:
 - /media/paralysis/videos/paralysis.mp4
-models: []
+models:
+- /media/paralysis/models/paralysis.glb
 featured_image: /media/paralysis/images/paralysis_2.jpg
 ---
   [View on GitHub](https://github.com/mayanayza/paralysis){:target="_blank"}
