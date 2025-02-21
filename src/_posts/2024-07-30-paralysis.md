@@ -7,11 +7,7 @@ tags:
 - Art
 - Sculpture
 featured: true
-gallery_images:
-- /media/paralysis/images/paralysis_2.JPG
-- /media/paralysis/images/paralysis_1.JPG
-- /media/paralysis/images/paralysis_4.JPG
-- /media/paralysis/images/paralysis_5.JPG
+gallery_images: []
 image: /media/paralysis/images/paralysis_2.JPG
 ---
   [View on GitHub](https://github.com/mayanayza/paralysis){:target="_blank"}
@@ -20,10 +16,8 @@ image: /media/paralysis/images/paralysis_2.JPG
 
 
 
-{% include gallery.html images=page.gallery_images %}
-
 <video controls>
-  <source src="/media/paralysis/videos/paralysis.webm" type="video/webm">
+  <source src="/media/paralysis/videos/paralysis.mp4" type="video/webm">
 </video>
 
 <model-viewer src="/media/paralysis/models/paralysis.glb" auto-rotate camera-controls></model-viewer>
