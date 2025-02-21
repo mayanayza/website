@@ -1,0 +1,8 @@
+<!-- _includes/video.html -->
+{% assign videos = include.videos %}
+
+{% for video in videos %}
+<video controls>
+  <source src="{{ video }}" type="video/mp4">
+</video>
+{% endfor %}

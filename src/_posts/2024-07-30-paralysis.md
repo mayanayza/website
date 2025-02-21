@@ -1,17 +1,22 @@
 ---
 layout: post
 title: Paralysis
+name: paralysis
 tagline: Self-discovery and self-love
 date: '2024-07-30'
 tags:
 - Art
 - Sculpture
 featured: true
-gallery_images:
+images:
 - /media/paralysis/images/paralysis_1.jpg
 - /media/paralysis/images/paralysis_2.jpg
 - /media/paralysis/images/paralysis_4.jpg
 - /media/paralysis/images/paralysis_5.jpg
+videos:
+- /media/paralysis/videos/paralysis.mp4
+models:
+- /media/paralysis/models/paralysis.stl
 image: /media/paralysis/images/paralysis_2.jpg
 ---
   [View on GitHub](https://github.com/mayanayza/paralysis){:target="_blank"}
@@ -19,13 +24,16 @@ image: /media/paralysis/images/paralysis_2.jpg
 
 
 
+{% include iframe-embed.html images=page.iframe_embeds %}
 
-{% include gallery.html images=page.gallery_images %}
 
-<video controls>
-  <source src="/media/paralysis/videos/paralysis.mp4" type="video/webm">
-</video>
+{% include gallery.html images=page.images %}
 
-<model-viewer src="/media/paralysis/models/paralysis.stl" auto-rotate camera-controls></model-viewer>
 
-<iframe frameborder="0" src="/media/monster/embeds/no-embed/monster-food.html" id="food-paralysis"></iframe>
+{% include video.html images=page.videos %}
+
+
+{% include model-viewer.html images=page.models %}
+
+
+{% include monster-food.html id=page.name}

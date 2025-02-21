@@ -1,0 +1,6 @@
+<!-- _includes/model-viewer.html -->
+{% assign models = include.models %}
+
+{% for model in models %}
+<model-viewer src="{{ model }}" auto-rotate camera-controls></model-viewer>
+{% endfor %}
