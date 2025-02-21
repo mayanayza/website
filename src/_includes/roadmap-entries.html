@@ -1,0 +1,24 @@
+<!-- _includes/roadmap-entries.html -->
+{% assign entries = include.entries %}
+{% assign empty_message = include.empty_message %}
+
+{% if entries %}
+<table>
+  <tbody>
+    {% for project in entries %}
+    <tr>
+      <td>
+        {% if project.github %}
+        <a href='{{ project.github }}' target='_blank'>{{ project.display_name }}</a>
+        {% else %}
+        {{ project.display_name }}
+        {% endif %}
+      </td>
+      <td>{{ project.tagline | default('') }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+{{ empty_message }}
+{% endif %}
