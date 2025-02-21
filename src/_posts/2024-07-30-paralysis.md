@@ -30,4 +30,4 @@ featured_image: /media/paralysis/images/paralysis_2.jpg
 
 {% include model-viewer.html images=page.models %}
 
-{% include monster-food.html id=page.name}
+{% include monster-food.html id=page.name %}
