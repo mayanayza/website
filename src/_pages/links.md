@@ -57,12 +57,6 @@ hide_header: true
     </tr>
     <tr>
       <td>
-        🪨 Sledding
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>
         🍆 Gstudy 1
       </td>
       <td></td>
