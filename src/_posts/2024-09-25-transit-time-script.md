@@ -24,17 +24,12 @@ featured_code: "    }\n  }\n}\n\nfunction removeTimedReminders(calendarId, event
   \  }\n"
 code_language: javascript
 ---
-  [View on GitHub](https://github.com/mayanayza/transit-time-script){:target="_blank"}
-The only thing worse than being busy is being busy and double booked >:( !
-
-This script automatically calculates transit time between events on your calendar so that you won't have people trying to set up meetings while you're going to be on a bus, train, or in the car.
-
+{% if project.github %}
+  [View on GitHub]({{ project.github }}){:target="_blank"}
+{% endif %}
+{{ content }}
 {% include iframe-embed.html iframe_embed=page.iframe_embeds %}
-
 {% include gallery.html images=page.images %}
-
 {% include video.html videos=page.videos %}
-
 {% include model-viewer.html models=page.models %}
-
 {% include monster-food.html id=page.name %}
