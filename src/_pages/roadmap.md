@@ -8,11 +8,12 @@ permalink: /roadmap/
 
 | ⿻ AidNet | Creating decentralized trust networks for mutual aid |
 | 🌱 Plant Autowater | Just another high maintenance thing I do to be low maintenance... |
+| 🪨 Sledding |  |
+| 🍆 Gstudy 1 |  |
 
 ## Starting Soon
 
-| 🪨 Sledding |  |
-| 🍆 Gstudy 1 |  |
+Nothing currently in backlog
 
 ## Done
 

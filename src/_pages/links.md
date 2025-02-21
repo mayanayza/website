@@ -55,6 +55,18 @@ hide_header: true
       </td>
       <td>Just another high maintenance thing I do to be low maintenance...</td>
     </tr>
+    <tr>
+      <td>
+        🪨 Sledding
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        🍆 Gstudy 1
+      </td>
+      <td></td>
+    </tr>
   </tbody>
 </table>
 
