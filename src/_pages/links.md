@@ -36,9 +36,7 @@ hide_header: true
 </div>
 <br />
 
-<div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('/tags/?tag=art', '_blank')">View Art Portfolio</div>
-
-<div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('/', '_blank')">View Full Portfolio</div>
+<div class="button button--primary" style="width: 100%; display: flex; justify-content: center; text-align: center;" onclick="window.open('/', '_blank')">View Portfolio</div>
 
 <br />
 
