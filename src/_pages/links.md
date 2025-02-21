@@ -24,7 +24,7 @@ hide_header: true
 
 <div class="button button--primary" style="width: 100%; display: flex; align-items: center; padding: 0; height: 4.5rem; position: relative;" onclick="window.open('https://maya.cloud/monolith', '_blank')">
   <div class="button-image" style="height: 100%; margin: 0; padding: 0; position: absolute; left: 0;">
-    <img src="/media/monolith/images/IMG_7360.JPG" alt="monolith" style="height: 4.5rem; width: auto; margin: 0; padding: 0; display: block;">
+    <img src="/media/monolith/images/1.JPG" alt="monolith" style="height: 4.5rem; width: auto; margin: 0; padding: 0; display: block;">
   </div>
   <span style="flex: 1; text-align: center; padding: 0.5rem;">Monolith</span>
 </div>
