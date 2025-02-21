@@ -8,7 +8,7 @@
     
     <a class="article__image" href="{{ post.url | relative_url }}">
       {% if post.featured_image %}
-      <img class="lazy" data-src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+      <img class="lazy" data-src="{{ post.featured_image | relative_url }}" alt="{{ post.title }}">
       {% endif %}
       {% if post.featured_code %}
       <div class="post-thumbnail code-background">
