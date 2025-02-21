@@ -22,12 +22,12 @@ featured_image: /media/paralysis/images/paralysis_2.jpg
   [View on GitHub](https://github.com/mayanayza/paralysis){:target="_blank"}
 
 
-{% include iframe-embed.html images=page.iframe_embeds %}
+{% include iframe-embed.html iframe_embed=page.iframe_embeds %}
 
 {% include gallery.html images=page.images %}
 
-{% include video.html images=page.videos %}
+{% include video.html videos=page.videos %}
 
-{% include model-viewer.html images=page.models %}
+{% include model-viewer.html models=page.models %}
 
 {% include monster-food.html id=page.name %}
