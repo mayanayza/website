@@ -30,7 +30,7 @@ hide_header: true
 </div>
 <div class="button button--primary" style="width: 100%; display: flex; align-items: center; padding: 0; height: 4.5rem; position: relative;" onclick="window.open('https://maya.cloud/paralysis', '_blank')">
   <div class="button-image" style="height: 100%; margin: 0; padding: 0; position: absolute; left: 0;">
-    <img src="/media/paralysis/images/paralysis_2.JPG" alt="paralysis" style="height: 4.5rem; width: auto; margin: 0; padding: 0; display: block;">
+    <img src="/media/paralysis/images/paralysis_2.jpg" alt="paralysis" style="height: 4.5rem; width: auto; margin: 0; padding: 0; display: block;">
   </div>
   <span style="flex: 1; text-align: center; padding: 0.5rem;">Paralysis</span>
 </div>
