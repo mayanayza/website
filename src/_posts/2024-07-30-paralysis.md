@@ -8,8 +8,8 @@ tags:
 - Sculpture
 featured: true
 gallery_images:
-- /media/paralysis/images/paralysis_2.jpg
 - /media/paralysis/images/paralysis_1.jpg
+- /media/paralysis/images/paralysis_2.jpg
 - /media/paralysis/images/paralysis_4.jpg
 - /media/paralysis/images/paralysis_5.jpg
 image: /media/paralysis/images/paralysis_2.jpg
