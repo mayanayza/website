@@ -22,6 +22,9 @@ image: /media/paralysis/images/paralysis_2.JPG
 
 {% include gallery.html images=page.gallery_images %}
 
+<video controls>
+  <source src="/media/paralysis/videos/paralysis.webm" type="video/webm">
+</video>
 
 <model-viewer src="/media/paralysis/models/paralysis.glb" auto-rotate camera-controls></model-viewer>
 
