@@ -5,7 +5,7 @@ permalink: /about/
 hide_header: true
 ---
 
-# Hi, I'm !
+# Hi, I'm Maya!
 
 I’m a queer artist and creative technologist based in NYC.
 
