@@ -8,6 +8,13 @@ tags:
 - Automation
 - Tools
 featured: false
+written_content: 'The only thing worse than being busy is being busy and double booked
+  >:( !
+
+
+  This script automatically calculates transit time between events on your calendar
+  so that you won''t have people trying to set up meetings while you''re going to
+  be on a bus, train, or in the car.'
 images: []
 videos: []
 models: []
@@ -27,7 +34,7 @@ code_language: javascript
 {% if project.github %}
   [View on GitHub]({{ project.github }}){:target="_blank"}
 {% endif %}
-{{ content }}
+{{ page.written_content }}
 {% include iframe-embed.html iframe_embed=page.iframe_embeds %}
 {% include gallery.html images=page.images %}
 {% include video.html videos=page.videos %}

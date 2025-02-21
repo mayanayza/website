@@ -8,6 +8,7 @@ tags:
 - Art
 - Sculpture
 featured: true
+written_content: ''
 images:
 - /media/paralysis/images/paralysis_1.jpg
 - /media/paralysis/images/paralysis_2.jpg
@@ -22,7 +23,7 @@ featured_image: /media/paralysis/images/paralysis_2.jpg
 {% if project.github %}
   [View on GitHub]({{ project.github }}){:target="_blank"}
 {% endif %}
-{{ content }}
+{{ page.written_content }}
 {% include iframe-embed.html iframe_embed=page.iframe_embeds %}
 {% include gallery.html images=page.images %}
 {% include video.html videos=page.videos %}
