@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<section class="hero__links-page">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <h1 class="hero__title">{{ page.title }}</h1>
+    </div>
+  </div>
+</section>
+
+{% include social-links.html %}
+
+<div class="container">
+  <article class="page animate">
+    <div class="page__content">
+		<div class="links-container">
+			{{ content }}
+		</div>
+    </div>
+  </article>
+</div>
+

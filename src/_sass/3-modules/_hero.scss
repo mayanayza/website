@@ -99,3 +99,21 @@
     margin: 144px 0 48px;
   }
 }
+
+.hero__links-page {
+  margin: 100px 0 50px;
+  .hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-content {
+    width: 100%;
+    max-width: 650px;
+    padding: 0 20px;
+    text-align: center;
+  }
+  @media only screen and (max-width: $mobile) {
+    margin: 144px 0 48px;
+  }
+}

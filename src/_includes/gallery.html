@@ -1,6 +1,7 @@
 <!-- _includes/image-gallery.html -->
 {% assign images = include.images %}
 
+{% if images.size > 0 %}
 <div class="gallery-container">
     <div class="main-image-container">
         <div class="image-wrapper">
@@ -21,6 +22,7 @@
         </div>
     </div>
 </div>
+{% endif %}
 
 <script>
     (function() {

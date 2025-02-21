@@ -1,13 +1,16 @@
 ---
 layout: post
 title: Transit Time Script
+name: transit-time-script
 tagline: Automatic calendar blocking while you're going to be in-transit
 date: 2024-09-25
 tags:
 - Automation
 - Tools
 featured: false
-gallery_images: []
+images: []
+videos: []
+models: []
 featured_code: "    }\n  }\n}\n\nfunction removeTimedReminders(calendarId, eventId)\
   \ {\n  try {\n    // Fetch the event\n    const event = Calendar.Events.get(calendarId,\
   \ eventId);\n\n    if (event.reminders && event.reminders.overrides) {\n      //\
@@ -22,13 +25,16 @@ featured_code: "    }\n  }\n}\n\nfunction removeTimedReminders(calendarId, event
 code_language: javascript
 ---
   [View on GitHub](https://github.com/mayanayza/transit-time-script){:target="_blank"}
-
 The only thing worse than being busy is being busy and double booked >:( !
 
 This script automatically calculates transit time between events on your calendar so that you won't have people trying to set up meetings while you're going to be on a bus, train, or in the car.
 
+{% include iframe-embed.html iframe_embed=page.iframe_embeds %}
 
+{% include gallery.html images=page.images %}
 
+{% include video.html videos=page.videos %}
 
+{% include model-viewer.html models=page.models %}
 
-<iframe frameborder="0" src="/media/monster/embeds/no-embed/monster-food.html" id="food-transit-time-script"></iframe>
+{% include monster-food.html id=page.name %}

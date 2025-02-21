@@ -1,0 +1,14 @@
+<!-- _includes/links.html -->
+{% assign projects = include.projects %}
+
+{% for project in projects %}
+<div class="button button--primary button--links__page" onclick="window.open('{{ project.website }}', '_blank')">
+  {% if project.featured_image %}
+  <div class="button-image">
+    <img src="{{ project.featured_image }}" alt="{{ project.name }}">
+  </div>
+  {% endif %}
+  <span style="flex: 1; text-align: center; padding: 0.5rem;">{{ project.title }}</span>
+</div>
+{% endfor %}
+

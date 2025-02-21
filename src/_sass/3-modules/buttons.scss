@@ -51,4 +51,33 @@
     display: block;
     width: 100%;
   }
+
+  &--links__page {
+    margin-bottom: 1rem; 
+    width: 100%; 
+    display: flex; 
+    align-items: center;
+    text-align: center;
+    padding: 0; 
+    height: 4.5rem; 
+    position: relative;
+    justify-content: center;
+  }
+}
+
+.button-image {
+  height: 100%; 
+  margin: 0; 
+  padding: 0; 
+  position: absolute; 
+  left: 0;
+
+  img {
+    height: 4.5rem; 
+    width: auto; 
+    margin: 0; 
+    padding: 0; 
+    display: block;
+  }
+
 }

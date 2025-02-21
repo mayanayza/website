@@ -1,6 +1,8 @@
 <!-- _includes/iframe-embed.html -->
 {% assign iframe_embeds = include.iframe_embeds %}
 
+{% if iframe_embeds.size > 0 %}
 {% for embed in iframe_embeds %}
   <iframe src="{{ embed }}" frameborder="0"></iframe>
 {% endfor %}
+{% endif %}
