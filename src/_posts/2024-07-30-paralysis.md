@@ -8,10 +8,10 @@ tags:
 - Sculpture
 featured: true
 gallery_images:
-- /media/paralysis/images/paralysis_5_resized.jpg
-- /media/paralysis/images/paralysis_2_resized.jpg
-- /media/paralysis/images/paralysis_1_resized.jpg
-- /media/paralysis/images/paralysis_4_resized.jpg
+- /media/paralysis/images/paralysis_2.jpg
+- /media/paralysis/images/paralysis_1.jpg
+- /media/paralysis/images/paralysis_4.jpg
+- /media/paralysis/images/paralysis_5.jpg
 image: /media/paralysis/images/paralysis_2.JPG
 ---
   [View on GitHub](https://github.com/mayanayza/paralysis){:target="_blank"}
