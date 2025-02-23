@@ -10,7 +10,9 @@ title: Maya
 # Navigation Settings
 menu-settings:
   menu-items:
-    - title: 'Portfolio'
+    - title: 'Art Porfolio'
+      url: '/tags/?tag=art'
+    - title: 'All Work'
       url: '/'
     - title: 'Roadmap'
       url: '/roadmap/'
