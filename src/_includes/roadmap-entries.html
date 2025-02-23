@@ -8,7 +8,7 @@
     {% for project in entries %}
     <tr>
       <td>
-        {% if project.status == complete %}
+        {% if project.status == "complete" %}
         <a href='{{ project.website }}' target='_blank'>{{ project.display_name }}</a>
         {% else %}
         {{ project.display_name }}
