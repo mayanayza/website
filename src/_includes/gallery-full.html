@@ -1,0 +1,184 @@
+<!-- Collect all image data first -->
+{% assign projects_with_images = '' | split: '' %}
+
+{% for post in site.posts %}
+  {% if post.images %}
+    {% assign project_data = '' | split: '' %}
+    
+    {% assign project_images = '' | split: '' %}
+    {% for image in post.images %}
+      {% assign image_data = '' | split: '' %}
+      {% assign image_data = image_data | push: image %}
+      {% assign project_images = project_images | push: image_data %}
+    {% endfor %}
+    
+    {% assign is_photo_project = false %}
+    {% if post.tags contains 'Photography' %}
+      {% assign is_photo_project = true %}
+    {% endif %}
+    
+    {% assign project_obj = '' | split: '' %}
+    {% assign project_obj = project_obj | push: post.title %}
+    {% assign project_obj = project_obj | push: post.date %}
+    {% assign project_obj = project_obj | push: post.url %}
+    {% assign project_obj = project_obj | push: project_images %}
+    {% assign project_obj = project_obj | push: is_photo_project %}
+    
+    {% assign projects_with_images = projects_with_images | push: project_obj %}
+  {% endif %}
+{% endfor %}
+
+<!-- Sort projects by photography tag first, then by date -->
+{% assign photography_projects = '' | split: '' %}
+{% assign other_projects = '' | split: '' %}
+
+{% for project in projects_with_images %}
+  {% if project[4] == true %}
+    {% assign photography_projects = photography_projects | push: project %}
+  {% else %}
+    {% assign other_projects = other_projects | push: project %}
+  {% endif %}
+{% endfor %}
+
+<!-- Sort by date (newest first) -->
+{% assign photography_projects = photography_projects | sort: '1' | reverse %}
+{% assign other_projects = other_projects | sort: '1' | reverse %}
+
+<!-- Combine the two sorted arrays -->
+{% assign sorted_projects = photography_projects | concat: other_projects %}
+
+<div class="fullscreen-gallery">
+  <header class="gallery-header">
+    <h1>Photography Gallery</h1>
+    <div class="gallery-nav">
+      <a href="/">Home</a>
+      <a href="/tags/?tag=photography">Photography Projects</a>
+    </div>
+  </header>
+  
+  <div class="gallery-content">
+    {% for project in sorted_projects %}
+      <section class="project-section" id="{{ project[0] | slugify }}">
+        <div class="project-header">
+          <a href="{{ project[2] }}">{{ project[0] }}</a>
+          <span class="project-date">{{ project[1] | date: "%B %Y" }}</span>
+        </div>
+        
+        <div class="project-photos">
+          {% for image in project[3] %}
+            <div class="photo-item" data-project="{{ project[0] }}" data-image="{{ image }}">
+              <img class="lazy" data-src="{{ image }}" alt="{{ project[0] }}">
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+    {% endfor %}
+  </div>
+  
+  <!-- Lightbox -->
+  <div class="gallery-lightbox">
+    <div class="lightbox-content">
+      <img src="" alt="">
+      <div class="lightbox-caption"></div>
+    </div>
+    <div class="lightbox-close">
+      <i class="fa-solid fa-xmark"></i>
+    </div>
+    <div class="lightbox-nav">
+      <button class="prev-button">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button class="next-button">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Lightbox functionality
+    const lightbox = document.querySelector('.gallery-lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+    const prevBtn = lightbox.querySelector('.prev-button');
+    const nextBtn = lightbox.querySelector('.next-button');
+    const photoItems = document.querySelectorAll('.photo-item');
+    
+    let currentIndex = 0;
+    let currentProject = '';
+    let allPhotos = [];
+    
+    // Collect all photos into a flat array for navigation
+    photoItems.forEach(item => {
+      allPhotos.push({
+        project: item.dataset.project,
+        src: item.dataset.image
+      });
+    });
+    
+    // Open lightbox
+    photoItems.forEach((item, index) => {
+      item.addEventListener('click', function() {
+        currentIndex = index;
+        currentProject = item.dataset.project;
+        const imageSrc = item.dataset.image;
+        
+        lightboxImg.src = imageSrc;
+        lightboxCaption.textContent = currentProject;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    
+    // Close lightbox
+    closeBtn.addEventListener('click', function() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    
+    // Close on background click
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+    
+    // Navigate to previous image
+    prevBtn.addEventListener('click', function() {
+      currentIndex = (currentIndex - 1 + allPhotos.length) % allPhotos.length;
+      updateLightboxImage();
+    });
+    
+    // Navigate to next image
+    nextBtn.addEventListener('click', function() {
+      currentIndex = (currentIndex + 1) % allPhotos.length;
+      updateLightboxImage();
+    });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+      if (!lightbox.classList.contains('active')) return;
+      
+      if (e.key === 'Escape') {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      } else if (e.key === 'ArrowLeft') {
+        currentIndex = (currentIndex - 1 + allPhotos.length) % allPhotos.length;
+        updateLightboxImage();
+      } else if (e.key === 'ArrowRight') {
+        currentIndex = (currentIndex + 1) % allPhotos.length;
+        updateLightboxImage();
+      }
+    });
+    
+    function updateLightboxImage() {
+      const photo = allPhotos[currentIndex];
+      lightboxImg.src = photo.src;
+      lightboxCaption.textContent = photo.project;
+      currentProject = photo.project;
+    }
+  });
+</script>

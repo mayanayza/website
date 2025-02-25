@@ -573,14 +573,14 @@ complete_art:
   - Sculpture
   embeds: []
   website: https://maya.cloud/monolith
-  written_content: Monolith is a kinetic sculpture which explores the universal human
+  written_content: Monolith is a kinetic sculpture that explores the universal human
     experience of containing multitudes through the lens of Disassociative Identity
     Disorder (DID). This piece communicates the fragmented existence of living with
     DID by visually representing the experience of 'switching', which is where one's
     conscious experience is not universally shared by a single self but rather experienced
     in fragments by distinct parts of the self. The piece uses linear actuators to
     press masks with a variety of facial expressions against latex panels while backlighting
-    them, creating a relief of the face which constantly changes and is further distorted
+    them, creating a relief of the face that constantly changes and is further distorted
     by lights on the rest of the sculpture turning on and off. A distorted recording
     of the artist's voice describing the experience of DID provides a jarring and
     rhythmic backround to the movement. The sculpture's design and overall aesthetic
@@ -634,18 +634,39 @@ complete_art:
   embeds: []
   website: https://maya.cloud/paralysis
   github: https://github.com/mayanayza/paralysis
-  written_content: Paralysis is a kinetic sculpture which represents the artist's
-    journey of self-discovery and self-love. The core visual concept of capturing
-    the beauty of a laser made visible as it passes through water vapor was conceived
-    of in 2014; however, years of repression made this piece impossible to create
-    until the artist's identity crisis led to a creative breakthrough in 2024. The
-    piece shines a laser against a servo-mounted mirror; as the mirror moves, the
-    laser is reflected further off of mirrors surrounding the interior of the piece,
-    and water vapor produced from a reservoir makes the laser and its reflected geometric
-    patterns visible to the viewer. As the user is drawn in by the delicacy and organic
-    motion of this mechanism, an LED display scrolls messages representing the artist's
-    mental state over the decade of repression, communicating the depths of the journey
-    which led to the piece's ultimate creation.
+  written_content: Paralysis is a kinetic sculpture that represents the artist's journey
+    of self-discovery and self-love. The core visual concept of capturing the beauty
+    of a laser made visible as it passes through water vapor was conceived of in 2014;
+    however, years of repression made this piece impossible to create until the artist's
+    identity crisis led to a creative breakthrough in 2024. The piece shines a laser
+    against a servo-mounted mirror; as the mirror moves, the laser is reflected further
+    off of mirrors surrounding the interior of the piece, and water vapor produced
+    from a reservoir makes the laser and its reflected geometric patterns visible
+    to the viewer. As the viewer is drawn in by the delicacy and organic motion of
+    this mechanism, an LED display scrolls messages representing the artist's mental
+    state over the decade of repression, communicating the depths of the journey that
+    led to the piece's ultimate creation.
+  readme: ''
+- name: old-photos
+  display_name: 📷 Old Photos
+  title: Old Photos
+  date_created: '2010-01-01'
+  status: complete
+  priority: 0
+  tagline: Photos 2010-2020
+  feature_post: false
+  featured_content:
+    type: image
+    source: images/71891567.jpg
+    language: ''
+    start_line: 0
+    end_line: 0
+  tags:
+  - Art
+  - Photography
+  embeds: []
+  website: https://maya.cloud/old-photos
+  written_content: ''
   readme: ''
 - name: monster
   display_name: 👹 Monster

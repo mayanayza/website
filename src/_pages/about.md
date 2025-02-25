@@ -7,9 +7,9 @@ hide_header: false
 
 # Hi, I'm Maya!
 
-I’m a queer Catalan-American artist and creative technologist based in NYC.
+I'm a queer and trans Catalan-American artist and creative technologist based in NYC. My practice spans physical, digital, and spiritual realms, exploring how technology can extend and transform both creative expression and human connection.
 
-I create viscerally engaging sculptures that evoke two essential qualities of life: flesh and motion. I work with leather, silicone, latex, and other synthetic flesh analogues, and use microcontrollers and robotics techniques to bring my sculptures to life. The core themes of my work focus on intersections between identity, trauma, emotion, gender, and the body. My work achieves a synthesis between organic materials and technology that challenges viewers to confront their own relationships with embodiment and identity.
+I create work that explores the intersection of organic existence, technological systems, and spirituality. My multidisciplinary practice spans sculpture, systems design, and technological infrastructure. I create viscerally engaging sculptures that evoke flesh and motion, working with materials like leather, silicone, and latex, and using robotics to bring these synthetic flesh analogues to life. Beyond sculpture, I develop tools and systems that examine and reshape our relationship with technology. Whether working with physical materials or digital systems, I seek to create experiences that challenge conventional relationships with technology.
 
 
-When I’m not in the studio you can find me spending time with friends and loved ones or channeling my creative energy towards furniture restoration, apartment decor, and home automation projects.
+When I'm not in the studio you can find me spending time with friends and loved ones, working on open-source projects, or channeling my creative energy towards furniture restoration, apartment decor, and home automation projects.
