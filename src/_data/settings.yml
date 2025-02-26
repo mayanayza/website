@@ -12,8 +12,8 @@ menu-settings:
   menu-items:
     - title: 'Art Portfolio'
       url: '/tags/?tag=art'
-    - title: 'Systems & Tools'
-      url: '/tags/?tag=tools'
+    - title: 'Systems'
+      url: '/tags/?tag=systems'
     - title: 'Gallery'
       url: '/gallery'
     - title: 'Roadmap'
