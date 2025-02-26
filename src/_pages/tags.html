@@ -3,11 +3,18 @@ layout: default
 title: Tags
 permalink: /tags/
 ---
-{% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
-{% assign tag_words = site_tags | split:',' | sort %}
 
-{% for item in (0..site.tags.size) %}{% unless forloop.last %}
-{% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
+{% assign completed_posts = site.posts | where: "status", "complete" %}
+{% assign completed_tags = "" | split: "" %}
+{% for post in completed_posts %}
+  {% for tag in post.tags %}
+    {% assign completed_tags = completed_tags | push: tag %}
+  {% endfor %}
+{% endfor %}
+{% assign completed_tags = completed_tags | uniq | sort %}
+
+{% for item in (0..completed_tags.size) %}{% unless forloop.last %}
+{% capture this_word %}{{ completed_tags[item] | strip_newlines }}{% endcapture %}
 
 <div class="tags is-hidden" id="{{ this_word | downcase | url_decode }}">
 
@@ -15,15 +22,16 @@ permalink: /tags/
     <div class="row">
       <div class="col col-12">
         <div class="archive-box">
-          <span class="archive-meta">{{ site.tags[this_word].size }} {% if site.tags[this_word].size < 2 %}post {% else %}posts{% endif %} tagged</span>
+          {% assign tag_posts = site.posts | where: "status", "complete" | where_exp: "post", "post.tags contains this_word" %}
+          <span class="archive-meta">{{ tag_posts.size }} {% if tag_posts.size < 2 %}post {% else %}posts{% endif %} tagged</span>
           <h1 class="archive-title">{{ this_word }}</h1>
         </div>
       </div>
     </div>
   </div>
 
-  {% include post-grid.html featured="true" filter_tags=this_word %}
-  {% include post-grid.html featured="false" filter_tags=this_word %}
+  {% include post-grid.html featured="true" filter_tags=this_word status="complete" %}
+  {% include post-grid.html featured="false" filter_tags=this_word status="complete" %}
 
 </div>
 
