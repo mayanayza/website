@@ -21,7 +21,7 @@ featured_content:
   start_line: 0
   end_line: 10
 tags:
-- Automation
+- System
 - Home
 embeds: []
 written_content: ''

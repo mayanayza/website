@@ -21,8 +21,8 @@ featured_content:
   start_line: 50
   end_line: 75
 tags:
-- Automation
-- Tools
+- System
+- Digital
 embeds: []
 website: https://maya.cloud/transit-time-script
 github: https://github.com/mayanayza/transit-time-script
