@@ -26,7 +26,7 @@
         {% assign sameTagCount = sameTagCount | plus: 1 %}
       {% endif %}
     {% endfor %}
-    {% if sameTagCount >= 1 && post.url != page.url %}
+    {% if sameTagCount >= 1 and post.url != page.url %}
       {% assign tag_filtered_posts = tag_filtered_posts | push: post %}
     {% endif %}
   {% endfor %}
