@@ -5,7 +5,7 @@
 <div class="gallery-container">
     <div class="main-image-container">
         <div class="image-wrapper">
-            <img class="main-image" src="{{ images[0] | relative_url }}" alt="" data-lightense="false">
+            <img class="main-image" src="{{ images[0] | relative_url }}" loading="lazy">
             <button class="nav-button prev" aria-label="Previous image">
                 <i class="fa-solid fa-chevron-left"></i>
             </button>
@@ -23,7 +23,7 @@
             {% for image in images %}
             <div class="thumbnail-wrapper">
                 <div class="thumbnail {% if forloop.first %}active{% endif %}">
-                    <img src="{{ image | relative_url }}" alt="" data-lightense="false">
+                    <img src="{{ image | relative_url }}" loading="lazy">
                 </div>
             </div>
             {% endfor %}

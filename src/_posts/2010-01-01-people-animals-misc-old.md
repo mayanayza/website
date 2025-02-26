@@ -20,7 +20,7 @@ title: People, Animals, Misc (Old)
 date_created: '2010-01-01'
 status: complete
 priority: 0
-tagline: ''
+tagline: Photography circa 2010-2020
 feature_post: false
 featured_content:
   type: image
