@@ -13,7 +13,7 @@ menu-settings:
     - title: 'Art'
       url: '/tags/?tag=art'
     - title: 'Systems'
-      url: '/tags/?tag=system'
+      url: '/tags/?tag=systems'
     - title: 'Gallery'
       url: '/gallery'
     - title: 'Roadmap'
