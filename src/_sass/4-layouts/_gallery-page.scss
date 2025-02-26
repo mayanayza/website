@@ -95,9 +95,8 @@
   }
 }
 
-/* Section titles */
 .section-title {
-  margin: 0 20px 30px;
+  margin: 40px 20px 30px;
   padding-bottom: 10px;
   font-size: 28px;
   color: #fff;
@@ -105,6 +104,10 @@
 
 .gallery-section {
   margin-bottom: 60px;
+}
+
+.gallery-section:first-child {
+  padding-top: 20px;
 }
 
 /* Responsive adjustments for the margin-top */
