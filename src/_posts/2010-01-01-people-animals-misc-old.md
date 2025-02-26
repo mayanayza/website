@@ -16,7 +16,7 @@ videos: []
 models: []
 name: people-animals-misc-old
 display_name: 📷 People, Animals, Misc (Old)
-title: People Animals Misc Old
+title: People, Animals, Misc (Old)
 date_created: '2010-01-01'
 status: backlog
 priority: 0

@@ -22,7 +22,7 @@ videos: []
 models: []
 name: nature-landscapes-old
 display_name: 📷 Nature & Landscapes (Old)
-title: Nature  Landscapes Old
+title: Nature & Landscapes (Old)
 date_created: '2010-01-01'
 status: backlog
 priority: 0
