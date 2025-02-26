@@ -1,78 +1,79 @@
-<!-- Collect all image data first -->
-{% assign projects_with_images = '' | split: '' %}
+<!-- 
+  Gallery with separate Photography and Other Work sections
+  and filtering for projects with empty image arrays
+-->
+
+<!-- First, separate posts into photography and non-photography categories -->
+{% assign photography_posts = '' | split: '' %}
+{% assign other_posts = '' | split: '' %}
 
 {% for post in site.posts %}
-  {% if post.images %}
-    {% assign project_data = '' | split: '' %}
-    
-    {% assign project_images = '' | split: '' %}
-    {% for image in post.images %}
-      {% assign image_data = '' | split: '' %}
-      {% assign image_data = image_data | push: image %}
-      {% assign project_images = project_images | push: image_data %}
-    {% endfor %}
-    
-    {% assign is_photo_project = false %}
+  {% if post.images and post.images.size > 0 %}
     {% if post.tags contains 'Photography' %}
-      {% assign is_photo_project = true %}
+      {% assign photography_posts = photography_posts | push: post %}
+    {% else %}
+      {% assign other_posts = other_posts | push: post %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+<!-- Sort posts by date (newest first) -->
+{% assign photography_posts = photography_posts | sort: 'date' | reverse %}
+{% assign other_posts = other_posts | sort: 'date' | reverse %}
+
+<div class="fullscreen-gallery">  
+  <div class="gallery-content">
+    <!-- Photography Section -->
+    {% if photography_posts.size > 0 %}
+      <div class="gallery-section">
+        <h2 class="section-title">Photography</h2>
+        
+        {% for post in photography_posts %}
+          {% if post.images.size > 0 %}
+            <section class="project-section" id="{{ post.title | slugify }}">
+              <div class="project-header">
+                <a href="{{ post.url }}">{{ post.title }}</a>
+                <span class="project-date">{{ post.date | date: "%B %Y" }}</span>
+              </div>
+              
+              <div class="project-photos">
+                {% for image in post.images %}
+                  <div class="photo-item" data-project="{{ post.title }}" data-image="{{ image }}">
+                    <img src="{{ image }}" alt="{{ post.title }}" loading="lazy">
+                  </div>
+                {% endfor %}
+              </div>
+            </section>
+          {% endif %}
+        {% endfor %}
+      </div>
     {% endif %}
     
-    {% assign project_obj = '' | split: '' %}
-    {% assign project_obj = project_obj | push: post.title %}
-    {% assign project_obj = project_obj | push: post.date %}
-    {% assign project_obj = project_obj | push: post.url %}
-    {% assign project_obj = project_obj | push: project_images %}
-    {% assign project_obj = project_obj | push: is_photo_project %}
-    
-    {% assign projects_with_images = projects_with_images | push: project_obj %}
-  {% endif %}
-{% endfor %}
-
-<!-- Sort projects by photography tag first, then by date -->
-{% assign photography_projects = '' | split: '' %}
-{% assign other_projects = '' | split: '' %}
-
-{% for project in projects_with_images %}
-  {% if project[4] == true %}
-    {% assign photography_projects = photography_projects | push: project %}
-  {% else %}
-    {% assign other_projects = other_projects | push: project %}
-  {% endif %}
-{% endfor %}
-
-<!-- Sort by date (newest first) -->
-{% assign photography_projects = photography_projects | sort: '1' | reverse %}
-{% assign other_projects = other_projects | sort: '1' | reverse %}
-
-<!-- Combine the two sorted arrays -->
-{% assign sorted_projects = photography_projects | concat: other_projects %}
-
-<div class="fullscreen-gallery">
-  <header class="gallery-header">
-    <h1>Photography Gallery</h1>
-    <div class="gallery-nav">
-      <a href="/">Home</a>
-      <a href="/tags/?tag=photography">Photography Projects</a>
-    </div>
-  </header>
-  
-  <div class="gallery-content">
-    {% for project in sorted_projects %}
-      <section class="project-section" id="{{ project[0] | slugify }}">
-        <div class="project-header">
-          <a href="{{ project[2] }}">{{ project[0] }}</a>
-          <span class="project-date">{{ project[1] | date: "%B %Y" }}</span>
-        </div>
+    <!-- Other Work Section -->
+    {% if other_posts.size > 0 %}
+      <div class="gallery-section">
+        <h2 class="section-title">Other Work</h2>
         
-        <div class="project-photos">
-          {% for image in project[3] %}
-            <div class="photo-item" data-project="{{ project[0] }}" data-image="{{ image }}">
-              <img class="lazy" data-src="{{ image }}" alt="{{ project[0] }}">
-            </div>
-          {% endfor %}
-        </div>
-      </section>
-    {% endfor %}
+        {% for post in other_posts %}
+          {% if post.images.size > 0 %}
+            <section class="project-section" id="{{ post.title | slugify }}">
+              <div class="project-header">
+                <a href="{{ post.url }}">{{ post.title }}</a>
+                <span class="project-date">{{ post.date | date: "%B %Y" }}</span>
+              </div>
+              
+              <div class="project-photos">
+                {% for image in post.images %}
+                  <div class="photo-item" data-project="{{ post.title }}" data-image="{{ image }}">
+                    <img src="{{ image }}" alt="{{ post.title }}" loading="lazy">
+                  </div>
+                {% endfor %}
+              </div>
+            </section>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
   </div>
   
   <!-- Lightbox -->
@@ -95,8 +96,34 @@
   </div>
 </div>
 
+<style>
+  /* Additional styles for section headers */
+  .section-title {
+    margin: 40px 20px 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 28px;
+    color: #fff;
+  }
+  
+  .gallery-section {
+    margin-bottom: 60px;
+  }
+  
+  /* First section needs extra padding due to fixed header */
+  .gallery-section:first-child {
+    padding-top: 20px;
+  }
+</style>
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    console.log("Gallery script loaded");
+    
+    // Log all image elements for debugging
+    const allImages = document.querySelectorAll('.photo-item img');
+    console.log("Found " + allImages.length + " images");
+    
     // Initialize Lightbox functionality
     const lightbox = document.querySelector('.gallery-lightbox');
     const lightboxImg = lightbox.querySelector('img');
@@ -117,6 +144,8 @@
         src: item.dataset.image
       });
     });
+    
+    console.log("Collected photos for lightbox:", allPhotos.length);
     
     // Open lightbox
     photoItems.forEach((item, index) => {
