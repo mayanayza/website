@@ -8,10 +8,10 @@
 {% assign filtered_posts = posts | where: "status", status_filter %}
 
 <!-- Featured Posts Logic -->
-{% if include.featured != nil %}
+{% if include.featured == "true" %}
   {% assign filtered_posts = filtered_posts | where: "featured", true %}
-{% else %}
-	{% assign filtered_posts = filtered_posts | where: "featured", false %}
+{% elsif include.featured == "false" %}
+  {% assign filtered_posts = filtered_posts | where: "featured", false %}
 {% endif %}
 
 <!-- Related Posts Logic -->
