@@ -10,7 +10,7 @@ title: Maya
 # Navigation Settings
 menu-settings:
   menu-items:
-    - title: 'Art Portfolio'
+    - title: 'Art'
       url: '/tags/?tag=art'
     - title: 'Systems'
       url: '/tags/?tag=system'

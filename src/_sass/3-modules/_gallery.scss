@@ -309,7 +309,7 @@
     position: relative;
     max-width: 90%;
     width: 90%;
-    
+      
     .lightbox-image-container {
       width: 100%;
       height: calc(80vh - 120px);
@@ -340,7 +340,12 @@
       font-size: 16px;
       font-weight: 600;
     }
-    
+
+    .lightbox-title {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
     .lightbox-counter {
       position: absolute;
       bottom: 15px;

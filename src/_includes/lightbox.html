@@ -4,8 +4,10 @@
     <div class="lightbox-image-container">
       <img src="" alt="">
     </div>
-    <div class="lightbox-caption"></div>
-    <div class="lightbox-counter"></div>
+    <div class="lightbox-caption">
+      <span class="lightbox-title"></span>
+      <span class="lightbox-counter"></span>
+    </div>
   </div>
   <div class="lightbox-close">
     <i class="fa-solid fa-xmark"></i>
@@ -25,32 +27,6 @@
   </div>
 </div>
 
-<style>
-  /* Additional styles for fixed lightbox container */
-  .lightbox-image-container {
-    width: 100%;
-    height: calc(80vh - 120px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #000;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  
-  .lightbox-counter {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    font-size: 14px;
-    padding: 5px 10px;
-    border-radius: 4px;
-    z-index: 2;
-  }
-</style>
-
 <script>
   (function() {
     // Initialize shared lightbox
@@ -63,7 +39,7 @@
           this.lightbox = document.querySelector('.gallery-lightbox');
           this.lightboxContainer = this.lightbox.querySelector('.lightbox-image-container');
           this.lightboxImg = this.lightbox.querySelector('.lightbox-image-container img');
-          this.lightboxCaption = this.lightbox.querySelector('.lightbox-caption');
+          this.lightboxTitle = this.lightbox.querySelector('.lightbox-title');
           this.lightboxCounter = this.lightbox.querySelector('.lightbox-counter');
           this.closeBtn = this.lightbox.querySelector('.lightbox-close');
           this.prevBtn = this.lightbox.querySelector('.prev-button');
@@ -72,7 +48,7 @@
           
           this.currentIndex = 0;
           this.currentImages = [];
-          this.currentTitle = '';
+          this.currentTitles = [];
           
           // Add fade transition to image
           this.lightboxImg.style.transition = 'opacity 0.15s ease';
@@ -105,12 +81,25 @@
           this.initialized = true;
         },
         
-        open: function(images, index, title) {
+        open: function(images, index, titles) {
           this.init();
           
           this.currentImages = images;
           this.currentIndex = index;
-          this.currentTitle = title || '';
+
+          console.log(titles)
+          
+          // Handle titles parameter - could be a string or an array
+          if (Array.isArray(titles)) {
+            this.currentTitles = titles;
+          } else if (titles) {
+            // If a single title was provided, create an array of the same title
+            this.currentTitles = Array(images.length).fill(titles);
+          } else {
+            this.currentTitles = Array(images.length).fill('');
+          }
+
+          console.log(this.currentTitles)
           
           // Preload images for smoother transitions
           this.preloadImages();
@@ -151,7 +140,7 @@
             this.lightboxImg.style.opacity = 1;
             
             // Update caption and counter
-            this.lightboxCaption.textContent = this.currentTitle;
+            this.lightboxTitle.textContent = this.currentTitles[this.currentIndex] || '';
             this.lightboxCounter.textContent = `${this.currentIndex + 1} / ${this.currentImages.length}`;
           }, 150);
           

@@ -1,6 +1,7 @@
 <!-- 
   Gallery with separate Photography and Other Work sections
-  and filtering for projects with empty image arrays
+  and filtering for projects with empty image arrays,
+  with enhanced global lightbox functionality
 -->
 
 <!-- First, separate posts into photography and non-photography categories -->
@@ -36,7 +37,7 @@
               
               <div class="project-photos">
                 {% for image in post.images %}
-                  <div class="photo-item" data-project="{{ post.title }}" data-image="{{ image }}" data-index="{{ forloop.index0 }}">
+                  <div class="photo-item" data-project="{{ post.title }}" data-image="{{ image }}" data-index="{{ forloop.index0 }}" data-global-index="">
                     <img src="{{ image }}" alt="{{ post.title }}" loading="lazy">
                   </div>
                 {% endfor %}
@@ -61,7 +62,7 @@
               
               <div class="project-photos">
                 {% for image in post.images %}
-                  <div class="photo-item" data-project="{{ post.title }}" data-image="{{ image }}" data-index="{{ forloop.index0 }}">
+                  <div class="photo-item" data-project="{{ post.title }}" data-image="{{ image }}" data-index="{{ forloop.index0 }}" data-global-index="">
                     <img src="{{ image }}" alt="{{ post.title }}" loading="lazy">
                   </div>
                 {% endfor %}
@@ -80,11 +81,28 @@
   document.addEventListener('DOMContentLoaded', function() {
     console.log("Gallery script loaded");
     
-    // Store project images by project ID
-    const projectImages = {};
+    // Store all images across all projects in a single array
+    const allGalleryImages = [];
+    const allGalleryTitles = [];
     const photoItems = document.querySelectorAll('.photo-item');
     
-    // Collect all photos by project
+    // Collect all photos across all projects into a single array
+    photoItems.forEach((item, index) => {
+      const project = item.dataset.project;
+      const src = item.dataset.image;
+      
+      // Add to global collection
+      allGalleryImages.push(src);
+      allGalleryTitles.push(project);
+      
+      // Set the global index for reference
+      item.dataset.globalIndex = index;
+    });
+    
+    // Also maintain individual project images for potential use
+    const projectImages = {};
+    
+    // Collect all photos by project as well
     photoItems.forEach(item => {
       const project = item.dataset.project;
       const projectId = item.closest('.project-section').dataset.projectId;
@@ -109,14 +127,14 @@
     // Open lightbox when clicking on a photo
     photoItems.forEach(item => {
       item.addEventListener('click', function() {
-        const projectId = this.closest('.project-section').dataset.projectId;
-        const index = parseInt(this.dataset.index);
+        // Use the global index to open the lightbox with all images
+        const globalIndex = parseInt(this.dataset.globalIndex);
         
-        if (window.galleryLightbox && projectImages[projectId]) {
+        if (window.galleryLightbox) {
           window.galleryLightbox.open(
-            projectImages[projectId].images, 
-            index, 
-            projectImages[projectId].title
+            allGalleryImages, 
+            globalIndex, 
+            allGalleryTitles
           );
         }
       });
@@ -124,6 +142,7 @@
     
     // Preload images for better performance
     setTimeout(() => {
+      // Preload first image of each project
       Object.keys(projectImages).forEach(projectId => {
         const images = projectImages[projectId].images;
         // Preload first image of each project
