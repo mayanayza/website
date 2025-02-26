@@ -8,7 +8,7 @@
 {% assign other_posts = '' | split: '' %}
 
 {% for post in site.posts %}
-  {% if post.images and post.images.size > 0 %}
+  {% if post.images and post.images.size > 0 and post.status == "complete"%}
     {% if post.tags contains 'Photography' %}
       {% assign photography_posts = photography_posts | push: post %}
     {% else %}
@@ -25,7 +25,8 @@
   <div class="gallery-content">
     <!-- Photography Section -->
     {% if photography_posts.size > 0 %}
-      <div class="gallery-section">        
+      <div class="gallery-section">
+        <h2 class="section-title">Photography Portfolio</h2>       
         {% for post in photography_posts %}
           {% if post.images.size > 0 %}
             <section class="project-section" id="{{ post.title | slugify }}" data-project-id="{{ post.title | slugify }}">
@@ -50,7 +51,7 @@
     <!-- Other Work Section -->
     {% if other_posts.size > 0 %}
       <div class="gallery-section">
-        <h2 class="section-title">Other Work</h2>
+        <h2 class="section-title">Photos of Other Work</h2>
         
         {% for post in other_posts %}
           {% if post.images.size > 0 %}

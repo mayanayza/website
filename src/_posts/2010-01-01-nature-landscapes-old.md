@@ -24,7 +24,7 @@ name: nature-landscapes-old
 display_name: 📷 Nature & Landscapes (Old)
 title: Nature & Landscapes (Old)
 date_created: '2010-01-01'
-status: backlog
+status: complete
 priority: 0
 tagline: ''
 feature_post: false
@@ -40,6 +40,7 @@ tags:
 embeds:
 - source: null
   type: null
+website: https://maya.cloud/nature-landscapes-old
 written_content: ''
 readme: ''
 featured_image: /media/nature-landscapes-old/000028290010.jpg

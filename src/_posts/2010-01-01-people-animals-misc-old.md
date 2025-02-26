@@ -18,7 +18,7 @@ name: people-animals-misc-old
 display_name: 📷 People, Animals, Misc (Old)
 title: People, Animals, Misc (Old)
 date_created: '2010-01-01'
-status: backlog
+status: complete
 priority: 0
 tagline: ''
 feature_post: false
@@ -34,6 +34,7 @@ tags:
 embeds:
 - source: null
   type: null
+website: https://maya.cloud/people-animals-misc-old
 written_content: ''
 readme: ''
 featured_image: /media/people-animals-misc-old/71891567.jpg
