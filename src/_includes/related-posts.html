@@ -6,7 +6,7 @@
   {% assign sameTagCount = 0 %}
   {% assign commonTags = '' %}
   {% for tag in post.tags %}
-    {% if post.url != page.url %}
+    {% if post.url != page.url and post.status == 'complete' %}
       {% if page.tags contains tag %}
         {% assign sameTagCount = sameTagCount | plus: 1 %}
       {% endif %}
