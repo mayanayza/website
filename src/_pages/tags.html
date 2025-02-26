@@ -33,8 +33,9 @@ permalink: /tags/
     </div>
   </div>
 
-  {% include post-grid.html featured="true" filter_tags=this_word status="complete" %}
-  {% include post-grid.html featured="false" filter_tags=this_word status="complete" %}
+  {% include post-grid.html featured="true" filter_tags=this_word %}
+  {% include post-grid.html featured="false" filter_tags=this_word %}
+  {% include post-grid.html status="archive" filter_tags=this_word title="Archive" %}
 
 </div>
 

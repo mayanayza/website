@@ -4,20 +4,19 @@ permalink: /roadmap/
 hide_header: false
 layout: page
 ---
-## In the Works
+# In the Works
 
-{% include post-grid.html grid_type="roadmap" status="in_progress" empty_message="Nothing currently in the works" %}
+{% include post-grid.html grid_type="roadmap" status="in_progress" empty_message="Nothing currently in the works"%}
 
-## Concepts
+# Concepts
 
 {% include post-grid.html grid_type="roadmap" status="backlog" empty_message="No concepts planned" %}
 
-## Done
+# Done
 
-### Art
+{% include post-grid.html grid_type="roadmap" status="complete" empty_message="Nothing completed" filter_tags="Art" title="Art" %}
+{% include post-grid.html grid_type="roadmap" status="complete" empty_message="Nothing completed" exclude_tags="Art" title="Systems" %}
 
-{% include post-grid.html grid_type="roadmap" status="complete" empty_message="Nothing completed" filter_tags="Art" %}
+# Archive
 
-### Systems
-
-{% include post-grid.html grid_type="roadmap" status="complete" empty_message="Nothing completed" exclude_tags="Art" %}
+{% include post-grid.html grid_type="roadmap" status="archive" empty_message="Nothing in archive" %}

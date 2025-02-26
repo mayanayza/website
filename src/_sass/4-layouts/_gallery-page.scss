@@ -1,10 +1,16 @@
 /* Gallery page styles */
+
 .gallery-page {
   padding: 0;
   margin: 0;
   width: 100%;
   min-height: 100vh;
   background-color: $background-color;
+}
+
+.fullscreen-gallery-container{
+    /* Add margin-top to match the header height + the margin it uses */
+  margin-top: 140px; /* This accounts for header height (60px) + its margin (60px + 20px buffer) */
 }
 
 .fullscreen-gallery {
@@ -14,8 +20,6 @@
   flex-direction: column;
   padding: 0;
   margin: 0;
-  /* Add margin-top to match the header height + the margin it uses */
-  margin-top: 140px; /* This accounts for header height (60px) + its margin (60px + 20px buffer) */
   
   .gallery-content {
     width: 100%;

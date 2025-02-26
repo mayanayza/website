@@ -3,22 +3,22 @@ layout: post
 date: '2010-01-01'
 featured: false
 images:
-- /media/people-animals-misc-old/images/58670019.jpg
-- /media/people-animals-misc-old/images/71871687.jpg
-- /media/people-animals-misc-old/images/71872557.jpg
-- /media/people-animals-misc-old/images/71891567.jpg
-- /media/people-animals-misc-old/images/71891569.jpg
-- /media/people-animals-misc-old/images/71891571.jpg
-- /media/people-animals-misc-old/images/DSC00279.jpg
-- /media/people-animals-misc-old/images/DSC00370.jpg
-- /media/people-animals-misc-old/images/DSC00382.jpg
+- /media/people-animals-misc/images/58670019.jpg
+- /media/people-animals-misc/images/71871687.jpg
+- /media/people-animals-misc/images/71872557.jpg
+- /media/people-animals-misc/images/71891567.jpg
+- /media/people-animals-misc/images/71891569.jpg
+- /media/people-animals-misc/images/71891571.jpg
+- /media/people-animals-misc/images/DSC00279.jpg
+- /media/people-animals-misc/images/DSC00370.jpg
+- /media/people-animals-misc/images/DSC00382.jpg
 videos: []
 models: []
-name: people-animals-misc-old
-display_name: 📷 People, Animals, Misc (Old)
-title: People, Animals, Misc (Old)
+name: people-animals-misc
+display_name: 📷 People, Animals, Misc
+title: People, Animals, Misc
 date_created: '2010-01-01'
-status: complete
+status: archive
 priority: 0
 tagline: Photography circa 2010-2020
 feature_post: false
@@ -34,10 +34,9 @@ tags:
 embeds:
 - source: null
   type: null
-website: https://maya.cloud/people-animals-misc-old
 written_content: ''
 readme: ''
-featured_image: /media/people-animals-misc-old/images/71891567.jpg
+featured_image: /media/people-animals-misc/images/71891567.jpg
 ---
 {% if page.github %}
   [View on GitHub]({{ page.github }}){:target="_blank"}

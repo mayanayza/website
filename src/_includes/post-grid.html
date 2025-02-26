@@ -77,7 +77,13 @@
 
 
 {% if filtered_posts.size > 0 %}
+<div class="post-grid">
 {% if grid_type == "roadmap" %}
+{% if include.title != nil %}
+  <div class=touch>
+    <h2>{{ include.title }}</h2>
+  </div>
+{% endif %}
 <table>
   <tbody>
     {% for post in filtered_posts %}
@@ -99,6 +105,11 @@
 {% if include.featured != nil %}
 <section class="featured-post">
   <div class="container">
+    {% if include.title != nil %}
+      <div class="post-grid__title">
+        <h2>{{ include.title }}</h2>
+      </div>
+    {% endif %}
     <div class="row">
       <div class="col col-12">
         <div class="container__inner">
@@ -114,6 +125,11 @@
 </section>
 {% elsif include.related_to != nil %}
 <div class="container">
+  {% if include.title != nil %}
+    <div class="post-grid__title">
+      <h2>{{ include.title }}</h2>
+    </div>
+  {% endif %}
   <div class="related-posts is-related">
     <div class="row">
       <div class="col col-12">
@@ -131,6 +147,11 @@
 </div>
 {% else %}
 <div class="container animate">
+  {% if include.title != nil %}
+    <div class="post-grid__title">
+      <h2>{{ include.title }}</h2>
+    </div>
+  {% endif %}
   <div class="row grid">
     {% for post in filtered_posts %}
       {% include article-content.html %}
@@ -139,7 +160,7 @@
 </div>
 {% endif %}
 {% endif %}
-
+</div>
 {% elsif include.empty_message != nil %}
   <p class="empty-message">{{ include.empty_message }}</p>
 {% endif %}

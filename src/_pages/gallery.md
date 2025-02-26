@@ -5,4 +5,7 @@ permalink: /gallery/
 hide_header: false
 ---
 
-{% include gallery-full.html %}
+<div class="fullscreen-gallery-container">
+	{% include gallery-full.html %}
+	{% include gallery-full.html status = "archive" title="Archive"%}
+</div>
