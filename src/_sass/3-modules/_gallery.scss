@@ -1,129 +1,594 @@
-    .gallery-container {
-        width: 100%;
-        margin-bottom: 3rem;
-    }
+.gallery-container {
+    width: 100%;
+    margin-bottom: 3rem;
+}
 
-    .main-image-container {
-        width: 100%;
-        margin-bottom: 1rem;
-    }
+.main-image-container {
+    width: 100%;
+    margin-bottom: 1rem;
+    /* Set a fixed aspect ratio container */
+    padding-top: 0; /* We'll set the height explicitly instead */
+    height: 70vh; /* Fixed height for the container */
+    max-height: 70vh;
+    min-height: 400px;
+    background-color: $dark;
+    border-radius: 8px;
+}
 
-    .image-wrapper {
-        position: relative;
-        width: 100%;
-        max-height: 80vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $dark;
+    border-radius: 8px;
+    overflow: hidden;
+}
 
-    .main-image {
-        display: block;
-        max-width: 100%;
-        max-height: 80vh;
-        width: auto;
-        height: auto;
-        object-fit: contain;
-        pointer-events: none;
-    }
+.main-image {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain; /* This ensures the image maintains its aspect ratio */
+    pointer-events: none;
+}
 
-    .nav-button {
-        position: absolute;
+.nav-button {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    z-index: 2;
+    transition: opacity 0.5s;
+    opacity: 1;
+    width: 50px;
+    padding: 0;
+}
+
+.nav-button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.main-image-container:not(:hover) .nav-button.fade-out {
+    opacity: 0;
+}
+
+.prev {
+    left: 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.next {
+    right: 0;
+    border-radius: 4px 0 0 4px;
+}
+
+.thumbnails-container {
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.thumbnails-scroll {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 10px; /* Space for scrollbar */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+/* Custom scrollbar for webkit browsers */
+.thumbnails-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.thumbnails-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.thumbnails-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.thumbnails-scroll::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.thumbnail-wrapper {
+    flex: 0 0 100px;
+    height: 75px;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    transition: opacity 0.3s, border-color 0.3s;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: $dark;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.thumbnail.active {
+    opacity: 1;
+    border-color: $brand-color;
+}
+
+/* Fade indicators for thumbnails scrolling */
+.thumbnails-container::before,
+.thumbnails-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 40px;
+    height: 75px; /* Same as thumbnail height */
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 4px;
+}
+
+.thumbnails-container::before {
+    left: 0;
+    background: linear-gradient(to right, $background-color, transparent);
+}
+
+.thumbnails-container::after {
+    right: 0;
+    background: linear-gradient(to left, $background-color, transparent);
+}
+
+.thumbnails-container.show-left-fade::before {
+    opacity: 1;
+}
+
+.thumbnails-container.show-right-fade::after {
+    opacity: 1;
+}
+
+/* Add scroll indicator buttons */
+.thumbnail-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s, background-color 0.3s;
+}
+
+.thumbnails-container:hover .thumbnail-nav {
+    opacity: 1;
+}
+
+.thumbnail-nav:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.thumbnail-nav.prev {
+    left: 5px;
+}
+
+.thumbnail-nav.next {
+    right: 5px;
+}
+
+/* Image count indicator */
+.image-counter {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    z-index: 2;
+}
+
+/* Make the gallery fullscreen-friendly */
+@media (min-width: 768px) {
+    .gallery-container.fullscreen {
+        position: fixed;
         top: 0;
-        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 9999;
+        background-color: rgba(0, 0, 0, 0.95);
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .gallery-container.fullscreen .main-image-container {
+        flex: 1;
         display: flex;
         align-items: center;
         justify-content: center;
+        height: calc(100vh - 110px);
+        max-height: calc(100vh - 110px);
+    }
+    
+    .gallery-container.fullscreen .image-wrapper {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .gallery-container.fullscreen .thumbnails-container {
+        margin-top: 20px;
+    }
+    
+    .gallery-container.fullscreen .close-fullscreen {
+        position: absolute;
+        top: 20px;
+        right: 20px;
         background: rgba(0, 0, 0, 0.5);
         color: white;
         border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         cursor: pointer;
-        z-index: 2;
-        transition: opacity 0.5s;
-        opacity: 1;
-        width: 50px;
-        padding: 0;
+        z-index: 10;
+        font-size: 24px;
     }
+}
 
-    .nav-button:hover {
-        background: rgba(0, 0, 0, 0.8);
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-image-container {
+        height: 50vh;
+        min-height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-image-container {
+        height: 40vh;
+        min-height: 250px;
+    }
+}
+
+/* Shared lightbox styles */
+.gallery-lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($dark, 0.95);
+  z-index: 9999;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  &.active {
+    display: flex;
+  }
+  
+  .lightbox-content {
+    position: relative;
+    max-width: 90%;
+    width: 90%;
+    
+    .lightbox-image-container {
+      width: 100%;
+      height: calc(80vh - 120px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #000;
+      border-radius: 4px;
+      overflow: hidden;
+      
+      img {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+      }
     }
     
-    .main-image-container:not(:hover) .nav-button.fade-out {
-        opacity: 0;
+    .lightbox-caption {
+      position: absolute;
+      bottom: -30px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      color: $text-color;
+      font-size: 16px;
+      font-weight: 600;
     }
+    
+    .lightbox-counter {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      font-size: 14px;
+      padding: 5px 10px;
+      border-radius: 4px;
+      z-index: 2;
+    }
+  }
+  
+  .lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: $text-color;
+    background: rgba($dark, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+    
+    &:hover {
+      color: $brand-color;
+      background: rgba($dark, 0.8);
+    }
+  }
+  
+  .lightbox-nav {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    
+    button {
+      background: rgba($dark, 0.5);
+      border: none;
+      color: $text-color;
+      font-size: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        background: rgba($dark, 0.8);
+        color: $brand-color;
+      }
+    }
+  }
+  
+  .lightbox-thumbnails {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    
+    .lightbox-thumbnails-scroll {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      max-width: 80%;
+      padding-bottom: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+      
+      &::-webkit-scrollbar {
+        height: 8px;
+      }
+      
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 4px;
+      }
+      
+      &::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+  
+  .lightbox-thumbnail {
+    width: 80px;
+    height: 60px;
+    flex: 0 0 auto;
+    opacity: 0.6;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #000;
+    
+    &.active {
+      opacity: 1;
+      border-color: $brand-color;
+    }
+    
+    &:hover {
+      opacity: 0.8;
+    }
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
 
-    .prev {
-        left: 0;
+/* Fullscreen mode for gallery */
+.gallery-container {
+  position: relative;
+  
+  .gallery-fullscreen-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: $text-color;
+    background: rgba($dark, 0.5);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+    opacity: 0;
+    
+    &:hover {
+      color: $brand-color;
+      background: rgba($dark, 0.8);
     }
+  }
+  
+  &:hover .gallery-fullscreen-toggle {
+    opacity: 1;
+  }
+  
+  &.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9000;
+    background-color: rgba($background-color, 0.98);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    
+    .main-image-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      height: calc(100vh - 110px);
+      max-height: calc(100vh - 110px);
+    }
+    
+    .image-wrapper {
+      width: 100%;
+      height: 100%;
+    }
+    
+    .gallery-fullscreen-toggle {
+      opacity: 1;
+    }
+  }
+}
 
-    .next {
-        right: 0;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .gallery-lightbox {
+    .lightbox-content {
+      max-width: 95%;
+      
+      .lightbox-image-container {
+        height: calc(70vh - 100px);
+      }
     }
+    
+    .lightbox-nav button {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .lightbox-thumbnails {
+      height: 70px;
+      
+      .lightbox-thumbnails-scroll {
+        max-width: 90%;
+      }
+    }
+    
+    .lightbox-thumbnail {
+      width: 70px;
+      height: 50px;
+    }
+  }
+}
 
-    .thumbnails-container {
-        position: relative;
-        overflow: hidden;
+@media (max-width: 480px) {
+  .gallery-lightbox {
+    .lightbox-content {
+      max-width: 100%;
+      
+      .lightbox-image-container {
+        height: calc(60vh - 100px);
+      }
     }
-
-    .thumbnails-scroll {
-        display: flex;
-        gap: 10px;
-        transition: transform 0.3s ease;
+    
+    .lightbox-thumbnails {
+      height: 60px;
+      bottom: 10px;
     }
-
-    .thumbnail-wrapper {
-        pointer-events: auto;
-        cursor: pointer;
+    
+    .lightbox-thumbnail {
+      width: 60px;
+      height: 45px;
     }
-
-    .thumbnail {
-        flex: 0 0 100px;
-        height: 75px;
-        opacity: 0.6;
-        transition: opacity 0.3s;
-        pointer-events: none;
-    }
-
-    .thumbnail img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        pointer-events: none;
-    }
-
-    .thumbnail.active {
-        opacity: 1;
-        border: 2px solid $brand-color;
-    }
-
-    .thumbnails-container::before,
-    .thumbnails-container::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        width: 50px;
-        height: 100%;
-        pointer-events: none;
-        z-index: 1;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .thumbnails-container::before {
-        left: 0;
-        background: linear-gradient(to right, rgba(var(--bg-color), 1), rgba(var(--bg-color), 0));
-    }
-
-    .thumbnails-container::after {
-        right: 0;
-        background: linear-gradient(to left, rgba(var(--bg-color), 1), rgba(var(--bg-color), 0));
-    }
-
-    .thumbnails-container.show-left-fade::before {
-        opacity: 1;
-    }
-
-    .thumbnails-container.show-right-fade::after {
-        opacity: 1;
-    }
+  }
+}

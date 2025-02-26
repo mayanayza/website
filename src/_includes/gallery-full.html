@@ -25,12 +25,10 @@
   <div class="gallery-content">
     <!-- Photography Section -->
     {% if photography_posts.size > 0 %}
-      <div class="gallery-section">
-        <h2 class="section-title">Photography</h2>
-        
+      <div class="gallery-section">        
         {% for post in photography_posts %}
           {% if post.images.size > 0 %}
-            <section class="project-section" id="{{ post.title | slugify }}">
+            <section class="project-section" id="{{ post.title | slugify }}" data-project-id="{{ post.title | slugify }}">
               <div class="project-header">
                 <a href="{{ post.url }}">{{ post.title }}</a>
                 <span class="project-date">{{ post.date | date: "%B %Y" }}</span>
@@ -38,7 +36,7 @@
               
               <div class="project-photos">
                 {% for image in post.images %}
-                  <div class="photo-item" data-project="{{ post.title }}" data-image="{{ image }}">
+                  <div class="photo-item" data-project="{{ post.title }}" data-image="{{ image }}" data-index="{{ forloop.index0 }}">
                     <img src="{{ image }}" alt="{{ post.title }}" loading="lazy">
                   </div>
                 {% endfor %}
@@ -56,7 +54,7 @@
         
         {% for post in other_posts %}
           {% if post.images.size > 0 %}
-            <section class="project-section" id="{{ post.title | slugify }}">
+            <section class="project-section" id="{{ post.title | slugify }}" data-project-id="{{ post.title | slugify }}">
               <div class="project-header">
                 <a href="{{ post.url }}">{{ post.title }}</a>
                 <span class="project-date">{{ post.date | date: "%B %Y" }}</span>
@@ -64,7 +62,7 @@
               
               <div class="project-photos">
                 {% for image in post.images %}
-                  <div class="photo-item" data-project="{{ post.title }}" data-image="{{ image }}">
+                  <div class="photo-item" data-project="{{ post.title }}" data-image="{{ image }}" data-index="{{ forloop.index0 }}">
                     <img src="{{ image }}" alt="{{ post.title }}" loading="lazy">
                   </div>
                 {% endfor %}
@@ -75,26 +73,9 @@
       </div>
     {% endif %}
   </div>
-  
-  <!-- Lightbox -->
-  <div class="gallery-lightbox">
-    <div class="lightbox-content">
-      <img src="" alt="">
-      <div class="lightbox-caption"></div>
-    </div>
-    <div class="lightbox-close">
-      <i class="fa-solid fa-xmark"></i>
-    </div>
-    <div class="lightbox-nav">
-      <button class="prev-button">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-      <button class="next-button">
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
-    </div>
-  </div>
 </div>
+
+{% include lightbox.html %}
 
 <style>
   /* Additional styles for section headers */
@@ -120,94 +101,58 @@
   document.addEventListener('DOMContentLoaded', function() {
     console.log("Gallery script loaded");
     
-    // Log all image elements for debugging
-    const allImages = document.querySelectorAll('.photo-item img');
-    console.log("Found " + allImages.length + " images");
-    
-    // Initialize Lightbox functionality
-    const lightbox = document.querySelector('.gallery-lightbox');
-    const lightboxImg = lightbox.querySelector('img');
-    const lightboxCaption = lightbox.querySelector('.lightbox-caption');
-    const closeBtn = lightbox.querySelector('.lightbox-close');
-    const prevBtn = lightbox.querySelector('.prev-button');
-    const nextBtn = lightbox.querySelector('.next-button');
+    // Store project images by project ID
+    const projectImages = {};
     const photoItems = document.querySelectorAll('.photo-item');
     
-    let currentIndex = 0;
-    let currentProject = '';
-    let allPhotos = [];
-    
-    // Collect all photos into a flat array for navigation
+    // Collect all photos by project
     photoItems.forEach(item => {
-      allPhotos.push({
-        project: item.dataset.project,
-        src: item.dataset.image
-      });
-    });
-    
-    console.log("Collected photos for lightbox:", allPhotos.length);
-    
-    // Open lightbox
-    photoItems.forEach((item, index) => {
-      item.addEventListener('click', function() {
-        currentIndex = index;
-        currentProject = item.dataset.project;
-        const imageSrc = item.dataset.image;
-        
-        lightboxImg.src = imageSrc;
-        lightboxCaption.textContent = currentProject;
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      });
-    });
-    
-    // Close lightbox
-    closeBtn.addEventListener('click', function() {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = '';
-    });
-    
-    // Close on background click
-    lightbox.addEventListener('click', function(e) {
-      if (e.target === lightbox) {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
-    
-    // Navigate to previous image
-    prevBtn.addEventListener('click', function() {
-      currentIndex = (currentIndex - 1 + allPhotos.length) % allPhotos.length;
-      updateLightboxImage();
-    });
-    
-    // Navigate to next image
-    nextBtn.addEventListener('click', function() {
-      currentIndex = (currentIndex + 1) % allPhotos.length;
-      updateLightboxImage();
-    });
-    
-    // Keyboard navigation
-    document.addEventListener('keydown', function(e) {
-      if (!lightbox.classList.contains('active')) return;
+      const project = item.dataset.project;
+      const projectId = item.closest('.project-section').dataset.projectId;
+      const src = item.dataset.image;
+      const index = parseInt(item.dataset.index);
       
-      if (e.key === 'Escape') {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-      } else if (e.key === 'ArrowLeft') {
-        currentIndex = (currentIndex - 1 + allPhotos.length) % allPhotos.length;
-        updateLightboxImage();
-      } else if (e.key === 'ArrowRight') {
-        currentIndex = (currentIndex + 1) % allPhotos.length;
-        updateLightboxImage();
+      if (!projectImages[projectId]) {
+        projectImages[projectId] = {
+          title: project,
+          images: []
+        };
       }
+      
+      projectImages[projectId].images[index] = src;
     });
     
-    function updateLightboxImage() {
-      const photo = allPhotos[currentIndex];
-      lightboxImg.src = photo.src;
-      lightboxCaption.textContent = photo.project;
-      currentProject = photo.project;
-    }
+    // Clean up any empty image slots (if indices are missing)
+    Object.keys(projectImages).forEach(projectId => {
+      projectImages[projectId].images = projectImages[projectId].images.filter(img => img);
+    });
+    
+    // Open lightbox when clicking on a photo
+    photoItems.forEach(item => {
+      item.addEventListener('click', function() {
+        const projectId = this.closest('.project-section').dataset.projectId;
+        const index = parseInt(this.dataset.index);
+        
+        if (window.galleryLightbox && projectImages[projectId]) {
+          window.galleryLightbox.open(
+            projectImages[projectId].images, 
+            index, 
+            projectImages[projectId].title
+          );
+        }
+      });
+    });
+    
+    // Preload images for better performance
+    setTimeout(() => {
+      Object.keys(projectImages).forEach(projectId => {
+        const images = projectImages[projectId].images;
+        // Preload first image of each project
+        if (images.length > 0) {
+          const img = new Image();
+          img.src = images[0];
+        }
+      });
+    }, 1000);
   });
 </script>

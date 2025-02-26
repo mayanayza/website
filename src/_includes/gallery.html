@@ -1,4 +1,4 @@
-<!-- _includes/image-gallery.html -->
+<!-- _includes/gallery.html -->
 {% assign images = include.images %}
 
 {% if images.size > 0 %}
@@ -6,11 +6,19 @@
     <div class="main-image-container">
         <div class="image-wrapper">
             <img class="main-image" src="{{ images[0] | relative_url }}" alt="" data-lightense="false">
-            <button class="nav-button prev">←</button>
-            <button class="nav-button next">→</button>
+            <button class="nav-button prev" aria-label="Previous image">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="nav-button next" aria-label="Next image">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <div class="image-counter">1 / {{ images.size }}</div>
         </div>
     </div>
     <div class="thumbnails-container">
+        <button class="thumbnail-nav prev" aria-label="Scroll thumbnails left">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
         <div class="thumbnails-scroll">
             {% for image in images %}
             <div class="thumbnail-wrapper">
@@ -20,9 +28,16 @@
             </div>
             {% endfor %}
         </div>
+        <button class="thumbnail-nav next" aria-label="Scroll thumbnails right">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
     </div>
+    <button class="gallery-fullscreen-toggle" aria-label="Toggle fullscreen view">
+        <i class="fa-solid fa-expand"></i>
+    </button>
 </div>
-{% endif %}
+
+{% include lightbox.html %}
 
 <script>
     (function() {
@@ -36,68 +51,220 @@
             document.documentElement.style.setProperty('--bg-color', rgb.join(', '));
         }
 
+        const galleryContainer = document.querySelector('.gallery-container');
         const mainImage = document.querySelector('.main-image');
+        const mainImageWrapper = document.querySelector('.image-wrapper');
         const thumbnailWrappers = document.querySelectorAll('.thumbnail-wrapper');
         const thumbnailsScroll = document.querySelector('.thumbnails-scroll');
-        const prevButton = document.querySelector('.prev');
-        const nextButton = document.querySelector('.next');
+        const thumbnailsContainer = document.querySelector('.thumbnails-container');
+        const prevButton = document.querySelector('.main-image-container .nav-button.prev');
+        const nextButton = document.querySelector('.main-image-container .nav-button.next');
+        const prevThumbButton = document.querySelector('.thumbnail-nav.prev');
+        const nextThumbButton = document.querySelector('.thumbnail-nav.next');
+        const fullscreenToggle = document.querySelector('.gallery-fullscreen-toggle');
+        const imageCounter = document.querySelector('.image-counter');
         let currentIndex = 0;
-
+        const totalImages = thumbnailWrappers.length;
+        
+        // Get all image URLs
+        const imageUrls = Array.from(thumbnailWrappers).map(wrapper => 
+            wrapper.querySelector('img').src
+        );
+        
+        // Get gallery title (use page title or default)
+        const galleryTitle = document.querySelector('.post__title')?.textContent || 'Gallery';
+        
+        // Preload images for smoother transitions
+        function preloadImages() {
+            imageUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
+            });
+        }
+        
+        // Check if thumbnail scroll needs overflow indicators
+        function checkScrollOverflow() {
+            const scrollWidth = thumbnailsScroll.scrollWidth;
+            const containerWidth = thumbnailsContainer.clientWidth;
+            
+            // Show left fade if scrolled
+            thumbnailsContainer.classList.toggle('show-left-fade', 
+                thumbnailsScroll.scrollLeft > 10);
+            
+            // Show right fade if there's more content to scroll
+            thumbnailsContainer.classList.toggle('show-right-fade', 
+                thumbnailsScroll.scrollLeft + containerWidth < scrollWidth - 10);
+        }
+        
+        // Update the active image
         function updateImage(index) {
+            if (index < 0) {
+                index = thumbnailWrappers.length - 1;
+            } else if (index >= thumbnailWrappers.length) {
+                index = 0;
+            }
+            
             currentIndex = index;
             
+            // Update main image
             const newImg = thumbnailWrappers[index].querySelector('img');
-            mainImage.src = newImg.src;
             
+            // Use a crossfade effect
+            mainImage.style.opacity = 0;
+            
+            setTimeout(() => {
+                mainImage.src = newImg.src;
+                mainImage.style.opacity = 1;
+                
+                // Update counter
+                imageCounter.textContent = `${index + 1} / ${totalImages}`;
+            }, 150);
+            
+            // Update active thumbnail
             document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
             thumbnailWrappers[index].querySelector('.thumbnail').classList.add('active');
             
-            const thumbnailWidth = thumbnailWrappers[0].offsetWidth + 10;
-            const containerWidth = thumbnailsScroll.parentElement.offsetWidth;
-            const maxScroll = thumbnailsScroll.scrollWidth - containerWidth;
+            // Scroll thumbnail into view
+            const thumbnailWidth = thumbnailWrappers[0].offsetWidth + 10; // Width + gap
+            const scrollPosition = index * thumbnailWidth;
             
-            let scrollPosition = index * thumbnailWidth;
-            scrollPosition = Math.max(0, Math.min(scrollPosition, maxScroll));
-            thumbnailsScroll.style.transform = `translateX(-${scrollPosition}px)`;
+            thumbnailsScroll.scrollTo({
+                left: scrollPosition - thumbnailsScroll.clientWidth / 2 + thumbnailWidth / 2,
+                behavior: 'smooth'
+            });
             
-            // Update fade visibility based on scroll position
-            const container = thumbnailsScroll.parentElement;
-            container.classList.toggle('show-left-fade', scrollPosition > 0);
-            container.classList.toggle('show-right-fade', scrollPosition < maxScroll);
+            checkScrollOverflow();
         }
-
+        
+        // Open lightbox functionality
+        function openLightbox() {
+            if (window.galleryLightbox) {
+                window.galleryLightbox.open(imageUrls, currentIndex, galleryTitle);
+            }
+        }
+        
+        // Toggle fullscreen view
+        function toggleFullscreen() {
+            galleryContainer.classList.toggle('fullscreen');
+            
+            // Update icon based on fullscreen state
+            const icon = fullscreenToggle.querySelector('i');
+            if (galleryContainer.classList.contains('fullscreen')) {
+                icon.classList.remove('fa-expand');
+                icon.classList.add('fa-compress');
+                document.body.style.overflow = 'hidden';
+            } else {
+                icon.classList.remove('fa-compress');
+                icon.classList.add('fa-expand');
+                document.body.style.overflow = '';
+            }
+            
+            // Refresh the image view
+            updateImage(currentIndex);
+        }
+        
+        // Setup click events for thumbnails
         thumbnailWrappers.forEach((wrapper, index) => {
             wrapper.addEventListener('click', () => {
                 updateImage(index);
             });
         });
-
-        prevButton.addEventListener('click', () => {
-            const newIndex = (currentIndex - 1 + thumbnailWrappers.length) % thumbnailWrappers.length;
-            updateImage(newIndex);
+        
+        // Enable clicking on main image to open lightbox
+        mainImageWrapper.addEventListener('click', openLightbox);
+        
+        // Double-click to toggle fullscreen
+        mainImageWrapper.addEventListener('dblclick', (e) => {
+            e.preventDefault(); // Prevent opening lightbox
+            toggleFullscreen();
         });
-
-        nextButton.addEventListener('click', () => {
-            const newIndex = (currentIndex + 1) % thumbnailWrappers.length;
-            updateImage(newIndex);
+        
+        // Fullscreen toggle button
+        fullscreenToggle.addEventListener('click', toggleFullscreen);
+        
+        // Main navigation buttons
+        prevButton.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent opening lightbox
+            updateImage(currentIndex - 1);
         });
-
+        
+        nextButton.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent opening lightbox
+            updateImage(currentIndex + 1);
+        });
+        
+        // Thumbnail navigation buttons
+        prevThumbButton.addEventListener('click', () => {
+            thumbnailsScroll.scrollBy({
+                left: -thumbnailsScroll.clientWidth / 2,
+                behavior: 'smooth'
+            });
+            setTimeout(checkScrollOverflow, 500);
+        });
+        
+        nextThumbButton.addEventListener('click', () => {
+            thumbnailsScroll.scrollBy({
+                left: thumbnailsScroll.clientWidth / 2,
+                behavior: 'smooth'
+            });
+            setTimeout(checkScrollOverflow, 500);
+        });
+        
+        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                return; // Ignore keyboard shortcuts if user is typing
+            }
+            
+            // Only handle keyboard events if this gallery is in viewport
+            const rect = galleryContainer.getBoundingClientRect();
+            const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+            
+            if (!isInViewport && !galleryContainer.classList.contains('fullscreen')) {
+                return;
+            }
+            
             if (e.key === 'ArrowLeft') {
-                const newIndex = (currentIndex - 1 + thumbnailWrappers.length) % thumbnailWrappers.length;
-                updateImage(newIndex);
+                e.preventDefault();
+                updateImage(currentIndex - 1);
             } else if (e.key === 'ArrowRight') {
-                const newIndex = (currentIndex + 1) % thumbnailWrappers.length;
-                updateImage(newIndex);
+                e.preventDefault();
+                updateImage(currentIndex + 1);
+            } else if (e.key === 'f' || e.key === 'F') {
+                e.preventDefault();
+                toggleFullscreen();
+            } else if (e.key === 'Escape' && galleryContainer.classList.contains('fullscreen')) {
+                e.preventDefault();
+                toggleFullscreen();
+            } else if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openLightbox();
             }
         });
-
+        
+        // Handle thumbnails scroll events
+        thumbnailsScroll.addEventListener('scroll', () => {
+            checkScrollOverflow();
+        });
+        
         // Handle nav button fade
         const navButtons = document.querySelectorAll('.nav-button');
         setTimeout(() => {
             navButtons.forEach(button => button.classList.add('fade-out'));
         }, 2000);
-
+        
+        // Update on window resize
+        window.addEventListener('resize', () => {
+            checkScrollOverflow();
+        });
+        
+        // Add fade transition to main image
+        mainImage.style.transition = 'opacity 0.15s ease';
+        
+        // Initialize
+        preloadImages();
         updateImage(0);
+        checkScrollOverflow();
     })();
 </script>
+{% endif %}
