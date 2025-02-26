@@ -13,5 +13,5 @@ layout: links
 
 ## In the Works
 
-{% include roadmap-entries.html status="in_progress" empty_message="Nothing currently in the works" %}
+{% include post-grid.html status="in_progress" empty_message="Nothing currently in the works" %}
 {% include button.html link=roadmap_url title="View Roadmap" %}

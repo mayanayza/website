@@ -50,6 +50,7 @@ date_created: '2010-01-01'
 status: complete
 priority: 0
 tagline: Photos 2010-2020
+notes: ''
 feature_post: false
 featured_content:
   type: image

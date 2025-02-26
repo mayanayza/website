@@ -6,18 +6,18 @@ layout: page
 ---
 ## In the Works
 
-{% include roadmap-entries.html status="in_progress" empty_message="Nothing currently in the works" %}
+{% include post-grid.html grid_type="roadmap" status="in_progress" empty_message="Nothing currently in the works" %}
 
 ## Concepts
 
-{% include roadmap-entries.html status="backlog" empty_message="No concepts planned" %}
+{% include post-grid.html grid_type="roadmap" status="backlog" empty_message="No concepts planned" %}
 
 ## Done
 
 ### Art
 
-{% include roadmap-entries.html status="complete" empty_message="Nothing completed" filter_tags="Art" %}
+{% include post-grid.html grid_type="roadmap" status="complete" empty_message="Nothing completed" filter_tags="Art" %}
 
 ### Other Work
 
-{% include roadmap-entries.html status="complete" empty_message="Nothing completed" exclude_tags="Art" %}
+{% include post-grid.html grid_type="roadmap" status="complete" empty_message="Nothing completed" exclude_tags="Art" %}

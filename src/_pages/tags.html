@@ -22,20 +22,8 @@ permalink: /tags/
     </div>
   </div>
 
-  <div class="container animate">
-    <div class="row">
-      {% for post in site.tags[this_word] %}
-        {% if post.title != null and post.featured == true%}
-         {% include article-content.html %}
-        {% endif %}
-      {% endfor %}
-      {% for post in site.tags[this_word] %}
-        {% if post.title != null and post.featured != true%}
-         {% include article-content.html %}
-        {% endif %}
-      {% endfor %}
-    </div>
-  </div>
+  {% include post-grid.html featured="true" filter_tags=this_word %}
+  {% include post-grid.html filter_tags=this_word %}
 
 </div>
 

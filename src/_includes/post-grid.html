@@ -1,0 +1,145 @@
+{% assign posts = include.posts | default: site.posts %}
+{% assign grid_type = include.grid_type | default: "standard" %}
+{% assign status_filter = include.status | default: "complete" %}
+{% assign filter_tags = include.filter_tags | split: "," %}
+{% assign exclude_tags = include.exclude_tags | split: "," %}
+
+<!-- Post Status Logic -->
+{% assign filtered_posts = posts | where: "status", status_filter %}
+
+<!-- Featured Posts Logic -->
+{% if include.featured != nil %}
+  {% assign filtered_posts = filtered_posts | where: "featured", true %}
+{% else %}
+	{% assign filtered_posts = filtered_posts | where: "featured", false %}
+{% endif %}
+
+<!-- Related Posts Logic -->
+{% if include.related_to != nil %}
+  {% assign related_tags = page.tags %}
+  {% assign tag_filtered_posts = '' | split: '' %}
+  
+  {% for post in filtered_posts %}
+    {% assign sameTagCount = 0 %}
+    {% for tag in post.tags %}
+      {% if related_tags contains tag %}
+        {% assign sameTagCount = sameTagCount | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+    {% if sameTagCount >= 1 && post.url != page.url %}
+      {% assign tag_filtered_posts = tag_filtered_posts | push: post %}
+    {% endif %}
+  {% endfor %}
+  
+  {% assign filtered_posts = tag_filtered_posts %}
+{% endif %}
+
+<!-- Tag Match Logic -->
+{% if filter_tags.size > 0 %}
+  {% assign tag_filtered_posts = '' | split: '' %}
+  {% for post in filtered_posts %}
+    {% assign has_tag = false %}
+    {% for tag in filter_tags %}
+      {% if post.tags contains tag %}
+        {% assign has_tag = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    {% if has_tag %}
+      {% assign tag_filtered_posts = tag_filtered_posts | push: post %}
+    {% endif %}
+  {% endfor %}
+  {% assign filtered_posts = tag_filtered_posts %}
+{% endif %}
+
+<!-- Tag Exclusion Logic -->
+{% if exclude_tags.size > 0 %}
+  {% assign tag_filtered_posts = '' | split: '' %}
+  {% for post in filtered_posts %}
+    {% assign exclude_post = false %}
+    {% for tag in exclude_tags %}
+      {% if post.tags contains tag %}
+        {% assign exclude_post = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    {% unless exclude_post %}
+      {% assign tag_filtered_posts = tag_filtered_posts | push: post %}
+    {% endunless %}
+  {% endfor %}
+  {% assign filtered_posts = tag_filtered_posts %}
+{% endif %}
+
+<!-- Max Posts Logic -->
+{% if include.max_posts %}
+  {% assign filtered_posts = filtered_posts | slice: 0, include.max_posts %}
+{% endif %}
+
+
+{% if filtered_posts.size > 0 %}
+{% if grid_type == "roadmap" %}
+<table>
+  <tbody>
+    {% for post in filtered_posts %}
+      <tr>
+      <td>
+        {% if post.status == "complete" %}
+        <a href='{{ post.website }}' target='_blank'>{{ post.display_name }}</a>
+        {% else %}
+        {{ post.display_name }}
+        {% endif %}
+      </td>
+      <td>{{ post.tagline | default('') }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% if grid_type == "standard" %}
+{% if include.featured != nil %}
+<section class="featured-post">
+  <div class="container">
+    <div class="row">
+      <div class="col col-12">
+        <div class="container__inner">
+          <div class="row">
+          {% for post in filtered_posts %}
+            {% include article-content.html %}
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% elsif include.related_to != nil %}
+<div class="container">
+  <div class="related-posts is-related">
+    <div class="row">
+      <div class="col col-12">
+        <div class="container__inner">
+          <h3 class="related-title">You may also like</h3>
+          <div class="row grid">
+          {% for post in filtered_posts %}
+            {% include article-content.html %}
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="container animate">
+  <div class="row grid">
+    {% for post in filtered_posts %}
+      {% include article-content.html %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+{% endif %}
+
+{% elsif include.empty_message != nil %}
+  <p class="empty-message">{{ include.empty_message }}</p>
+{% endif %}
