@@ -24,7 +24,7 @@ tagline: Photography circa 2010-2020
 feature_post: false
 featured_content:
   type: image
-  source: 71891567.jpg
+  source: images/71891567.jpg
   language: ''
   start_line: 0
   end_line: 0
@@ -37,7 +37,7 @@ embeds:
 website: https://maya.cloud/people-animals-misc-old
 written_content: ''
 readme: ''
-featured_image: /media/people-animals-misc-old/71891567.jpg
+featured_image: /media/people-animals-misc-old/images/71891567.jpg
 ---
 {% if page.github %}
   [View on GitHub]({{ page.github }}){:target="_blank"}

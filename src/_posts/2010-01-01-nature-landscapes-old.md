@@ -30,7 +30,7 @@ tagline: Photography circa 2010-2020
 feature_post: false
 featured_content:
   type: image
-  source: 000028290010.jpg
+  source: images/000028290010.jpg
   language: ''
   start_line: 0
   end_line: 0
@@ -43,7 +43,7 @@ embeds:
 website: https://maya.cloud/nature-landscapes-old
 written_content: ''
 readme: ''
-featured_image: /media/nature-landscapes-old/000028290010.jpg
+featured_image: /media/nature-landscapes-old/images/000028290010.jpg
 ---
 {% if page.github %}
   [View on GitHub]({{ page.github }}){:target="_blank"}
