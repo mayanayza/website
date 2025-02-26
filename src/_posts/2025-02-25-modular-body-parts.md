@@ -9,7 +9,7 @@ name: modular-body-parts
 display_name: 🎛️ Modular Body Parts
 title: Modular Body Parts
 date_created: '2025-02-25'
-status: archive
+status: backlog
 priority: 1
 tagline: ''
 feature_post: false

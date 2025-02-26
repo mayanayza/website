@@ -1,3 +1,5 @@
+{% assign status_filter = include.filter_tag | default: '' | split: "," %}
+
 {% for post in site.posts %}
   {% if post.featured == true and post.status == 'complete' %}
     {% assign is-featured = true %}

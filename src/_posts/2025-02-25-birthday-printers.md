@@ -9,10 +9,9 @@ name: birthday-printers
 display_name: 🎂 Birthday Printers
 title: Birthday Printers
 date_created: '2025-02-25'
-status: archive
-priority: 0
+status: backlog
+priority: 2
 tagline: ''
-notes: ''
 feature_post: false
 featured_content:
   type: image
