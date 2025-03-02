@@ -4,7 +4,7 @@
   Website : metricswave.com
   ==================================================== */
 
-!function() {
+!function(src) {
   const script = document.createElement('script');
   script['event-uuid'] = "a8ea4286-9652-4fc3-a6e2-940f47d24bfa"
   script.defer = true
