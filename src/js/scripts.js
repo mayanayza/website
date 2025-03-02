@@ -8,6 +8,7 @@
   const script = document.createElement('script');
   script['event-uuid'] = "a8ea4286-9652-4fc3-a6e2-940f47d24bfa"
   script.defer = true
+  document.head.appendChild(script);
 }("https://tracker.metricswave.com/js/visits.js")
 
 /*  Model Viewer
