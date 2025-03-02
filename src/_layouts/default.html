@@ -4,19 +4,13 @@
 {% include head.html %}
 
 <body>
-  {% if site.data.settings.google-analytics %}
-    {% include google-analytics.html %}
-  {% endif %}
-
   {% unless page.hide_header %}
     {% include header.html %}
   {% endunless %}
 
-  <!-- begin content -->
   <main class="content" aria-label="Content">
     {{ content }}
   </main>
-  <!-- end content -->
 
   <div class="top" title="Top"><i class="fa-solid fa-chevron-up"></i></div>
   {% unless page.hide_footer %}
