@@ -89,7 +89,7 @@
     {% for post in filtered_posts %}
       <tr>
       <td>
-        {% if post.status == "complete" %}
+        {% if post.status == "complete" or post.status == "archive" %}
         <a href='{{ post.website }}' target='_blank'>{{ post.display_name }}</a>
         {% else %}
         {{ post.display_name }}
