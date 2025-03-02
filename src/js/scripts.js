@@ -1,18 +1,14 @@
-window.addEventListener('message', function(event) {
-  if (event.data.type === 'resizeIframe') {
-    const iframe = document.getElementById(event.data.iframeId);
-    if (iframe) {
-      iframe.style.width = `${event.data.width}px`;
-      iframe.style.height = `${event.data.height}px`;
-      // If dimensions are 0, hide the iframe completely
-      if (event.data.width === 0 && event.data.height === 0) {
-        iframe.style.display = 'none';
-      } else {
-        iframe.style.display = 'block';
-      }
-    }
-  }
-});
+/*  Website metrics
+  ====================================================
+  Version : 4.0.0
+  Website : metricswave.com
+  ==================================================== */
+
+!function() {
+  const script = document.createElement('script');
+  script['event-uuid'] = "a8ea4286-9652-4fc3-a6e2-940f47d24bfa"
+  script.defer = true
+}("https://tracker.metricswave.com/js/visits.js")
 
 /*  Model Viewer
   ====================================================

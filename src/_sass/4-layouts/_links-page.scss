@@ -1,8 +1,51 @@
 .links-container {
   display: flex; 
   flex-direction: column; 
-  align-items: center; 
-  gap: 1rem; 
+  align-items: center;
   width: 100%; 
-  margin-top: 5rem;
+  margin-top: 20px;
+
+  @media only screen and (max-width: $mobile) {
+    margin-top: 0px
+  }
+
+  h2 {
+    margin: 30px 0 30px;
+  }
+}
+
+.button--links__page {
+    margin: 1rem 0 1rem; 
+    width: 100%; 
+    display: flex; 
+    align-items: center;
+    text-align: center;
+    padding: 0; 
+    height: 4.5rem; 
+    position: relative;
+    justify-content: center;
+
+    span {
+      flex: 1; 
+      text-align: center; 
+      padding: 0.5rem;
+    }
+}
+
+.hero__links-page {
+  margin: 100px 0 50px;
+  .hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-content {
+    width: 100%;
+    max-width: 650px;
+    padding: 0 20px;
+    text-align: center;
+  }
+  @media only screen and (max-width: $mobile) {
+    margin: 90px 0 30px;
+  }
 }
