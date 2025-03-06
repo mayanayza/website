@@ -2,9 +2,6 @@
 # Site Settings
 name: Maya
 title: Maya
-# logo: '/images/logo.png'
-# description: Maya Ferrandiz
-
 
 #-------------------------------
 # Navigation Settings
@@ -22,20 +19,8 @@ menu-settings:
       url: '/about/'
     - title: 'Contact'
       url: '/contact/'
-
-
-#-------------------------------
-# Author Settings
-author:
-  name: Maya
-
-
-#-------------------------------
-# Hero Settings
-hero:
-  title: 
-  # description: I'm an artist, creative technologist, and product manager based in NYC.
-  # image: '/media/01-1.jpg'
+    - title: 'CV'
+      url: '/cv/'
 
 #-------------------------------
 # Footer section
@@ -53,10 +38,3 @@ social:
 
 # Example of adding a new link to the footer - {icon: "fa-brands fa-mastodon", name: "Mastodon", link: "https://mastodon.social/"}
 # Other icons can be found at https://fontawesome.com/icons
-
-
-#-------------------------------
-# Newsletter
-mailchimp: # To enable the mailchimp form, use the value 'enable'. To disable the form, leave the field blank.
-mailchimp-identifier: # Add your MailChimp form identifier. For example - gmail.us21.list-manage.com/subscribe/post?u=8aeb9c31a5c97a3a5f9ff2740&amp;id=0e31fd7793&amp
-mailchimp-button-text: Join

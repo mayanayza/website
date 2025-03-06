@@ -1,0 +1,44 @@
+first_name: Maya
+bio_first_person: I'm a queer and trans Catalan-American self-taught artist and creative
+  technologist based in NYC. My artistic practice spans the physical, digital, and
+  spiritual realms as I explore how technology can extend and transform both creative
+  expression and human connection.
+bio_third_person: 'Maya Ferrandiz (b. 1992, Bristol UK) is a queer and trans Catalan-American
+  self-taught artist and creative technologist based in NYC. Her artistic practice
+  spans the physical, digital, and spiritual realms as she explores how technology
+  can extend and transform both creative expression and human connection.
+
+  '
+artist_statement: 'My work explores how technology mediates our relationship with
+  ourselves and our community, and how it interacts with spirituality, spanning media
+  such as sculpture, digital presence, photography, and systems design. I create viscerally
+  engaging sculptures that evoke two essential qualities of life: flesh and motion,
+  working with synthetic flesh analogues such as leather, silicone, and latex, and
+  using robotics to bring these materials to life. Beyond sculpture, I develop tools
+  and systems that examine and reshape our relationship with technology. Whether working
+  with physical materials or digital systems, I seek to create experiences that challenge
+  conventional relationships with technology.
+
+  '
+interests: When I'm not in the studio you can find me spending time with friends and
+  loved ones, working on open-source projects, or channeling my creative energy towards
+  furniture restoration, apartment decor, and home automation projects.
+curriculum_vitae:
+  education:
+  - name: The Alternative Art School
+    date:
+    - month: May
+      year: 2024
+  exhibitions: []
+  awards_grants: []
+  residencies:
+  - name: Uncool Artist Studio Residency
+    date:
+    - month: March
+      year: 2025
+  publications: []
+  bibliography: []
+  collections: []
+  teaching: []
+  presentations_lectures: []
+  skills: []

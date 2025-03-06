@@ -1,0 +1,19 @@
+<!-- _includes/cv-grid.html -->
+{% assign entries = include.entries %}
+{% assign title = include.title %}
+
+{% if entries.size > 0 %}
+
+<h2>{{title}}</h2>
+<table>
+	<tbody>
+		{% for entry in entries %}
+		<tr>
+		<td>{{entry.name}}</td>
+		<td>{{entry.date}}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+{% endif %}
