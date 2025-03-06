@@ -27,14 +27,14 @@ curriculum_vitae:
   education:
   - name: The Alternative Art School
     date:
-    - month: May
+      month: May
       year: 2024
   exhibitions: []
   awards_grants: []
   residencies:
   - name: Uncool Artist Studio Residency
     date:
-    - month: March
+      month: March
       year: 2025
   publications: []
   bibliography: []
