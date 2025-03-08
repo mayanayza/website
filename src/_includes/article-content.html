@@ -1,4 +1,4 @@
-<div class="article col {% if forloop.index <= 2 and page.url == '/' %}col-6 col-t-12 grid__post animate article--big{% else %}col-4 col-d-6 col-t-12 grid__post animate{% endif %}">
+<div class="article col {% if forloop.index <= 2 or post.featured %}col-6 col-t-12 grid__post animate article--big{% else %}col-4 col-d-6 col-t-12 grid__post animate{% endif %}">
   <div class="article__inner">
 
     {% if post.featured %}
@@ -21,7 +21,7 @@
 
       <h2 class="article__title">{{ post.title }}</h2>
 
-      <p class="article__excerpt">{{ post.tagline }}</p>
+      <!-- <p class="article__excerpt">{{ post.tagline }}</p> -->
 
       <div class="article__bottom">
 

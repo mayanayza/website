@@ -4,17 +4,14 @@
 {% assign filter_tags = include.filter_tags | split: "," %}
 {% assign exclude_tags = include.exclude_tags | split: "," %}
 
-<!-- Post Status Logic -->
 {% assign filtered_posts = posts | where: "status", status_filter %}
 
-<!-- Featured Posts Logic -->
 {% if include.featured == "true" %}
   {% assign filtered_posts = filtered_posts | where: "featured", true %}
 {% elsif include.featured == "false" %}
   {% assign filtered_posts = filtered_posts | where: "featured", false %}
 {% endif %}
 
-<!-- Related Posts Logic -->
 {% if include.related_to != nil %}
   {% assign related_tags = page.tags %}
   {% assign tag_filtered_posts = '' | split: '' %}
@@ -34,7 +31,6 @@
   {% assign filtered_posts = tag_filtered_posts %}
 {% endif %}
 
-<!-- Tag Match Logic -->
 {% if filter_tags.size > 0 %}
   {% assign tag_filtered_posts = '' | split: '' %}
   {% for post in filtered_posts %}
@@ -52,7 +48,6 @@
   {% assign filtered_posts = tag_filtered_posts %}
 {% endif %}
 
-<!-- Tag Exclusion Logic -->
 {% if exclude_tags.size > 0 %}
   {% assign tag_filtered_posts = '' | split: '' %}
   {% for post in filtered_posts %}
@@ -70,7 +65,6 @@
   {% assign filtered_posts = tag_filtered_posts %}
 {% endif %}
 
-<!-- Max Posts Logic -->
 {% if include.max_posts %}
   {% assign filtered_posts = filtered_posts | slice: 0, include.max_posts %}
 {% endif %}
@@ -102,7 +96,7 @@
 </table>
 {% endif %}
 {% if grid_type == "standard" %}
-{% if include.featured != nil %}
+{% if include.featured == "true" %}
 <section class="featured-post">
   <div class="container">
     {% if include.title != nil %}

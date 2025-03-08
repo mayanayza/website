@@ -19,7 +19,7 @@ layout: default
 
           <div class="post__bottom">
 
-            <span class="post_description"> {{ page.tagline }}</span>
+            <!-- <span class="post_description"> {{ page.tagline }}</span> -->
             <span class="post-tags">
                 {% for tag in page.tags %}
                 <a href="{{ site.baseurl }}/tags/?tag={{ tag | downcase | url_encode }}" class="post__tag">{{ tag }}</a>
