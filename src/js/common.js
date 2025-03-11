@@ -9,8 +9,61 @@ document.addEventListener("DOMContentLoaded", function() {
   searchCloseIcon = document.querySelector(".search__close"),
   searchInput = document.querySelector(".search__text"),
   search = document.querySelector(".search"),
-  btnScrollToTop = document.querySelector(".top");
+  btnScrollToTop = document.querySelector(".top"),
+  lightDarkToggle = document.querySelector("#light-dark-toggle__checkbox");
 
+  // Function to set theme based on preference
+  function setTheme(isDarkMode) {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }
+
+  function setToggle(isDarkMode) {
+    if (lightDarkToggle) {
+      lightDarkToggle.checked = isDarkMode;
+    }
+  }
+
+  // Load theme preference (with fallbacks)
+  function loadThemePreference() {
+    // Check if there's a saved preference in localStorage
+    const savedTheme = localStorage.getItem("darkMode");
+    let isDarkMode;
+    
+    if (savedTheme !== null) isDarkMode = savedTheme === "true"
+    else isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    setTheme(isDarkMode);
+    setToggle(isDarkMode);
+  }
+
+  // Save theme preference
+  function saveThemePreference(isDarkMode) {
+    localStorage.setItem("darkMode", isDarkMode);
+  }
+
+  // Add event listener for the toggle
+  if (lightDarkToggle) {
+    lightDarkToggle.addEventListener("change", () => {
+      const isDarkMode = lightDarkToggle.checked;
+      setTheme(isDarkMode);
+      setToggle(isDarkMode)
+      saveThemePreference(isDarkMode);
+    });
+  }
+
+  // Also listen for system preference changes
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+    // Only update if user hasn't set a preference
+    isDarkMode = e.matches
+    setTheme(isDarkMode);
+    setToggle(isDarkMode)
+  });
+
+  loadThemePreference();
 
   /* =======================
   // Menu and Search
@@ -70,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function() {
   ======================= */
   setTimeout(function(){
     body.classList.add("is-in");
-  },150)
+  },50)
 
 
   /* =======================

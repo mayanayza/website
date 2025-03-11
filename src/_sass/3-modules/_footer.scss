@@ -22,7 +22,7 @@
   margin-bottom: 36px;
   font-size: 24px;
   line-height: 1;
-  color: $white;
+  color: var(--antitone-10);
   &::after {
     content: "";
     position: absolute;
@@ -34,7 +34,7 @@
     width: 106px;
     height: 38px;
     border-radius: 4px 0px 0px 4px;
-    background: linear-gradient(90deg, $brand-color -5.19%, rgba($background-color, 0) 100%);;
+    background: linear-gradient(90deg, var(--brand-color) -5.19%, rgba(var(--background-color), 0) 100%);;
   }
   @media only screen and (max-width: $desktop) {
     font-size: 24px;
@@ -66,7 +66,7 @@
   margin-right: 20px;
   border-radius: 16px;
   overflow: hidden;
-  background: $dark;
+  background: var(--tone-10);
   img {
     position: absolute;
     top: 0;
@@ -96,34 +96,12 @@
   }
 }
 
-// Widget Explore Tags
-.tag__cloud {
-  display: flex;
-  flex-wrap: wrap;
-  a {
-    display: inline-block;
-    padding: 8px 16px;
-    margin: 0 5px 5px 0;
-    font-size: 12px;
-    line-height: 10px;
-    font-weight: 700;
-    border: 3px solid rgba(255,255,255,0.1);
-    border-radius: 24px;
-    color: $gray;
-    &:hover {
-      border-color: $brand-color;
-      color: $white;
-    }
-  }
-}
-
 // Widget Subscribe
 .subscribe-subtitle {
   width: 100%;
   margin-bottom: 24px;
   font-size: 16px;
   line-height: 24px;
-  color: $gray;
 }
 
 .subscribe-group-top {
@@ -140,21 +118,14 @@
     line-height: 20px;
     font-weight: 700;
     border-radius: 8px;
-    color: $white;
-    background-color: $blue-dark;
+    color: var(--antitone-10);
+    background-color: var(--antitone-10);
     border: 2px solid transparent;
     outline: 0;
     -webkit-appearance: none;
     box-sizing: border-box;
     transition: border-color .2s ease-in-out;
     cursor: text;
-    &::placeholder {
-      color: $light-gray;
-    }
-    &:focus {
-      color: $white;
-      border-color: $brand-color;
-    }
   }
 
   .subscribe-button {
@@ -166,7 +137,7 @@
 .footer {
   position: relative;
   padding: 64px 0;
-  border-top: 2px solid $dark;
+  border: none;
 
   .footer__inner {
     display: flex;
@@ -188,25 +159,12 @@
 
 .privacy {
   font-size: 13px;
-  color: $gray;
   a {
     font-weight: 500;
-    color: $white;
-    &:hover {
-      color: $brand-color;
-    }
   } 
 }
 
 /* Copyright */
 .copyright {
   font-size: 13px;
-  color: $gray;
-  a {
-    font-weight: 500;
-    color: $white;
-    &:hover {
-      color: $brand-color;
-    }
-  }
 }

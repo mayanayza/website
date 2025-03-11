@@ -11,7 +11,6 @@
     height: 70vh; /* Fixed height for the container */
     max-height: 70vh;
     min-height: 400px;
-    background-color: $dark;
     border-radius: 8px;
 }
 
@@ -22,7 +21,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $dark;
     border-radius: 8px;
     overflow: hidden;
 }
@@ -33,7 +31,7 @@
     max-height: 100%;
     width: auto;
     height: auto;
-    object-fit: contain; /* This ensures the image maintains its aspect ratio */
+    object-fit: contain;
     pointer-events: none;
 }
 
@@ -44,8 +42,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
+    background: var(--tone-05);
+    color: var(--tone-10);
     border: none;
     cursor: pointer;
     z-index: 2;
@@ -56,7 +54,7 @@
 }
 
 .nav-button:hover {
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--tone-08);
 }
 
 .main-image-container:not(:hover) .nav-button.fade-out {
@@ -86,7 +84,7 @@
     padding-bottom: 10px; /* Space for scrollbar */
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+    scrollbar-color: var(--antitone-02) transparent;
 }
 
 /* Custom scrollbar for webkit browsers */
@@ -99,12 +97,12 @@
 }
 
 .thumbnails-scroll::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: var(--antitone-02);
     border-radius: 4px;
 }
 
 .thumbnails-scroll::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: var(--antitone-02);
 }
 
 .thumbnail-wrapper {
@@ -122,7 +120,7 @@
     border: 2px solid transparent;
     border-radius: 4px;
     overflow: hidden;
-    background-color: $dark;
+    background-color: var(--tone-02);
 }
 
 .thumbnail img {
@@ -134,7 +132,7 @@
 
 .thumbnail.active {
     opacity: 1;
-    border-color: $brand-color;
+    border-color: var(--brand-color);
 }
 
 /* Fade indicators for thumbnails scrolling */
@@ -154,12 +152,12 @@
 
 .thumbnails-container::before {
     left: 0;
-    background: linear-gradient(to right, $background-color, transparent);
+    background: linear-gradient(to right, var(--background-color), transparent);
 }
 
 .thumbnails-container::after {
     right: 0;
-    background: linear-gradient(to left, $background-color, transparent);
+    background: linear-gradient(to left, var(--background-color), transparent);
 }
 
 .thumbnails-container.show-left-fade::before {
@@ -175,8 +173,8 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
+    background: var(--tone-05);
+    color: var(--antitone-10);
     border: none;
     width: 30px;
     height: 30px;
@@ -195,7 +193,7 @@
 }
 
 .thumbnail-nav:hover {
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--tone-0)8
 }
 
 .thumbnail-nav.prev {
@@ -210,13 +208,18 @@
 .image-counter {
     position: absolute;
     bottom: 15px;
-    right: 15px;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
+    right: 60px;
+    opacity: 0;
+    background: var(--tone-07);
+    color: var(--antitone-10);
     font-size: 14px;
     padding: 5px 10px;
     border-radius: 4px;
     z-index: 2;
+}
+
+.gallery-container:hover .image-counter {
+    opacity: 1;
 }
 
 /* Make the gallery fullscreen-friendly */
@@ -228,7 +231,7 @@
         width: 100%;
         height: 100vh;
         z-index: 9999;
-        background-color: rgba(0, 0, 0, 0.95);
+        background-color: var(--tone-09);
         margin: 0;
         padding: 20px;
         display: flex;
@@ -257,8 +260,8 @@
         position: absolute;
         top: 20px;
         right: 20px;
-        background: rgba(0, 0, 0, 0.5);
-        color: white;
+        background: var(--tone-05);
+        color: var(--tone-10);
         border: none;
         width: 40px;
         height: 40px;
@@ -294,7 +297,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba($dark, 0.95);
+  background-color: var(--antitone-09);
   z-index: 9999;
   display: none;
   flex-direction: column;
@@ -336,7 +339,7 @@
       left: 0;
       width: 100%;
       text-align: center;
-      color: $text-color;
+      color: var(--text-color);
       font-size: 16px;
       font-weight: 600;
     }
@@ -350,7 +353,7 @@
       position: absolute;
       bottom: 15px;
       right: 15px;
-      background: rgba(0, 0, 0, 0.7);
+      background: var(--tone-07);
       color: white;
       font-size: 14px;
       padding: 5px 10px;
@@ -369,16 +372,16 @@
     align-items: center;
     justify-content: center;
     font-size: 24px;
-    color: $text-color;
-    background: rgba($dark, 0.5);
+    color: var(--text-color);
+    background: var(--antitone-05);
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.2s ease;
     z-index: 10;
     
     &:hover {
-      color: $brand-color;
-      background: rgba($dark, 0.8);
+      color: var(--brand-color);
+      background: var(--antitone-08);
     }
   }
   
@@ -392,9 +395,9 @@
     justify-content: space-between;
     
     button {
-      background: rgba($dark, 0.5);
+      background: var(--antitone-05);
       border: none;
-      color: $text-color;
+      color: var(--text-color);
       font-size: 20px;
       width: 50px;
       height: 50px;
@@ -406,8 +409,8 @@
       transition: all 0.2s ease;
       
       &:hover {
-        background: rgba($dark, 0.8);
-        color: $brand-color;
+        background: var(--antitone-08);
+        color: var(--brand-color);
       }
     }
   }
@@ -428,8 +431,8 @@
       max-width: 80%;
       padding-bottom: 10px;
       scrollbar-width: thin;
-      scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
-      
+      scrollbar-color: var(--antitone-03) transparent;
+
       &::-webkit-scrollbar {
         height: 8px;
       }
@@ -439,12 +442,12 @@
       }
       
       &::-webkit-scrollbar-thumb {
-        background-color: rgba(255, 255, 255, 0.3);
+        background-color: var(--antitone-03);
         border-radius: 4px;
       }
       
       &::-webkit-scrollbar-thumb:hover {
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: var(--antitone-03);
       }
     }
   }
@@ -459,11 +462,11 @@
     border: 2px solid transparent;
     border-radius: 4px;
     overflow: hidden;
-    background-color: #000;
+    background-color: var(--antitone-10);
     
     &.active {
       opacity: 1;
-      border-color: $brand-color;
+      border-color: var(--brand-color);
     }
     
     &:hover {
@@ -485,15 +488,15 @@
   .gallery-fullscreen-toggle {
     position: absolute;
     top: 20px;
-    right: 20px;
+    right: 60px;
     width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 16px;
-    color: $text-color;
-    background: rgba($dark, 0.5);
+    color: var(--text-color);
+    background: var(--tone-05);
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -502,8 +505,7 @@
     opacity: 0;
     
     &:hover {
-      color: $brand-color;
-      background: rgba($dark, 0.8);
+      background: var(--tone-08);
     }
   }
   
@@ -518,7 +520,7 @@
     width: 100vw;
     height: 100vh;
     z-index: 9000;
-    background-color: rgba($background-color, 0.98);
+    background-color: var(--antitone-09);
     margin: 0;
     padding: 20px;
     display: flex;

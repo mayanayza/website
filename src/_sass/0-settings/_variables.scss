@@ -12,26 +12,135 @@ $global-transition: all .2s;
 // *****************
 // Color Variables
 // *****************
-$brand-color: #FF80AB;
-$dark: #09080f;
-$blue-dark: #17151E;
-$gray: #aaa;
-$light-gray: #eee;
-$white: #fff;
 
-// Body Color
-$text-color: $light-gray;
+:root{
 
-// Background Colors
-$background-color: #0f0e15;
+	--white: #fff;
+	--lightest-gray: #eee;
+	--light-gray: #ddd;
+	--mid-light-gray: #aaa;
+	--mid-gray: #8b8680;
+	--mid-dark-gray: #5e5e5e;
+	--dark-gray: #2E2E2E;
+	--darkest-gray: #222;
+	--black: #000;
 
-// Callouts Colors
-$callout-note: #0a69da;
-$callout-tip: #1a7f38;
-$callout-important: #8251e0;
-$callout-warning: #9b6800;
-$callout-caution: #cf222e;
+	--brand-lightest: #E1DAD2;
+	--brand-light: #BEAE9D;
+	--brand-color: #FF80AB;
+	--brand-dark: #191510;
+	--brand-darkest: #0C0B08;
+}
 
+
+:root {
+	--background-color: var(--lightest-gray);
+	--text-selection: var(--white);
+
+	--text-color: black;
+	--heading-color: black;
+	
+	--button-color: var(--light-gray);
+	--button-active-color: var(--brand-color);
+	
+	--table-shade: var(--lightest-gray);
+	
+	--tag-color: var(--mid-dark-gray);
+	--tag-active-color: var(--brand-color);
+
+	--toggle-background: var(--light-gray);
+	--toggle-accent: var(--dark-gray);
+
+	--gallery-background: var(--light-gray);
+
+	--avatar-border: var(--darkest-gray);
+
+	--form-background: var(--lightest-gray);
+	--form-placeholder: var(--darkest-gray);
+
+	--callout-note: #0a69da;
+	--callout-tip: #1a7f38;
+	--callout-important: #8251e0;
+	--callout-warning: #9b6800;
+	--callout-caution: #cf222e;
+
+	--tone-10: white;
+	--tone-09: rgba(255,255,255, 0.9);
+	--tone-08: rgba(255,255,255, 0.8);
+	--tone-07: rgba(255,255,255, 0.7);
+	--tone-06: rgba(255,255,255, 0.6);
+	--tone-05: rgba(255,255,255, 0.5);
+	--tone-04: rgba(255,255,255, 0.4);
+	--tone-03: rgba(255,255,255, 0.3);
+	--tone-02: rgba(255,255,255, 0.2);
+	--tone-01: rgba(255,255,255, 0.1);
+
+	--antitone-10: rgb(0,0,0);
+	--antitone-09: rgba(0,0,0, 0.9);
+	--antitone-08: rgba(0,0,0, 0.8);
+	--antitone-07: rgba(0,0,0, 0.7);
+	--antitone-06: rgba(0,0,0, 0.6);
+	--antitone-05: rgba(0,0,0, 0.5);
+	--antitone-04: rgba(0,0,0, 0.4);
+	--antitone-03: rgba(0,0,0, 0.3);
+	--antitone-02: rgba(0,0,0, 0.2);
+	--antitone-01: rgba(0,0,0, 0.1);
+}
+
+html.dark  {
+
+	--background-color: var(--darkest-gray);
+	--text-selection: var(--black);
+
+	--text-color: var(--white);
+	--heading-color: var(--white);
+	
+	--button-color: var(--dark-gray);
+	--button-active-color: var(--brand-color);
+	
+	--table-shade: var(--darkest-gray);
+	
+	--tag-color: var(--mid-light-gray);
+	--tag-active-color: var(--brand-color);
+
+	--toggle-background: var(--dark-gray);
+	--toggle-accent: var(--light-gray);
+
+	--gallery-background: var(--dark-gray);
+
+	--avatar-border: var(--lightest-gray);
+
+	--form-background: var(--darkest-gray);
+	--form-placeholder: var(--lightest-gray);
+
+	--callout-note: #0a69da;
+	--callout-tip: #1a7f38;
+	--callout-important: #8251e0;
+	--callout-warning: #9b6800;
+	--callout-caution: #cf222e;
+
+	--tone-10: rgb(0,0,0);
+	--tone-09: rgba(0,0,0, 0.9);
+	--tone-08: rgba(0,0,0, 0.8);
+	--tone-07: rgba(0,0,0, 0.7);
+	--tone-06: rgba(0,0,0, 0.6);
+	--tone-05: rgba(0,0,0, 0.5);
+	--tone-04: rgba(0,0,0, 0.4);
+	--tone-03: rgba(0,0,0, 0.3);
+	--tone-02: rgba(0,0,0, 0.2);
+	--tone-01: rgba(0,0,0, 0.1);
+
+	--antitone-10: white;
+	--antitone-09: rgba(255,255,255, 0.9);
+	--antitone-08: rgba(255,255,255, 0.8);
+	--antitone-07: rgba(255,255,255, 0.7);
+	--antitone-06: rgba(255,255,255, 0.6);
+	--antitone-05: rgba(255,255,255, 0.5);
+	--antitone-04: rgba(255,255,255, 0.4);
+	--antitone-03: rgba(255,255,255, 0.3);
+	--antitone-02: rgba(255,255,255, 0.2);
+	--antitone-01: rgba(255,255,255, 0.1);
+}
 
 // *****************
 // Typography
@@ -46,7 +155,6 @@ $base-line-height: 1.7;
 // Headings
 $heading-font-weight: 900;
 $heading-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
-$heading-color: $text-color;
 
 $font-size-h1:  36px;
 $font-size-h2:  28px;

@@ -19,6 +19,7 @@
 
   .social__link {
     display: flex;
+    text-decoration: none;
     justify-content: center;
     align-items: center;
     width: 40px;
@@ -26,12 +27,6 @@
     font-size: 15px;
     line-height: 40px;
     border-radius: 8px;
-    color: $white;
-    background-color: $blue-dark;
-    &:hover {
-      color: $dark;
-      background-color: $brand-color;
-    }
   }
 
   @media (max-width: $desktop) {

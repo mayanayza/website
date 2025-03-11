@@ -11,14 +11,14 @@
   font-weight: 700;
   border: 2px solid transparent;
   border-radius: 8px;
-  color: $light-gray;
-  background: $blue-dark;
+  color: var(--text-color);
+  background: var(--form-background);
   transition: border-color .2s ease-in-out;
   &::placeholder {
-    color: $white;
+    color: var(--form-placeholder);
   }
   &:focus {
-    border-color: $brand-color;
+    border-color: var(--brand-color);
   }
 }
 

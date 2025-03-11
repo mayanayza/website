@@ -4,11 +4,11 @@
 
 .highlight {
   border-radius: 4px;
-  color: $white;
-  background: $blue-dark;
+  color: var(--tone-10);
+  background: var(--antitone-10);
 
   .highlighter-rouge & {
-    background: $blue-dark;
+    background: var(--antitone-10);
   }
 
   .c     { color: #998; font-style: italic } // Comment

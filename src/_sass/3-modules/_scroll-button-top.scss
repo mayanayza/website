@@ -10,18 +10,11 @@
   line-height: 40px;
   text-align: center;
   border-radius: 8px;
-  background-color: $dark;
-  color: $white;
   cursor: pointer;
   transition: all .25s ease;
 
   i {
     vertical-align: middle;
-  }
-
-  &:hover {
-    color: $dark;
-    background: $brand-color;
   }
 
   &.is-active {

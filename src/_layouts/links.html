@@ -5,12 +5,14 @@ layout: default
 <section class="hero__links-page">
   <div class="hero-inner">
     <div class="hero-content">
-      <h1 class="hero__title">{{ page.title }}</h1>
+      {% include avatar.html %}
+      <div class="hero_subtitle">
+      <p>Oh god you weren't supposed to find this 😩</p>
+      {% include social-links.html %}
+    </div>
     </div>
   </div>
 </section>
-
-{% include social-links.html %}
 
 <div class="container">
   <article class="page animate">
