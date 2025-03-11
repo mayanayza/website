@@ -40,7 +40,7 @@ $global-transition: all .2s;
 	--text-color: black;
 	--heading-color: black;
 	
-	--button-color: var(--light-gray);
+	--button-color: var(--mid-light-gray);
 	--button-active-color: var(--brand-color);
 	
 	--table-shade: var(--lightest-gray);
@@ -55,7 +55,7 @@ $global-transition: all .2s;
 
 	--avatar-border: var(--darkest-gray);
 
-	--form-background: var(--lightest-gray);
+	--form-background: var(--light-gray);
 	--form-placeholder: var(--darkest-gray);
 
 	--callout-note: #0a69da;
@@ -110,7 +110,7 @@ html.dark  {
 
 	--avatar-border: var(--lightest-gray);
 
-	--form-background: var(--darkest-gray);
+	--form-background: var(--mid-dark-gray);
 	--form-placeholder: var(--lightest-gray);
 
 	--callout-note: #0a69da;
