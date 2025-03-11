@@ -1,0 +1,77 @@
+/* Buttons */
+.button {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+  font: inherit;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  -webkit-appearance: none;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &--primary {
+    padding: 20px 40px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &--middle {
+    position: relative;
+    padding: 24px 48px;
+    width: 100%;
+    max-width: 412px;
+    font-family: $heading-font-family;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all .2s ease;
+  }
+
+  &--big {
+    display: block;
+    width: 100%;
+  }
+  &--links__page {
+      margin: 1rem 0 1rem; 
+      width: 100%; 
+      display: flex; 
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1;
+      align-items: center;
+      text-align: center;
+      padding: 0; 
+      height: 4.5rem; 
+      position: relative;
+      justify-content: center;
+
+      span {
+        flex: 1; 
+        text-align: center; 
+        padding: 0.5rem;
+      }
+  }
+}
+
+.button-image {
+  height: 100%; 
+  margin: 0; 
+  padding: 0; 
+  position: absolute; 
+  left: 0;
+
+  img {
+    height: 4.5rem; 
+    width: auto; 
+    margin: 0; 
+    padding: 0; 
+    display: block;
+  }
+
+}

@@ -1,0 +1,7 @@
+.tag {
+	text-decoration: none;
+	color: var(--tag-color);
+	&:hover {
+		color: var(--brand-color);
+	}
+}
