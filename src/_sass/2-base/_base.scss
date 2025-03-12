@@ -146,7 +146,7 @@ a {
   transition: $global-transition;
   color: var(--text-color);
   &:hover {
-    text-decoration-color: var(--brand-color);
+    color: var(--brand-color);
   }
 }
 

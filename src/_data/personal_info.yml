@@ -36,6 +36,11 @@ curriculum_vitae:
     date:
       month: March
       year: 2025
+  work_experience:
+  - name: Product Manager - Cybersecurity, Google Cloud
+    date: Nov 2021 -
+  - name: Product Manager - Privacy and Identity, Wunderkind
+    date: Sept 2014 - April 2020
   publications: []
   bibliography: []
   collections: []

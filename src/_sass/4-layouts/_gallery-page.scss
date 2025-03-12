@@ -40,12 +40,6 @@
       a {
         font-size: 18px;
         font-weight: 700;
-        color: var(--text-color);
-        text-decoration: underline;
-        
-        &:hover {
-          text-decoration-color: var(--brand-color);
-        }
       }
       
       .project-date {

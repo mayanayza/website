@@ -107,14 +107,6 @@
 
 .post__content,
 .page__content {
-  a {
-    border-bottom: 2px solid rgba(var(--text-color), .1);
-    &:hover {
-      border-color: var(--brand-color);
-      color: var(--text-color);
-      text-decoration: none;
-    }
-  }
 
   img[src$='#wide'] {
     display: block;

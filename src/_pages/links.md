@@ -7,7 +7,11 @@ layout: links
 
 ## ~
 
-{% include featured-links.html %}
+{% assign projects = site.posts | where: "feature_post", true %}
+
+{% for project in projects %}
+{% include button.html title=project.title link=project.website image=project.featured_image %}
+{% endfor %}
 
 ## ~
 

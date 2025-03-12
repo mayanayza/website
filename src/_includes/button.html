@@ -1,3 +1,10 @@
 <!-- _includes/button.html -->
 
-<div class="button button_color--primary button--links__page" onclick="window.open('{{ include.link }}', '_blank')">{{include.title}}</div>
+<div class="button button--links__page" onclick="window.open('{{ include.link }}', '_blank')">
+{% if include.image %}
+<div class="button-image">
+	<img src="{{ project.featured_image }}" alt="{{ project.name }}">
+</div>
+{% endif %}
+<span>{{include.title}}</span>
+</div>

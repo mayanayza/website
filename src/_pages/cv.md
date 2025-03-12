@@ -9,6 +9,8 @@ hide_header: false
 
 {% include cv-grid.html entries=site.data.personal_info.curriculum_vitae.education title="Education" %}
 
+{% include cv-grid.html entries=site.data.personal_info.curriculum_vitae.work_experience title="Work Experience" %}
+
 {% include cv-grid.html entries=site.data.personal_info.curriculum_vitae.exhibitions title="Exhibitions" %}
 
 {% include cv-grid.html entries=site.data.personal_info.curriculum_vitae.awards_grants title="Awards & Grants" %}
