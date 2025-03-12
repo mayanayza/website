@@ -1,3 +1,4 @@
+<!-- _includes/post-grid.html -->
 {% assign posts = include.posts | default: site.posts %}
 {% assign grid_type = include.grid_type | default: "standard" %}
 {% assign status_filter = include.status | default: "complete" %}
@@ -78,21 +79,19 @@
     <h2>{{ include.title }}</h2>
   </div>
 {% endif %}
-<table>
-  <tbody>
-    {% for post in filtered_posts %}
-      <tr>
-      <td>
-        {% if post.status == "complete" or post.status == "archive" %}
-        <a href='{{ post.website }}' target='_blank'>{{ post.display_name }}</a>
-        {% else %}
-        {{ post.display_name }}
-        {% endif %}
-      </td>
-      <td>{{ post.tagline | default('') }}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
+<table class="roadmap">
+  {% for post in filtered_posts %}
+    <tr>
+    <td>
+      {% if post.status == "complete" or post.status == "archive" %}
+      <a href='{{ post.website }}' target='_blank'>{{ post.display_name }}</a>
+      {% else %}
+      {{ post.display_name }}
+      {% endif %}
+    </td>
+    <td>{{ post.tagline | default('') }}</td>
+  </tr>
+  {% endfor %}
 </table>
 {% endif %}
 {% if grid_type == "standard" %}

@@ -1,9 +1,9 @@
-.light-dark-toggle__checkbox {
+.toggle__checkbox {
   opacity: 0;
   position: absolute;
 }
 
-.light-dark-toggle__checkbox-label {
+.toggle__checkbox-label {
   background-color: var(--toggle-background);
   width: 55px;
   height: 26px;
@@ -16,21 +16,16 @@
   align-items: center;
 }
 
-.fa-moon {
-  color: var(--toggle-background);
-  html.dark & {
-    color: var(--toggle-accent);
-  }
+.toggle__icon {
+  opacity: 0;
 }
 
-.fa-sun {
+.toggle__icon.on {
+  opacity: 1;
   color: var(--toggle-accent);
-  html.dark & {
-    color: var(--toggle-background);
-  }
 }
 
-.light-dark-toggle__checkbox-label .light-dark-toggle__ball {
+.toggle__checkbox-label .toggle__ball {
   background-color: var(--toggle-accent);
   width: 22px;
   height: 22px;
@@ -41,6 +36,6 @@
   transition: transform 0.15s ease;
 }
 
-.light-dark-toggle__checkbox:checked + .light-dark-toggle__checkbox-label .light-dark-toggle__ball {
+.toggle__checkbox:checked + .toggle__checkbox-label .toggle__ball {
   transform: translateX(27px);
 }

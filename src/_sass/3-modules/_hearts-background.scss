@@ -1,0 +1,80 @@
+// Hearts container
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+// Base heart styles
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 1;
+    transition: font-size 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67), 
+                color 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.heart::after {
+    content: var(--background-effect-icon);
+    display: block;
+}
+
+// Define float animations
+@for $i from 1 through 5 {
+    @keyframes float#{$i} {
+        0% { transform: translate(0, 0) rotate(0deg); }
+        25% { transform: translate(#{$i * 2}px, #{$i * 2}px) rotate(#{$i * 5}deg); }
+        50% { transform: translate(-#{$i * 2}px, #{$i * 3}px) rotate(-#{$i * 3}deg); }
+        75% { transform: translate(#{$i}px, -#{$i * 2}px) rotate(#{$i * 2}deg); }
+        100% { transform: translate(0, 0) rotate(0deg); }
+    }
+}
+
+// Alternative approach: Use :hover on body and position-based targeting
+// This creates a "spotlight" effect that follows the cursor
+body {
+    &:hover .heart {
+        // Default state when body is hovered (cursor is on the page)
+        transition: font-size 4s cubic-bezier(0.17, 0.67, 0.83, 0.67),
+                    color 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    }
+}
+
+// Use direct hover on hearts
+.heart:hover {
+    font-size: 500px !important; // 3x size
+    color: rgba(255, 105, 180, 0.8) !important;
+}
+
+// Colors for hearts
+.heart:nth-of-type(5n+1) { color: rgba(255, 192, 203, 0.3); }
+.heart:nth-of-type(5n+2) { color: rgba(255, 150, 150, 0.3); }
+.heart:nth-of-type(5n+3) { color: rgba(255, 105, 180, 0.3); }
+.heart:nth-of-type(5n+4) { color: rgba(199, 21, 133, 0.3); }
+.heart:nth-of-type(5n+5) { color: rgba(255, 20, 147, 0.3); }
+
+// Sizes for hearts
+.heart:nth-of-type(4n+1) { font-size: 10px; }
+.heart:nth-of-type(4n+2) { font-size: 12px; }
+.heart:nth-of-type(4n+3) { font-size: 14px; }
+.heart:nth-of-type(4n+4) { font-size: 8px; }
+
+// If you know specific elements that might be blocking, target them directly
+.header,
+body{
+    pointer-events: none !important;
+    
+    // But allow clicks on important elements inside these containers
+    a, button, input, select, textarea, .nav-buttons, .top {
+        pointer-events: auto !important;
+    }
+}

@@ -15,6 +15,8 @@ $global-transition: all .2s;
 
 :root{
 
+	--background-effect-icon: '♥';
+
 	--white: #fff;
 	--lightest-gray: #eee;
 	--light-gray: #ddd;
@@ -25,11 +27,8 @@ $global-transition: all .2s;
 	--darkest-gray: #222;
 	--black: #000;
 
-	--brand-lightest: #E1DAD2;
-	--brand-light: #BEAE9D;
 	--brand-color: #FF80AB;
-	--brand-dark: #191510;
-	--brand-darkest: #0C0B08;
+	--brand-color-rgb: 100, 50, 67;
 }
 
 

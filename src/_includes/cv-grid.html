@@ -5,15 +5,19 @@
 {% if entries.size > 0 %}
 
 <h2>{{title}}</h2>
-<table>
-	<tbody>
-		{% for entry in entries %}
-		<tr>
-		<td>{{entry.name}}</td>
-		<td>{{entry.date.month}} {{entry.date.year}}</td>
-		</tr>
-		{% endfor %}
-	</tbody>
+<table class="cv">
+	{% for entry in entries %}
+	<tr>
+	<td>{{entry.name}}</td>
+	{% if entry.start %}
+	<td>{{entry.start.month}} {{entry.start.year}}
+	{% if entry.end %}
+	- {{entry.end.month}} {{entry.end.year}}
+	{% endif %}
+	</td>
+	{% endif %}
+	</tr>
+	{% endfor %}
 </table>
 
 {% endif %}

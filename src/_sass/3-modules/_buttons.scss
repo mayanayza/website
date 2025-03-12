@@ -1,6 +1,7 @@
 /* Buttons */
 .button {
   display: inline-block;
+  pointer-events: auto;
   white-space: nowrap;
   vertical-align: middle;
   font: inherit;
@@ -18,6 +19,7 @@
 
   &:hover {
     background-color: var(--button-active-color);
+    color: var(--text-color);
   }
 
   &--primary {

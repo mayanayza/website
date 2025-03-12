@@ -1,0 +1,30 @@
+<!-- Much simpler hearts structure - no wrappers -->
+<div class="hearts-container">
+    {% for row in (1..15) %}
+        {% for col in (1..15) %}
+            {% assign seed = row | plus: col | times: 31 %}
+            {% assign random_x = seed | times: 1234 | modulo: 20 | minus: 10 %}
+            {% assign random_y = seed | times: 5678 | modulo: 20 | minus: 10 %}
+            
+            {% comment %} More random positioning with better distribution {% endcomment %}
+            {% assign x_pos = col | times: 7 | plus: random_x %}
+            {% assign y_pos = row | times: 7 | plus: random_y %}
+            
+            {% comment %} Skip some hearts for a less uniform distribution {% endcomment %}
+            {% assign should_display = seed | modulo: 7 %}
+            {% if should_display > 1 %}
+                {% assign animation_index = seed | modulo: 5 | plus: 1 %}
+                {% assign animation_duration = seed | modulo: 5 | plus: 6 %}
+                {% assign animation_delay = seed | modulo: 10 | divided_by: 10.0 %}
+                
+                <!-- Simpler structure with direct heart positioning -->
+                <div class="heart"
+                     style="left: calc({{ x_pos }}% - 10px);
+                            top: calc({{ y_pos }}% - 10px);
+                            animation: float{{ animation_index }} {{ animation_duration }}s infinite ease-in-out;
+                            animation-delay: {{ animation_delay }}s;">
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+</div>

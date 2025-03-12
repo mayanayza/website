@@ -3,7 +3,7 @@ bio_first_person: I'm a queer and trans Catalan-American self-taught artist and 
   technologist based in NYC. My artistic practice spans the physical, digital, and
   spiritual realms as I explore how technology can extend and transform both creative
   expression and human connection.
-bio_third_person: 'Maya Ferrandiz (b. 1992, Bristol UK) is a queer and trans Catalan-American
+bio_third_person: 'Maya (b. 1992, Bristol UK) is a queer and trans Catalan-American
   self-taught artist and creative technologist based in NYC. Her artistic practice
   spans the physical, digital, and spiritual realms as she explores how technology
   can extend and transform both creative expression and human connection.
@@ -26,21 +26,29 @@ interests: When I'm not in the studio you can find me spending time with friends
 curriculum_vitae:
   education:
   - name: The Alternative Art School
-    date:
+    start:
       month: May
       year: 2024
   exhibitions: []
   awards_grants: []
   residencies:
   - name: Uncool Artist Studio Residency
-    date:
+    start:
       month: March
       year: 2025
   work_experience:
-  - name: Product Manager - Cybersecurity, Google Cloud
-    date: Nov 2021 -
-  - name: Product Manager - Privacy and Identity, Wunderkind
-    date: Sept 2014 - April 2020
+    - name: Cybersecurity Product Manager, Google
+      start:
+        month: Nov
+        year: 2021
+      end: ''
+    - name: Privacy Product Manager, Wunderkind
+      start: 
+        month: Sept
+        year: 2014
+      end:
+        month: April
+        year: 2020
   publications: []
   bibliography: []
   collections: []

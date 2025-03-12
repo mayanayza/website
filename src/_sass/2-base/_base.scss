@@ -27,14 +27,18 @@ body {
     z-index: 999;
     transition: opacity 1s ease, visibility 1s ease;
   }
-  
-  /* Transition out state */
+
   &.is-in::after {
     visibility: hidden;
     opacity: 0;
   }
+
+  &.is-loading::after {
+    /* Overlay styles */
+    visibility: visible;
+    opacity: 1;
+  }
     
-  /* Mobile responsiveness */
   @media only screen and (max-width: $mobile) {
     font-size: 16px;
     line-height: 29px;
@@ -150,16 +154,19 @@ a {
   }
 }
 
-.table-container {
-  display: block;
-  max-width: 100%;
-  overflow-x: auto;
-}
-
 table {
   font-size: 12px;
   width: 100%;
   border: none;
+  overflow-x: auto;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+@media (max-width: 768px) {
+  table {
+    table-layout: auto; /* Allow tables to be responsive on mobile */
+  }
 }
 
 table th {
@@ -170,6 +177,7 @@ table th {
 
 table tr {
   background-color: var(--tone-01);
+  width:100%;
   transition: all .3s ease;
   &:nth-child(even) {
     background-color: transparent;
@@ -180,6 +188,26 @@ table td {
   padding: 12px;
   font-size: 14px;
   border: none;
+}
+
+.roadmap td {
+  &:first-child {
+    width: 40%;
+  }
+
+  &:last-child {
+    width: 60%;
+  }
+}
+
+.cv td {
+  &:first-child {
+    width: 60%;
+  }
+
+  &:last-child {
+    width: 40%;
+  }
 }
 
 video {
