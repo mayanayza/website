@@ -211,16 +211,19 @@ table td {
 }
 
 video {
-  width:100%
+  width:100%;
+  pointer-events:auto;
 }
 
 iframe[src*="emgithub.com"] {
   height:75vh;
   width:100%;
+  pointer-events:auto;
 }
 
 .monster-food {
   height: 4.5rem;
+  pointer-events:auto;
 }
 
 model-viewer {
@@ -228,6 +231,7 @@ model-viewer {
   height: 75vh;
   --progress-bar-color: none;
   --progress-bar-height: 0px;
+  pointer-events:auto;
 }
 
 img, .lightense-wrap {
