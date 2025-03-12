@@ -76,6 +76,7 @@
         position: relative;
         cursor: pointer;
         border-radius: 4px;
+        pointer-events:auto;
         
         img {
           width: 100%;
