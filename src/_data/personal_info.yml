@@ -37,18 +37,18 @@ curriculum_vitae:
       month: March
       year: 2025
   work_experience:
-    - name: Cybersecurity Product Manager, Google
-      start:
-        month: Nov
-        year: 2021
-      end: ''
-    - name: Privacy Product Manager, Wunderkind
-      start: 
-        month: Sept
-        year: 2014
-      end:
-        month: April
-        year: 2020
+  - name: Cybersecurity Product Manager, Google
+    start:
+      month: Nov
+      year: 2021
+    end: ''
+  - name: Privacy Product Manager, Wunderkind
+    start:
+      month: Sept
+      year: 2014
+    end:
+      month: April
+      year: 2020
   publications: []
   bibliography: []
   collections: []
