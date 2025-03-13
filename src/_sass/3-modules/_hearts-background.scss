@@ -1,36 +1,60 @@
 // Hearts container
 .hearts-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
-    pointer-events: none;
-    perspective: 1000px; // Added for 3D perspective effect
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.hearts-container::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.25) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
 }
 
 // Hearts layer for parallax
 .hearts-layer {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  will-change: transform;
 }
 
 // Far background layer - slowest movement
 .layer-far {
-    animation: parallax-far 30s ease-in-out infinite alternate;
+  transform: translateZ(-20px) scale(1.2);
+  opacity: 0.3;
+  animation: layer-drift-far 50s ease-in-out infinite alternate;
 }
 
-// Middle layer - medium movement
 .layer-mid {
-    animation: parallax-mid 20s ease-in-out infinite alternate;
+  transform: translateZ(-10px) scale(1.1);
+  opacity: 0.5;
+  animation: layer-drift-mid 40s ease-in-out infinite alternate;
 }
 
-// Close layer - fastest movement
 .layer-close {
-    animation: parallax-close 10s ease-in-out infinite alternate;
+  transform: translateZ(0);
+  opacity: 0.7;
+  animation: layer-drift-close 30s ease-in-out infinite alternate;
 }
 
 // Parallax movement animations
@@ -55,6 +79,7 @@
     width: 20px;
     height: 20px;
     text-align: center;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.1));
     line-height: 1;
     transition: font-size 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67), 
                 color 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67);
@@ -78,8 +103,18 @@
     }
 }
 
-.heart.layer-1 {
-    opacity:0.1;
+.layer-1 {
+  filter: blur(1px);
+  opacity: 0.4;
+}
+
+.layer-2 {
+  filter: blur(0.5px);
+  opacity: 0.6;
+}
+
+.layer-3 {
+  opacity: 0.8;
 }
 
 .heart.layer-1:nth-of-type(4n+1) { font-size: 6px; }
@@ -89,20 +124,12 @@
 
 // Layer 2 - Middle
 
-.heart.layer-2 {
-    opacity:0.4;
-}
-
 .heart.layer-2:nth-of-type(4n+1) { font-size: 10px; }
 .heart.layer-2:nth-of-type(4n+2) { font-size: 12px; }
 .heart.layer-2:nth-of-type(4n+3) { font-size: 11px; }
 .heart.layer-2:nth-of-type(4n+4) { font-size: 9px; }
 
 // Layer 3 - Foreground (largest)
-
-.heart.layer-3 {
-    opacity:0.9;
-}
 
 .heart.layer-3:nth-of-type(4n+1) { font-size: 14px; }
 .heart.layer-3:nth-of-type(4n+2) { font-size: 16px; }

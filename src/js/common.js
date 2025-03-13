@@ -1,3 +1,21 @@
+(function() {
+  // Get theme preference with fallback to system preference
+  const savedTheme = localStorage.getItem("darkMode");
+  let isDarkMode;
+  
+  if (savedTheme !== null) {
+    isDarkMode = savedTheme === "true";
+  } else {
+    // Check system preference
+    isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+  
+  // Immediately apply theme class to prevent flash
+  if (isDarkMode) {
+    document.documentElement.classList.add("dark");
+  }
+})();
+
 document.addEventListener("DOMContentLoaded", function() {
   'use strict';
 
