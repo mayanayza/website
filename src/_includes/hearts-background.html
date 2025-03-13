@@ -1,30 +1,59 @@
-<!-- Much simpler hearts structure - no wrappers -->
+<!-- Hearts container with layered structure for parallax -->
 <div class="hearts-container">
-    {% for row in (1..15) %}
-        {% for col in (1..15) %}
-            {% assign seed = row | plus: col | times: 31 %}
-            {% assign random_x = seed | times: 1234 | modulo: 20 | minus: 10 %}
-            {% assign random_y = seed | times: 5678 | modulo: 20 | minus: 10 %}
+    <!-- Layer 1 (Far background) -->
+    <div class="hearts-layer layer-far">
+        {% for i in (1..25) %}
+            {% assign seed = i | times: 31 | plus: 17 %}
+            {% assign random_x = seed | times: 1234 | modulo: 100 %}
+            {% assign random_y = seed | times: 5678 | modulo: 100 %}
+            {% assign animation_index = seed | modulo: 5 | plus: 1 %}
+            {% assign animation_duration = seed | modulo: 5 | plus: 8 %}
+            {% assign animation_delay = seed | modulo: 10 | divided_by: 10.0 %}
             
-            {% comment %} More random positioning with better distribution {% endcomment %}
-            {% assign x_pos = col | times: 7 | plus: random_x %}
-            {% assign y_pos = row | times: 7 | plus: random_y %}
-            
-            {% comment %} Skip some hearts for a less uniform distribution {% endcomment %}
-            {% assign should_display = seed | modulo: 7 %}
-            {% if should_display > 1 %}
-                {% assign animation_index = seed | modulo: 5 | plus: 1 %}
-                {% assign animation_duration = seed | modulo: 5 | plus: 6 %}
-                {% assign animation_delay = seed | modulo: 10 | divided_by: 10.0 %}
-                
-                <!-- Simpler structure with direct heart positioning -->
-                <div class="heart"
-                     style="left: calc({{ x_pos }}% - 10px);
-                            top: calc({{ y_pos }}% - 10px);
-                            animation: float{{ animation_index }} {{ animation_duration }}s infinite ease-in-out;
-                            animation-delay: {{ animation_delay }}s;">
-                </div>
-            {% endif %}
+            <div class="heart layer-1"
+                 style="left: {{ random_x }}%;
+                        top: {{ random_y }}%;
+                        animation: float{{ animation_index }} {{ animation_duration }}s infinite ease-in-out;
+                        animation-delay: {{ animation_delay }}s;">
+            </div>
         {% endfor %}
-    {% endfor %}
+    </div>
+    
+    <!-- Layer 2 (Middle background) -->
+    <div class="hearts-layer layer-mid">
+        {% for i in (1..30) %}
+            {% assign seed = i | times: 23 | plus: 41 %}
+            {% assign random_x = seed | times: 2468 | modulo: 100 %}
+            {% assign random_y = seed | times: 1357 | modulo: 100 %}
+            {% assign animation_index = seed | modulo: 5 | plus: 1 %}
+            {% assign animation_duration = seed | modulo: 5 | plus: 7 %}
+            {% assign animation_delay = seed | modulo: 12 | divided_by: 10.0 %}
+            
+            <div class="heart layer-2"
+                 style="left: {{ random_x }}%;
+                        top: {{ random_y }}%;
+                        animation: float{{ animation_index }} {{ animation_duration }}s infinite ease-in-out;
+                        animation-delay: {{ animation_delay }}s;">
+            </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Layer 3 (Foreground) -->
+    <div class="hearts-layer layer-close">
+        {% for i in (1..20) %}
+            {% assign seed = i | times: 53 | plus: 71 %}
+            {% assign random_x = seed | times: 9876 | modulo: 100 %}
+            {% assign random_y = seed | times: 5432 | modulo: 100 %}
+            {% assign animation_index = seed | modulo: 5 | plus: 1 %}
+            {% assign animation_duration = seed | modulo: 5 | plus: 6 %}
+            {% assign animation_delay = seed | modulo: 15 | divided_by: 10.0 %}
+            
+            <div class="heart layer-3"
+                 style="left: {{ random_x }}%;
+                        top: {{ random_y }}%;
+                        animation: float{{ animation_index }} {{ animation_duration }}s infinite ease-in-out;
+                        animation-delay: {{ animation_delay }}s;">
+            </div>
+        {% endfor %}
+    </div>
 </div>

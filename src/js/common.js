@@ -1,9 +1,3 @@
-window.addEventListener('load', function() {
-  setTimeout(function() {
-    document.body.classList.add('is-in');
-  }, 50);
-});
-
 document.addEventListener("DOMContentLoaded", function() {
   'use strict';
 
@@ -11,94 +5,11 @@ document.addEventListener("DOMContentLoaded", function() {
   menuOpenIcon = document.querySelector(".nav__icon-menu"),
   menuCloseIcon = document.querySelector(".nav__icon-close"),
   menuList = document.querySelector(".menu-overlay"),
-  btnScrollToTop = document.querySelector(".top"),
-  lightDarkToggle = document.querySelector("#light-dark-toggle__checkbox"),
-  backgroundEffectToggle = document.querySelector("#background-effect-toggle__checkbox");
-
+  btnScrollToTop = document.querySelector(".top");
   
-  function setToggle(toggleCheckbox) {    
-    // Find the label for this checkbox
-    const label = document.querySelector(`label[for="${toggleCheckbox.id}"]`);
-    if (!label) return;
-    
-    // Toggle icons within the label
-    const icons = label.querySelectorAll('.toggle__icon');
-    icons.forEach(icon => {
-      icon.classList.toggle('on');
-    });
-  }
-
-  function loadBackgroundIconPreference() {
-    const savedIcon = localStorage.getItem('backgroundIcon');
-    let icon;
-    
-    if (savedIcon !== null) icon = savedIcon
-    else icon = '♥'
-
-    backgroundEffectToggle.checked = icon != '♥';
-
-    setBackgroundEffect(icon)
-    setToggle(backgroundEffectToggle)
-    localStorage.setItem('backgroundIcon', icon)
-  }
-
-  function setBackgroundEffect(icon) {    
-    document.documentElement.style.setProperty('--background-effect-icon', `"${icon}"`);
-  }
-
-  if (backgroundEffectToggle) {
-    backgroundEffectToggle.addEventListener("change", () => {
-      let icon = document.documentElement.style.getPropertyValue('--background-effect-icon');
-      icon = icon.replace(/['"]/g, '').trim();
-      const newIcon = icon === '♥' ? '☻' : '♥';
-
-      setBackgroundEffect(newIcon);
-      setToggle(backgroundEffectToggle)
-      localStorage.setItem('backgroundIcon', newIcon)
-    });
-  }
-
-  loadBackgroundIconPreference();
-
-  function loadThemePreference() {
-    // Check if there's a saved preference in localStorage
-    const savedTheme = localStorage.getItem("darkMode");
-    let isDarkMode;
-    
-    if (savedTheme !== null) isDarkMode = savedTheme === "true"
-    else isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-    lightDarkToggle.checked = isDarkMode;
-
-    setTheme(isDarkMode);
-    setToggle(lightDarkToggle)
-  }
-
-  function setTheme(isDarkMode) {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }
-
-  if (lightDarkToggle) {
-    lightDarkToggle.addEventListener("change", () => {
-      const isDarkMode = lightDarkToggle.checked;
-      setTheme(isDarkMode);
-      setToggle(lightDarkToggle)
-      localStorage.setItem('darkMode', isDarkMode)
-    });
-  }
-
-  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
-    // Only update if user hasn't set a preference
-    isDarkMode = e.matches
-    setTheme(isDarkMode);
-    setThemeToggle(isDarkMode)
-  });
-
-  loadThemePreference();
+  // Add a small delay to ensure elements are fully rendered
+  initThemeToggle();
+  initBackgroundToggle();
 
   /* =======================
   // Menu
@@ -124,10 +35,6 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   /* =======================
-  // Animation Load Page
-  ======================= */
-
-  /* =======================
   // LazyLoad Images
   ======================= */
   var lazyLoadInstance = new LazyLoad({
@@ -139,13 +46,6 @@ document.addEventListener("DOMContentLoaded", function() {
   ======================= */
   reframe(".post__content iframe:not(.reframe-off), .page__content iframe:not(.reframe-off)");
 
-
-  // =====================
-  // Load More Posts
-  // =====================
-  var load_posts_button = document.querySelector('.load-more-posts');
-
-  load_posts_button&&load_posts_button.addEventListener("click",function(e){e.preventDefault();var o=document.querySelector(".load-more-section"),e=pagination_next_url.split("/page")[0]+"/page/"+pagination_next_page_number+"/";fetch(e).then(function(e){if(e.ok)return e.text()}).then(function(e){var n=document.createElement("div");n.innerHTML=e;for(var t=document.querySelector(".grid"),a=n.querySelectorAll(".grid__post"),i=0;i<a.length;i++)t.appendChild(a.item(i));new LazyLoad({elements_selector:".lazy"});pagination_next_page_number++,pagination_next_page_number>pagination_available_pages_number&&(o.style.display="none")})});
 
   /* =======================
   // Scroll Top Button
@@ -165,3 +65,126 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
 });
+
+function updateToggleState(toggleCheckbox, checked) {
+  if (!toggleCheckbox) return;
+  
+  // Update checkbox state without triggering change event
+  toggleCheckbox.checked = checked;
+  
+  // Find the label for this checkbox
+  const label = document.querySelector(`label[for="${toggleCheckbox.id}"]`);
+  if (!label) return;
+  
+  // Update toggle icons visibility based on checked state
+  const icons = label.querySelectorAll('.toggle__icon');
+  icons.forEach(icon => {
+    // Remove both classes first to ensure clean state
+    icon.classList.remove('on', 'off');
+    
+    // Add the appropriate class
+    if ((icon.classList.contains('toggle__icon--on') && checked) || 
+        (icon.classList.contains('toggle__icon--off') && !checked)) {
+      icon.classList.add('on');
+    } else {
+      icon.classList.add('off');
+    }
+  });
+}
+
+/**
+ * Background effect toggle functionality
+ */
+function initBackgroundToggle() {
+  // Get the DOM reference when the function is called
+  const backgroundEffectToggle = document.getElementById('background-toggle__checkbox');
+  if (!backgroundEffectToggle) return;
+  
+  function setBackgroundEffect(icon) {    
+    document.documentElement.style.setProperty('--background-effect-icon', `"${icon}"`);
+  }
+  
+  // Load saved preference with a default
+  function loadBackgroundIconPreference() {
+    const savedIcon = localStorage.getItem('backgroundIcon') || '♥';
+    const isSmile = savedIcon === '☻';
+    
+    // Set the CSS variable - do this before updating the UI
+    setBackgroundEffect(savedIcon);
+    
+    // Update UI to match actual state
+    updateToggleState(backgroundEffectToggle, isSmile);
+    
+    // Save preference (only if it wasn't already set)
+    if (!localStorage.getItem('backgroundIcon')) {
+      localStorage.setItem('backgroundIcon', savedIcon);
+    }
+  }
+  
+  // Handle toggle change events
+  backgroundEffectToggle.addEventListener("change", () => {
+    const newIcon = backgroundEffectToggle.checked ? '☻' : '♥';
+    setBackgroundEffect(newIcon);
+    localStorage.setItem('backgroundIcon', newIcon);
+  });
+  
+  // Initialize on page load
+  loadBackgroundIconPreference();
+}
+
+/**
+ * Light/dark mode toggle functionality
+ */
+function initThemeToggle() {
+  // Get the DOM reference when the function is called
+  const lightDarkToggle = document.getElementById('light-dark-toggle__checkbox');
+  if (!lightDarkToggle) return;
+  
+  function setTheme(isDarkMode) {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }
+  
+  // Load saved preference or system preference
+  function loadThemePreference() {
+    // Get preference with fallback to system preference
+    const savedTheme = localStorage.getItem("darkMode");
+    let isDarkMode;
+    
+    if (savedTheme !== null) {
+      isDarkMode = savedTheme === "true";
+    } else {
+      isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
+    
+    // Set theme first before updating UI
+    setTheme(isDarkMode);
+    
+    // Then update UI to match
+    updateToggleState(lightDarkToggle, isDarkMode);
+  }
+  
+  // Event listener for toggle change
+  lightDarkToggle.addEventListener("change", () => {
+    const isDarkMode = lightDarkToggle.checked;
+    setTheme(isDarkMode);
+    localStorage.setItem('darkMode', isDarkMode.toString());
+  });
+  
+  // Listen for system preference changes
+  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  mediaQuery.addEventListener("change", (e) => {
+    // Only update if user hasn't set a preference
+    if (localStorage.getItem("darkMode") === null) {
+      const isDarkMode = e.matches;
+      setTheme(isDarkMode);
+      updateToggleState(lightDarkToggle, isDarkMode);
+    }
+  });
+  
+  // Initialize on page load
+  loadThemePreference();
+}

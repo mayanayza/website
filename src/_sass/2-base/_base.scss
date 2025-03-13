@@ -13,31 +13,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   
-  &::after {
-    content: "";
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--tone-10);
-    visibility: visible;
-    opacity: 1;
-    pointer-events: none;
-    z-index: 999;
-    transition: opacity 1s ease, visibility 1s ease;
-  }
-
-  &.is-in::after {
-    visibility: hidden;
-    opacity: 0;
-  }
-
-  &.is-loading::after {
-    /* Overlay styles */
-    visibility: visible;
-    opacity: 1;
-  }
+  
     
   @media only screen and (max-width: $mobile) {
     font-size: 16px;

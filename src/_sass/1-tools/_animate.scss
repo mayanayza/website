@@ -1,18 +1,53 @@
-/* Animate */
+/* Original animation style for reference */
 .animate {
-  animation: animateElement cubic-bezier(.300,.450,.450,.950) .75s;
+  animation: animateElement cubic-bezier(.300, .450, .450, .950) .75s;
   animation-duration: 0.75s;
   animation-iteration-count: 1;
   transition: transform .2s;
+}
 
-  @keyframes animateElement{
-    0% {
-      opacity:0;
-      transform: translate(0px,50px);
-    }
-    100% {
-      opacity:1;
-      transform: translate(0px,0px);
-    }
+@keyframes animateElement {
+  0% {
+    opacity: 0;
+    transform: translate(0px, 50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+}
+
+/* Animation and blur on content */
+.animate-with-blur {
+
+  animation: animateWithBlur cubic-bezier(.300, .450, .450, .950) .75s;
+  animation-duration: 0.75s;
+  animation-iteration-count: 1;
+  
+  position: relative;
+  padding: 2rem;
+  background-color: var(--tone-01);
+  overflow: hidden;
+  border-radius: 40px;
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+
+/* Animation keyframes */
+@keyframes animateWithBlur {
+  0% {
+    transform: translate(0px, 50px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+/* For browsers without backdrop-filter support */
+@supports not (backdrop-filter: blur(4px)) {
+  .animate-with-blur::before {
+    background-color: var(--tone-01);
   }
 }

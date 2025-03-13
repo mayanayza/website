@@ -1,41 +1,102 @@
+.toggle-container {
+  margin: 10px 0 0 5px;
+}
+
+/* Hide the checkbox visually but keep it accessible */
 .toggle__checkbox {
   opacity: 0;
   position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
+/* Toggle background */
 .toggle__checkbox-label {
-  background-color: var(--toggle-background);
+  background-color: var(--toggle-background, #ccc);
   width: 55px;
   height: 26px;
   border-radius: 50px;
   position: relative;
-  padding: 5px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.15s ease;
+  padding: 0 6px; /* Horizontal padding */
+  box-sizing: border-box; /* Include padding in width */
 }
 
-.toggle__icon {
-  opacity: 0;
-}
-
-.toggle__icon.on {
-  opacity: 1;
-  color: var(--toggle-accent);
-}
-
-.toggle__checkbox-label .toggle__ball {
-  background-color: var(--toggle-accent);
+/* Toggle ball/handle */
+.toggle__ball {
+  background-color: var(--toggle-accent, #fff);
   width: 22px;
   height: 22px;
   position: absolute;
   left: 2px;
   top: 2px;
   border-radius: 50%;
-  transition: transform 0.15s ease;
+  transition: transform 0.15s cubic-bezier(0.45, 0.05, 0.55, 0.95), 
+              box-shadow 0.15s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  z-index: 2; /* Ensure ball is above icons */
 }
 
+/* Move toggle ball when checked */
 .toggle__checkbox:checked + .toggle__checkbox-label .toggle__ball {
-  transform: translateX(27px);
+  transform: translateX(29px);
+}
+
+/* Icon styling */
+.toggle__icon {
+  position: absolute;
+  z-index: 1;
+  line-height: 1;
+  font-size: 14px;
+  transition: opacity 0.3s;
+}
+
+/* Icon positions */
+.toggle__icon--on {
+  left: 8px; /* Position on left side */
+}
+
+.toggle__icon--off {
+  right: 8px; /* Position on right side */
+}
+
+/* Set icon visibility based on toggle state */
+/* When UNCHECKED: left icon hidden, right icon visible */
+.toggle__checkbox:not(:checked) + .toggle__checkbox-label .toggle__icon--on {
+  opacity: 0;
+}
+
+.toggle__checkbox:not(:checked) + .toggle__checkbox-label .toggle__icon--off {
+  opacity: 1;
+}
+
+/* When CHECKED: left icon visible, right icon hidden */
+.toggle__checkbox:checked + .toggle__checkbox-label .toggle__icon--on {
+  opacity: 1;
+}
+
+.toggle__checkbox:checked + .toggle__checkbox-label .toggle__icon--off {
+  opacity: 0;
+}
+
+/* Focus styles for accessibility */
+.toggle__checkbox:focus-visible + .toggle__checkbox-label {
+  outline: 2px solid var(--toggle-accent, #fff);
+  outline-offset: 2px;
+}
+
+/* Hover effect */
+.toggle__checkbox-label:hover .toggle__ball {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Prevent accidental text selection */
+.toggle__checkbox-label, .toggle__icon {
+  user-select: none;
 }
