@@ -18,20 +18,19 @@
     height: 100%;
 }
 
-// CSS parallax movement (no JavaScript needed)
 // Far background layer - slowest movement
 .layer-far {
-    animation: parallax-far 35s ease-in-out infinite alternate;
+    animation: parallax-far 30s ease-in-out infinite alternate;
 }
 
 // Middle layer - medium movement
 .layer-mid {
-    animation: parallax-mid 25s ease-in-out infinite alternate;
+    animation: parallax-mid 20s ease-in-out infinite alternate;
 }
 
 // Close layer - fastest movement
 .layer-close {
-    animation: parallax-close 15s ease-in-out infinite alternate;
+    animation: parallax-close 10s ease-in-out infinite alternate;
 }
 
 // Parallax movement animations
@@ -64,7 +63,7 @@
 }
 
 .heart::after {
-    content: var(--background-effect-icon, "♥"); // Default fallback heart
+    content: var(--background-effect-icon, "♥");
     display: block;
 }
 
@@ -79,10 +78,8 @@
     }
 }
 
-// Layers with different sizes for depth
-// Layer 1 - Far background (smallest)
 .heart.layer-1 {
-    opacity: 0.5;
+    opacity:0.1;
 }
 
 .heart.layer-1:nth-of-type(4n+1) { font-size: 6px; }
@@ -91,12 +88,22 @@
 .heart.layer-1:nth-of-type(4n+4) { font-size: 5px; }
 
 // Layer 2 - Middle
+
+.heart.layer-2 {
+    opacity:0.4;
+}
+
 .heart.layer-2:nth-of-type(4n+1) { font-size: 10px; }
 .heart.layer-2:nth-of-type(4n+2) { font-size: 12px; }
 .heart.layer-2:nth-of-type(4n+3) { font-size: 11px; }
 .heart.layer-2:nth-of-type(4n+4) { font-size: 9px; }
 
 // Layer 3 - Foreground (largest)
+
+.heart.layer-3 {
+    opacity:0.9;
+}
+
 .heart.layer-3:nth-of-type(4n+1) { font-size: 14px; }
 .heart.layer-3:nth-of-type(4n+2) { font-size: 16px; }
 .heart.layer-3:nth-of-type(4n+3) { font-size: 18px; }
@@ -106,41 +113,38 @@
 body {
     &:hover .heart {
         // Default state when body is hovered (cursor is on the page)
-        transition: font-size 4s cubic-bezier(0.17, 0.67, 0.83, 0.67),
-                    color 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+        transition: font-size 40s cubic-bezier(0.17, 0.67, 0.83, 0.67),
     }
 }
 
 // Use direct hover on hearts
 .heart:hover {
-    font-size: 500px !important; // 3x size
-    color: rgba(255, 105, 180, 0.8) !important;
-    z-index: 100; // Bring hovered heart to front
+    font-size: 5000px !important;
+    color: var(--brand-color);
 }
 
 // Colors with more variation
 // Layer 1 colors (lighter)
-.heart.layer-1:nth-of-type(5n+1) { color: rgba(255, 192, 203, 0.2); }
-.heart.layer-1:nth-of-type(5n+2) { color: rgba(255, 150, 150, 0.2); }
-.heart.layer-1:nth-of-type(5n+3) { color: rgba(255, 105, 180, 0.2); }
-.heart.layer-1:nth-of-type(5n+4) { color: rgba(199, 21, 133, 0.2); }
-.heart.layer-1:nth-of-type(5n+5) { color: rgba(255, 20, 147, 0.2); }
+.heart.layer-1:nth-of-type(5n+1) { color: var(--brand-color); }
+.heart.layer-1:nth-of-type(5n+2) { color: var(--brand-color); }
+.heart.layer-1:nth-of-type(5n+3) { color: var(--brand-color); }
+.heart.layer-1:nth-of-type(5n+4) { color: var(--brand-color); }
+.heart.layer-1:nth-of-type(5n+5) { color: var(--brand-color); }
 
 // Layer 2 colors (medium)
-.heart.layer-2:nth-of-type(5n+1) { color: rgba(255, 192, 203, 0.3); }
-.heart.layer-2:nth-of-type(5n+2) { color: rgba(255, 150, 150, 0.3); }
-.heart.layer-2:nth-of-type(5n+3) { color: rgba(255, 105, 180, 0.3); }
-.heart.layer-2:nth-of-type(5n+4) { color: rgba(199, 21, 133, 0.3); }
-.heart.layer-2:nth-of-type(5n+5) { color: rgba(255, 20, 147, 0.3); }
+.heart.layer-2:nth-of-type(5n+1) { color: var(--brand-color); }
+.heart.layer-2:nth-of-type(5n+2) { color: var(--brand-color); }
+.heart.layer-2:nth-of-type(5n+3) { color: var(--brand-color); }
+.heart.layer-2:nth-of-type(5n+4) { color: var(--brand-color); }
+.heart.layer-2:nth-of-type(5n+5) { color: var(--brand-color); }
 
 // Layer 3 colors (more opaque)
-.heart.layer-3:nth-of-type(5n+1) { color: rgba(255, 192, 203, 0.4); }
-.heart.layer-3:nth-of-type(5n+2) { color: rgba(255, 150, 150, 0.4); }
-.heart.layer-3:nth-of-type(5n+3) { color: rgba(255, 105, 180, 0.4); }
-.heart.layer-3:nth-of-type(5n+4) { color: rgba(199, 21, 133, 0.4); }
-.heart.layer-3:nth-of-type(5n+5) { color: rgba(255, 20, 147, 0.4); }
+.heart.layer-3:nth-of-type(5n+1) { color: var(--brand-color); }
+.heart.layer-3:nth-of-type(5n+2) { color: var(--brand-color); }
+.heart.layer-3:nth-of-type(5n+3) { color: var(--brand-color); }
+.heart.layer-3:nth-of-type(5n+4) { color: var(--brand-color); }
+.heart.layer-3:nth-of-type(5n+5) { color: var(--brand-color); }
 
-// If you know specific elements that might be blocking, target them directly
 .header,
 body {
     pointer-events: none !important;

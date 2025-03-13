@@ -16,7 +16,7 @@
 
 /* Toggle background */
 .toggle__checkbox-label {
-  background-color: var(--toggle-background, #ccc);
+  background-color: var(--toggle-background);
   width: 55px;
   height: 26px;
   border-radius: 50px;
@@ -35,7 +35,7 @@
 
 /* Toggle ball/handle */
 .toggle__ball {
-  background-color: var(--toggle-accent, #fff);
+  background-color: var(--toggle-accent);
   width: 22px;
   height: 22px;
   position: absolute;
@@ -62,6 +62,15 @@
   font-size: 14px;
   transition: opacity 0.3s;
   pointer-events: auto;
+  color: var(--brand-color);
+}
+
+.toggle__icon.fa-moon {
+  color: var(--moon-blue);
+}
+
+.toggle__icon.fa-sun {
+  color: var(--sun-yellow);
 }
 
 /* Icon positions */

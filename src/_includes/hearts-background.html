@@ -2,7 +2,7 @@
 <div class="hearts-container">
     <!-- Layer 1 (Far background) -->
     <div class="hearts-layer layer-far">
-        {% for i in (1..25) %}
+        {% for i in (1..30) %}
             {% assign seed = i | times: 31 | plus: 17 %}
             {% assign random_x = seed | times: 1234 | modulo: 100 %}
             {% assign random_y = seed | times: 5678 | modulo: 100 %}
@@ -21,7 +21,7 @@
     
     <!-- Layer 2 (Middle background) -->
     <div class="hearts-layer layer-mid">
-        {% for i in (1..30) %}
+        {% for i in (1..35) %}
             {% assign seed = i | times: 23 | plus: 41 %}
             {% assign random_x = seed | times: 2468 | modulo: 100 %}
             {% assign random_y = seed | times: 1357 | modulo: 100 %}
@@ -40,7 +40,7 @@
     
     <!-- Layer 3 (Foreground) -->
     <div class="hearts-layer layer-close">
-        {% for i in (1..20) %}
+        {% for i in (1..25) %}
             {% assign seed = i | times: 53 | plus: 71 %}
             {% assign random_x = seed | times: 9876 | modulo: 100 %}
             {% assign random_y = seed | times: 5432 | modulo: 100 %}
