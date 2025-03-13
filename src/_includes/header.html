@@ -12,45 +12,53 @@
     <div class="row">
       <div class="header__inner col col-12">
 
-      <div class="logo">
-        <a class="logo__link" href="{{ site.baseurl }}/">
-        {% if site.data.settings.logo %}
-          <img class="logo__image" src="{{ site.data.settings.logo | relative_url }}" alt="{{ site.data.settings.title }}">
-        {% else %}
-          {{ site.data.settings.title }}
-        {% endif %}
-        </a>
-      </div>
+        <!-- Logo (left on both mobile and desktop) -->
+        <div class="logo">
+          <a class="logo__link" href="{{ site.baseurl }}/">
+          {% if site.data.settings.logo %}
+            <img class="logo__image" src="{{ site.data.settings.logo | relative_url }}" alt="{{ site.data.settings.title }}">
+          {% else %}
+            {{ site.data.settings.title }}
+          {% endif %}
+          </a>
+        </div>
 
-      <div class="menu-overlay">
-        <nav class="main-nav">
-          <div class="main-nav__box">
-            <div class="nav__icon-close">
-              <i class="fa-solid fa-xmark"></i>
-            </div>
-            <div class="nav-grid">
-              <div class="nav-grid__item">
-                <h2 class="nav-grid__title">Menu</h2>
-                <div class="mobile-nav">
-                  {% include navigation.html %}
+        <!-- Toggles (center on mobile, right on desktop) -->
+        <div class="toggle-group">
+          {% include light-dark-toggle.html %}
+          {% include background-effect-toggle.html %}
+        </div>
+
+        <!-- Navigation (centered on desktop, hidden on mobile) -->
+        <div class="navigation">
+          <div class="top-nav">
+            {% include navigation.html %}
+          </div>
+        </div>
+
+        <!-- Mobile menu button (right) -->
+        <div class="nav-buttons">
+          <i class="nav__icon nav__icon-menu fa-solid fa-bars"></i>
+        </div>
+
+        <!-- Mobile menu overlay -->
+        <div class="menu-overlay">
+          <nav class="main-nav">
+            <div class="main-nav__box">
+              <div class="nav__icon-close">
+                <i class="fa-solid fa-xmark"></i>
+              </div>
+              <div class="nav-grid">
+                <div class="nav-grid__item">
+                  <h2 class="nav-grid__title">Menu</h2>
+                  <div class="mobile-nav">
+                    {% include navigation.html %}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </nav>
-      </div>
-
-      <div class="navigation">
-        <div class="top-nav">
-          {% include navigation.html %}
+          </nav>
         </div>
-      </div>
-      <div class="nav-buttons">
-        {% include light-dark-toggle.html %}
-        {% include background-effect-toggle.html %}
-        <i class="nav__icon nav__icon-menu fa-solid fa-bars"></i>
-      </div>
-
       </div>
     </div>
   </div>

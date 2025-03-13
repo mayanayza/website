@@ -1,5 +1,8 @@
 .toggle-container {
+  position: relative;
+  z-index: 10;
   margin: 10px 0 0 5px;
+  pointer-events: auto;
 }
 
 /* Hide the checkbox visually but keep it accessible */
@@ -26,6 +29,8 @@
   transition: background-color 0.15s ease;
   padding: 0 6px; /* Horizontal padding */
   box-sizing: border-box; /* Include padding in width */
+  pointer-events: auto; /* Ensure clickability */
+  z-index: 10;
 }
 
 /* Toggle ball/handle */
@@ -41,6 +46,7 @@
               box-shadow 0.15s ease;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   z-index: 2; /* Ensure ball is above icons */
+  pointer-events: auto;
 }
 
 /* Move toggle ball when checked */
@@ -55,6 +61,7 @@
   line-height: 1;
   font-size: 14px;
   transition: opacity 0.3s;
+  pointer-events: auto;
 }
 
 /* Icon positions */
@@ -99,4 +106,33 @@
 /* Prevent accidental text selection */
 .toggle__checkbox-label, .toggle__icon {
   user-select: none;
+}
+
+/* Improve mobile layout */
+@media (max-width: $mobile) {
+  .toggle-group {
+    gap: 8px;
+  }
+  
+  .toggle-container {
+    margin: 0;
+  }
+  
+  .toggle__checkbox-label {
+    width: 50px;
+    height: 24px;
+  }
+  
+  .toggle__ball {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .toggle__checkbox:checked + .toggle__checkbox-label .toggle__ball {
+    transform: translateX(26px);
+  }
+  
+  .toggle__icon {
+    font-size: 12px;
+  }
 }
