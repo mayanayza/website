@@ -17,13 +17,7 @@
   }
 }
 
-/* Animation and blur on content */
-.animate-with-blur {
-
-  animation: animateWithBlur cubic-bezier(.300, .450, .450, .950) .75s;
-  animation-duration: 0.75s;
-  animation-iteration-count: 1;
-  
+.background-blur {
   position: relative;
   padding: 2rem;
   background-color: var(--tone-01);
@@ -32,6 +26,13 @@
 
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+}
+
+/* Animation and blur on content */
+.animate-with-blur {
+  animation: animateWithBlur cubic-bezier(.300, .450, .450, .950) .75s;
+  animation-duration: 0.75s;
+  animation-iteration-count: 1;
 }
 
 

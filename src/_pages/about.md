@@ -3,6 +3,7 @@ layout: page
 title: About
 permalink: /about/
 hide_header: false
+hide_title: true
 ---
 
 # Hi, I'm {{ site.data.personal_info.first_name }}!

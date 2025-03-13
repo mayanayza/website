@@ -4,9 +4,6 @@ permalink: /links/
 hide_header: true
 layout: links
 ---
-
-## ~
-
 {% assign projects = site.posts | where: "feature_post", true %}
 
 {% for project in projects %}

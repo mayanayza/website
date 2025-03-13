@@ -2,6 +2,7 @@
 title: Roadmap
 permalink: /roadmap/
 hide_header: false
+hide_title: true
 layout: page
 ---
 # In the Works

@@ -3,6 +3,7 @@ layout: page
 title: Curriculum Vitae
 permalink: /cv/
 hide_header: false
+hide_title: true
 ---
 
 {% include cv-grid.html entries=site.data.personal_info.curriculum_vitae.residencies title="Residencies" %}
