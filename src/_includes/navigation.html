@@ -5,7 +5,6 @@
   {% elsif page.url contains 'tags' %}
   <script>
     var tag_name = decodeURIComponent(window.location.search.split('=')[1]);
-    console.log(tag_name)
     if ("{{item.url}}".indexOf(tag_name) > 0){
       var el = document.getElementById("{{item.url}}")  
       el.classList.add('current')
