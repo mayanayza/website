@@ -2,11 +2,20 @@
   {% for item in site.data.settings.menu-settings.menu-items %}
   {% if page.url contains item.url %}
   {% assign class='current' %}
+  {% elsif page.url contains 'tags' %}
+  <script>
+    var tag_name = decodeURIComponent(window.location.search.split('=')[1]);
+    console.log(tag_name)
+    if ("{{item.url}}".indexOf(tag_name) > 0){
+      var el = document.getElementById("{{item.url}}")  
+      el.classList.add('current')
+    }
+  </script>
   {% else %}
   {% assign class='' %}
   {% endif %}
   <li class="nav__item">
-    <a href="{{ item.url | relative_url }}" class="nav__link {{class}}">{{ item.title }}</a>
+    <a href="{{ item.url | relative_url }}" id="{{item.url}}" class="nav__link {{class}}">{{ item.title }}</a>
   </li>
   {% endfor %}
 </ul>
