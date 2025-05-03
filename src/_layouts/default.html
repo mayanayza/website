@@ -7,9 +7,11 @@
     {% include header.html %}
   {% endunless %}
 
+  {% unless page.hide_content %}
   <main class="content" aria-label="Content">
     {{ content }}
   </main>
+  {% endunless %}
 
   <div class="top button button--icon" title="Top"><i class="fa-solid fa-chevron-up"></i></div>
   {% unless page.hide_footer %}

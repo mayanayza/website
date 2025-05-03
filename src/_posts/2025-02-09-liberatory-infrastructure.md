@@ -9,7 +9,7 @@ name: liberatory-infrastructure
 display_name: ⛓️‍💥 Liberatory Infrastructure
 title: Liberatory Infrastructure
 date_created: '2025-02-09'
-status: in_progress
+status: archive
 priority: 0
 tagline: Creating decentralized trust networks for mutual aid
 description: Creating decentralized trust networks for mutual aid

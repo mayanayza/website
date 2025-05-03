@@ -5,9 +5,9 @@ featured: false
 images: []
 videos: []
 models: []
-name: sledding
-display_name: 🪨 Sledding
-title: ' Sledding'
+name: flexible-flyer
+display_name: 🛷 Flexible Flyer
+title: Flexible Flyer
 date_created: '2025-02-20'
 status: in_progress
 priority: 0
@@ -26,6 +26,6 @@ embeds:
   type: null
 written_content: ''
 readme: ''
-featured_image: /media/sledding/
+featured_image: /media/flexible-flyer/
 ---
 {% include post-content.html %}

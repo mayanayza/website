@@ -18,7 +18,7 @@ name: people-animals-misc
 display_name: 📷 People, Animals, Misc
 title: People, Animals, Misc
 date_created: '2010-01-01'
-status: archive
+status: complete
 priority: 0
 tagline: Photography circa 2010-2020
 feature_post: false
@@ -34,6 +34,7 @@ tags:
 embeds:
 - source: null
   type: null
+website: https://maya.cloud/people-animals-misc
 written_content: ''
 readme: ''
 featured_image: /media/people-animals-misc/images/71891567.jpg

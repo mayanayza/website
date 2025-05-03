@@ -20,8 +20,6 @@ menu-settings:
       url: '/about/'
     - title: 'Contact'
       url: '/contact/'
-    - title: 'CV'
-      url: '/cv/'
 
 #-------------------------------
 # Footer section

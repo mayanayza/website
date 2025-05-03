@@ -24,7 +24,7 @@ name: nature-landscapes
 display_name: 📷 Nature & Landscapes
 title: Nature & Landscapes
 date_created: '2010-01-01'
-status: archive
+status: complete
 priority: 0
 tagline: Photography circa 2010-2020
 feature_post: false
@@ -40,6 +40,7 @@ tags:
 embeds:
 - source: null
   type: null
+website: https://maya.cloud/nature-landscapes
 written_content: ''
 readme: ''
 featured_image: /media/nature-landscapes/images/000028290010.jpg
