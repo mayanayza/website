@@ -50,13 +50,17 @@ $global-transition: all .2s;
 	
 	--table-shade: var(--lightest-gray);
 	
-	--tag-color: var(--mid-dark-gray);
+	--tag-color: var(--mid-light-gray);
 	--tag-active-color: var(--brand-color);
 
 	--toggle-background: var(--light-gray);
 	--toggle-accent: var(--dark-gray);
 
 	--gallery-background: var(--light-gray);
+
+	--code-article-background: var(--dark-gray);
+	--article-fade: rgba(0,0,0, 0.7);
+	--article-title-text: white;
 
 	--avatar-border: var(--darkest-gray);
 
@@ -112,6 +116,9 @@ html.dark  {
 	--toggle-accent: var(--light-gray);
 
 	--gallery-background: var(--dark-gray);
+
+	--code-article-background: rgba(0,0,0);
+	--article-fade: rgba(0,0,0, 0.7);
 
 	--avatar-border: var(--lightest-gray);
 

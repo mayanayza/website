@@ -17,7 +17,3 @@ layout: page
 
 {% include post-grid.html grid_type="roadmap" status="complete" empty_message="Nothing completed" filter_tags="Art" title="Art" %}
 {% include post-grid.html grid_type="roadmap" status="complete" empty_message="Nothing completed" exclude_tags="Art" title="Systems" %}
-
-# Archive
-
-{% include post-grid.html grid_type="roadmap" status="archive" empty_message="Nothing in archive" %}
