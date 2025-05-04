@@ -30,9 +30,7 @@ tags:
 - Art
 - Sculpture
 title: Paralysis
-website:
-  last_published: 04-May-2025-15:24:28
-  show_written_content: false
+website: https://maya.cloud/paralysis
 github: https://github.com/mayanayza/paralysis
 written_content: Paralysis is a kinetic sculpture that represents the artist's journey
   of self-discovery and self-love. The core visual concept of capturing the beauty
@@ -47,6 +45,8 @@ written_content: Paralysis is a kinetic sculpture that represents the artist's j
   decade of repression, communicating the depths of the journey that led to the piece's
   ultimate creation.
 readme: ''
+last_published: 04-May-2025-15:29:40
+show_written_content: false
 featured_image: /media/paralysis/images/paralysis_2.jpg
 ---
 {% include post-content.html %}
