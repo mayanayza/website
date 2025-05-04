@@ -11,25 +11,25 @@ videos:
 - /media/paralysis/videos/paralysis.mp4
 models:
 - /media/paralysis/models/paralysis.glb
-name: paralysis
-display_name: 🌫️ Paralysis
-title: Paralysis
 date_created: '2024-07-30'
-status: complete
-priority: 0
-tagline: Self-discovery and self-love
 description: null
+display_name: 🌫️ Paralysis
+embeds: []
 feature_post: true
 featured_content:
-  type: image
-  source: images/paralysis_2.jpg
-  language: ''
-  start_line: 0
   end_line: 10
+  language: ''
+  source: images/paralysis_2.jpg
+  start_line: 0
+  type: image
+name: paralysis
+priority: 0
+status: complete
+tagline: Self-discovery and self-love
 tags:
 - Art
 - Sculpture
-embeds: []
+title: Paralysis
 website: https://maya.cloud/paralysis
 github: https://github.com/mayanayza/paralysis
 written_content: Paralysis is a kinetic sculpture that represents the artist's journey
