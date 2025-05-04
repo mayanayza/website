@@ -1,6 +1,9 @@
 {% if page.github %}
   [View on GitHub]({{ page.github }}){:target="_blank"}
 {% endif %}
+{% if page.enable_written_content %}
+  {{ written_content }}
+{% endif %}
 {% include iframe-embed.html iframe_embeds=page.iframe_embeds %}
 {% include gallery.html images=page.images %}
 {% include video.html videos=page.videos %}
