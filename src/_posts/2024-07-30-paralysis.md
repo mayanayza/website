@@ -2,15 +2,9 @@
 layout: post
 date: '2024-07-30'
 featured: true
-images:
-- /media/paralysis/images/paralysis_1.jpg
-- /media/paralysis/images/paralysis_2.jpg
-- /media/paralysis/images/paralysis_4.jpg
-- /media/paralysis/images/paralysis_5.jpg
-videos:
-- /media/paralysis/videos/paralysis.mp4
-models:
-- /media/paralysis/models/paralysis.glb
+images: []
+videos: []
+models: []
 date_created: '2024-07-30'
 description: null
 display_name: 🌫️ Paralysis
