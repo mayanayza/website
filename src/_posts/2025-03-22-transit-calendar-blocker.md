@@ -5,24 +5,24 @@ featured: false
 images: []
 videos: []
 models: []
-name: transit-calendar-blocker
-display_name: 🚴🏻‍♀️ Transit Calendar Blocker
-title: ' Transit Calendar Blocker'
 date_created: '2025-03-22'
-status: backlog
-priority: 0
-tagline: ''
-feature_post: false
-featured_content:
-  type: image
-  source: ''
-  language: ''
-  start_line: 0
-  end_line: 0
-tags: []
+display_name: 🚴🏻‍♀️ Transit Calendar Blocker
 embeds:
 - source: null
   type: null
+feature_post: false
+featured_content:
+  end_line: 0
+  language: ''
+  source: ''
+  start_line: 0
+  type: image
+name: transit-calendar-blocker
+priority: 0
+status: backlog
+tagline: ''
+tags: []
+title: ' Transit Calendar Blocker'
 written_content: 'The only thing worse than being busy is being busy and double booked
   >:( !
 
@@ -31,6 +31,8 @@ written_content: 'The only thing worse than being busy is being busy and double 
   so that you won''t have people trying to set up meetings while you''re going to
   be on a bus, train, or in the car.'
 readme: ''
+last_published: 01-Jan-2000-00:00:00
+show_written_content: false
 featured_image: /media/transit-calendar-blocker/
 ---
 {% include post-content.html %}

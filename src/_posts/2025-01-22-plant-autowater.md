@@ -5,25 +5,25 @@ featured: false
 images: []
 videos: []
 models: []
-name: plant-autowater
-display_name: 🌱 Plant Autowater
-title: Plant Autowater
 date_created: '2025-01-22'
-status: in_progress
-priority: 0
-tagline: Just another high maintenance thing I do to be low maintenance...
 description: null
+display_name: 🌱 Plant Autowater
+embeds: []
 feature_post: false
 featured_content:
-  type: image
-  source: ''
-  language: ''
-  start_line: 0
   end_line: 10
+  language: ''
+  source: ''
+  start_line: 0
+  type: image
+name: plant-autowater
+priority: 0
+status: in_progress
+tagline: Just another high maintenance thing I do to be low maintenance...
 tags:
 - Systems
 - Home
-embeds: []
+title: Plant Autowater
 written_content: ''
 readme: '# 🌱 Plant Autowater
 
@@ -93,6 +93,8 @@ readme: '# 🌱 Plant Autowater
   - [videos](media/models/videos)
 
   '
+last_published: 01-Jan-2000-00:00:00
+show_written_content: false
 featured_image: /media/plant-autowater/
 ---
 {% include post-content.html %}

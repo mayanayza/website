@@ -5,26 +5,28 @@ featured: false
 images: []
 videos: []
 models: []
-name: modular-body-parts
-display_name: 🎛️ Modular Body Parts
-title: Modular Body Parts
 date_created: '2025-02-25'
-status: backlog
-priority: 1
-tagline: ''
-feature_post: false
-featured_content:
-  type: image
-  source: ''
-  language: ''
-  start_line: 0
-  end_line: 0
-tags: []
+display_name: 🎛️ Modular Body Parts
 embeds:
 - source: null
   type: null
+feature_post: false
+featured_content:
+  end_line: 0
+  language: ''
+  source: ''
+  start_line: 0
+  type: image
+name: modular-body-parts
+priority: 1
+status: backlog
+tagline: ''
+tags: []
+title: Modular Body Parts
 written_content: ''
 readme: ''
+last_published: 01-Jan-2000-00:00:00
+show_written_content: false
 featured_image: /media/modular-body-parts/
 ---
 {% include post-content.html %}

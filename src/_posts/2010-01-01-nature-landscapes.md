@@ -20,29 +20,31 @@ images:
 - /media/nature-landscapes/images/DSC00291.jpg
 videos: []
 models: []
-name: nature-landscapes
-display_name: 📷 Nature & Landscapes
-title: Nature & Landscapes
 date_created: '2010-01-01'
-status: complete
-priority: 0
-tagline: Photography circa 2010-2020
-feature_post: false
-featured_content:
-  type: image
-  source: images/000028290010.jpg
-  language: ''
-  start_line: 0
-  end_line: 0
-tags:
-- Art
-- Photography
+display_name: 📷 Nature & Landscapes
 embeds:
 - source: null
   type: null
+feature_post: false
+featured_content:
+  end_line: 0
+  language: ''
+  source: images/000028290010.jpg
+  start_line: 0
+  type: image
+name: nature-landscapes
+priority: 0
+status: complete
+tagline: Photography circa 2010-2020
+tags:
+- Art
+- Photography
+title: Nature & Landscapes
 website: https://maya.cloud/nature-landscapes
 written_content: ''
 readme: ''
+last_published: 01-Jan-2000-00:00:00
+show_written_content: false
 featured_image: /media/nature-landscapes/images/000028290010.jpg
 ---
 {% include post-content.html %}

@@ -5,25 +5,25 @@ featured: false
 images: []
 videos: []
 models: []
-name: liberatory-infrastructure
-display_name: ⛓️‍💥 Liberatory Infrastructure
-title: Liberatory Infrastructure
 date_created: '2025-02-09'
-status: archive
-priority: 0
-tagline: Creating decentralized trust networks for mutual aid
 description: Creating decentralized trust networks for mutual aid
+display_name: ⛓️‍💥 Liberatory Infrastructure
+embeds: []
 feature_post: false
 featured_content:
-  type: image
-  source: ''
-  language: ''
-  start_line: 0
   end_line: 0
+  language: ''
+  source: ''
+  start_line: 0
+  type: image
+name: liberatory-infrastructure
+priority: 0
+status: archive
+tagline: Creating decentralized trust networks for mutual aid
 tags:
 - Systems
 - Community
-embeds: []
+title: Liberatory Infrastructure
 written_content: "# Concept\n\nA resilient mesh networking protocol designed to enable\
   \ trust-based coordination between devices. Each device stores messages and forms\
   \ a mesh network with other devices to facilitate matching and propagating messages\
@@ -355,6 +355,8 @@ written_content: "# Concept\n\nA resilient mesh networking protocol designed to 
   \ Governance Implementation\n   - Distributed decision making\n   - Protocol upgrade\
   \ mechanism\n   - Community feedback system"
 readme: ''
+last_published: 01-Jan-2000-00:00:00
+show_written_content: false
 featured_image: /media/liberatory-infrastructure/
 ---
 {% include post-content.html %}

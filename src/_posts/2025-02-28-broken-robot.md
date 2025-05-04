@@ -5,26 +5,28 @@ featured: false
 images: []
 videos: []
 models: []
-name: broken-robot
-display_name: 🤖 Broken Robot
-title: Broken Robot
 date_created: '2025-02-28'
-status: backlog
-priority: 0
-tagline: ''
-feature_post: false
-featured_content:
-  type: image
-  source: ''
-  language: ''
-  start_line: 0
-  end_line: 0
-tags: []
+display_name: 🤖 Broken Robot
 embeds:
 - source: null
   type: null
+feature_post: false
+featured_content:
+  end_line: 0
+  language: ''
+  source: ''
+  start_line: 0
+  type: image
+name: broken-robot
+priority: 0
+status: backlog
+tagline: ''
+tags: []
+title: Broken Robot
 written_content: ''
 readme: ''
+last_published: 01-Jan-2000-00:00:00
+show_written_content: false
 featured_image: /media/broken-robot/
 ---
 {% include post-content.html %}

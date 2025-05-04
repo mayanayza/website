@@ -45,7 +45,7 @@ written_content: Paralysis is a kinetic sculpture that represents the artist's j
   decade of repression, communicating the depths of the journey that led to the piece's
   ultimate creation.
 readme: ''
-last_published: 04-May-2025-15:29:40
+last_published: 04-May-2025-15:30:13
 show_written_content: false
 featured_image: /media/paralysis/images/paralysis_2.jpg
 ---

@@ -5,27 +5,29 @@ featured: false
 images: []
 videos: []
 models: []
-name: flexible-flyer
-display_name: 🛷 Flexible Flyer
-title: Flexible Flyer
 date_created: '2025-02-20'
-status: in_progress
-priority: 0
-tagline: ''
 description: ''
-feature_post: false
-featured_content:
-  type: image
-  source: ''
-  language: ''
-  start_line: 0
-  end_line: 0
-tags: []
+display_name: 🛷 Flexible Flyer
 embeds:
 - source: null
   type: null
+feature_post: false
+featured_content:
+  end_line: 0
+  language: ''
+  source: ''
+  start_line: 0
+  type: image
+name: flexible-flyer
+priority: 0
+status: in_progress
+tagline: ''
+tags: []
+title: Flexible Flyer
 written_content: ''
 readme: ''
+last_published: 01-Jan-2000-00:00:00
+show_written_content: false
 featured_image: /media/flexible-flyer/
 ---
 {% include post-content.html %}

@@ -5,26 +5,28 @@ featured: false
 images: []
 videos: []
 models: []
-name: inspection-station
-display_name: 🔎 Inspection Station
-title: Inspection Station
 date_created: '2025-02-26'
-status: backlog
-priority: 1
-tagline: ''
-feature_post: false
-featured_content:
-  type: image
-  source: ''
-  language: ''
-  start_line: 0
-  end_line: 0
-tags: []
+display_name: 🔎 Inspection Station
 embeds:
 - source: null
   type: null
+feature_post: false
+featured_content:
+  end_line: 0
+  language: ''
+  source: ''
+  start_line: 0
+  type: image
+name: inspection-station
+priority: 1
+status: backlog
+tagline: ''
+tags: []
+title: Inspection Station
 written_content: ''
 readme: ''
+last_published: 01-Jan-2000-00:00:00
+show_written_content: false
 featured_image: /media/inspection-station/
 ---
 {% include post-content.html %}
