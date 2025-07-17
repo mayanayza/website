@@ -10,8 +10,8 @@ menu-settings:
   menu-items:
     - title: 'Art'
       url: '/tags/?tag=art'
-    - title: 'Systems'
-      url: '/tags/?tag=systems'
+    - title: 'Dev'
+      url: '/tags/?tag=dev'
     - title: 'Gallery'
       url: '/gallery'
     - title: 'Contact'
