@@ -1,3 +1,6 @@
+@use "../0-settings/variables";
+@use "../1-tools/grid";
+
 /* Search */
 .search {
   position: fixed;
@@ -41,11 +44,11 @@
     cursor: pointer;
   }
 
-  @media (max-width: $tablet) {
+  @media (max-width: grid.$tablet) {
     width: 80%;
     padding-top: 100px;
   }
-  @media (max-width: $mobile) {
+  @media (max-width: grid.$mobile) {
     width: 90%;
   }
 }
@@ -58,7 +61,7 @@
     width: 100%;
     height: auto;
     padding: 16px 24px;
-    font-family: $heading-font-family;
+    font-family: variables.$heading-font-family;
     font-size: 24px;
     font-weight: 900;
     line-height: 42px;
@@ -86,7 +89,7 @@
       background: var(--tone-10);
     }
 
-    @media (max-width: $mobile) {
+    @media (max-width: grid.$mobile) {
       font-size: 26px;
     }
   }

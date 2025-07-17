@@ -1,3 +1,5 @@
+@use "../1-tools/grid";
+
 /* Social Links */
 .social {
   text-align: center;
@@ -17,7 +19,7 @@
     }
   }
 
-  @media (max-width: $desktop) {
+  @media (max-width: grid.$desktop) {
     margin-bottom: 8px;
 
     .social__item {
@@ -25,7 +27,7 @@
     }
   }
 
-  @media (max-width: $tablet) {
+  @media (max-width: grid.$tablet) {
     .social__link {
       width: 30px;
       height: 30px;

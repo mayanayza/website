@@ -14,10 +14,6 @@ menu-settings:
       url: '/tags/?tag=systems'
     - title: 'Gallery'
       url: '/gallery'
-    - title: 'Roadmap'
-      url: '/roadmap/'
-    - title: 'About'
-      url: '/about/'
     - title: 'Contact'
       url: '/contact/'
 
@@ -27,11 +23,11 @@ social:
 # - {icon: "fa-brands fa-x-twitter", name: "Twitter", link: "https://twitter.com"}
 # - {icon: "fa-brands fa-facebook-f", name: "Facebook", link: "https://facebook.com"}
 # - {icon: "fa-brands fa-dribbble", name: "Dribbble", link: "https://dribbble.com"}
-- {icon: "fa-brands fa-instagram", name: "Instagram", link: "https://instagram.com/mayanayza"}
+# - {icon: "fa-brands fa-instagram", name: "Instagram", link: "https://instagram.com/mayanayza"}
 # - {icon: "fa-brands fa-pinterest", name: "Pinterest", link: "https://pinterest.com"}
 # - {icon: "fa-brands fa-youtube", name: "Youtube", link: "https://youtube.com"}
 - {icon: "fa-brands fa-github", name: "Github", link: "https://github.com/mayanayza"}
-- {icon: "fa-brands fa-linkedin", name: "LinkedIn", link: "https://www.linkedin.com/in/f-maya"}
+# - {icon: "fa-brands fa-linkedin", name: "LinkedIn", link: "https://www.linkedin.com/in/f-maya"}
 - {icon: "fa-solid fa-envelope", name: "Email", link: "https://maya.cloud/contact"}
 # - {icon: "fa-brands fa-vimeo-v", name: "Vimeo", link: "https://vimeo.com/"}
 

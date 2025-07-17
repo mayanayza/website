@@ -1,3 +1,5 @@
+@use "../1-tools/grid";
+
 /* Article */
 .article {
   align-items: stretch;
@@ -19,13 +21,13 @@
   &--big {
     &::after {
       padding-top: 35%;
-      @media (max-width: $desktop) {
+      @media (max-width: grid.$desktop) {
         padding-top: 25%;
       }
     }
   }
 
-  @media (max-width: $mobile) {
+  @media (max-width: grid.$mobile) {
     min-height: 280px;
   }
 }
@@ -51,7 +53,7 @@
     background: var(--tone-03);
 
     pointer-events: none;
-    @media (max-width: $mobile) {
+    @media (max-width: grid.$mobile) {
       right: 20px;
     }
   }
@@ -61,7 +63,7 @@
   margin: 12px 0 12px;
   font-size: 28px;
   line-height: 1;
-  @media (max-width: $mobile) {
+  @media (max-width: grid.$mobile) {
     font-size: 24px;
   }
 }
@@ -114,7 +116,7 @@
   padding: 0 32px 32px;
   pointer-events: none;
 
-  @media (max-width: $mobile) {
+  @media (max-width: grid.$mobile) {
     padding: 20px;
   }
 

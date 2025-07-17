@@ -1,3 +1,5 @@
+@use "../0-settings/variables";
+
 /* Buttons */
 .button {
   display: inline-block;
@@ -35,7 +37,7 @@
       display: flex; 
       font-size: 16px;
       font-weight: 700;
-      font-family: $heading-font-family;
+      font-family: variables.$heading-font-family;
       text-transform: uppercase;
       line-height: 1;
       align-items: center;

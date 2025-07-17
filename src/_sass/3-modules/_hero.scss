@@ -1,9 +1,11 @@
+@use "../1-tools/grid";
+
 /* Hero */
 .hero {
   position: relative;
   margin-bottom: 32px;
   overflow: hidden;
-  @media only screen and (max-width: $mobile) {
+  @media only screen and (max-width: grid.$mobile) {
     box-shadow: none;
   }
 }
@@ -33,15 +35,15 @@
     object-fit: cover;
   }
 
-  @media only screen and (max-width: $desktop) {
+  @media only screen and (max-width: grid.$desktop) {
     min-height: 620px;
   }
 
-  @media only screen and (max-width: $tablet) {
+  @media only screen and (max-width: grid.$tablet) {
     min-height: 500px;
   }
 
-  @media only screen and (max-width: $mobile) {
+  @media only screen and (max-width: grid.$mobile) {
     min-height: 400px;
   }
 }
@@ -63,7 +65,7 @@
   margin: 0 0 10px;
   line-height: 1;
   color: var(--antitone-10);
-  @media only screen and (max-width: $mobile) {
+  @media only screen and (max-width: grid.$mobile) {
     font-size: 43px;
     margin: 0 0 5px;
   }
@@ -72,7 +74,7 @@
 .hero__desc {
   font-size: 20px;
   margin: 0;
-  @media only screen and (max-width: $mobile) {
+  @media only screen and (max-width: grid.$mobile) {
     font-size: 16px;
     line-height: 21px;
   }
@@ -92,7 +94,7 @@
     padding: 0 20px;
     text-align: center;
   }
-  @media only screen and (max-width: $mobile) {
+  @media only screen and (max-width: grid.$mobile) {
     margin: 144px 0 48px;
   }
 }

@@ -1,8 +1,11 @@
+@use "../0-settings/variables";
+@use "../1-tools/grid";
+
 /* Header */
 .header {
   width: 100%;
   margin: 60px 0;
-  transition: $global-transition;
+  transition: variables.$global-transition;
   color: var(--antitone-10);
   &.header--top {
     position: absolute;
@@ -10,7 +13,7 @@
     z-index: 100;
   }
 
-  @media (max-width: $desktop) {
+  @media (max-width: grid.$desktop) {
     margin: 32px 0;
   }
 }
@@ -20,7 +23,7 @@
   position: relative;
   
   /* Desktop layout */
-  @media (min-width: $desktop + 1px) {
+  @media (min-width: grid.$desktop + 1px) {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -51,7 +54,7 @@
   }
   
   /* Mobile layout */
-  @media (max-width: $desktop) {
+  @media (max-width: grid.$desktop) {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -72,7 +75,7 @@
 }
 
 .logo__link {
-  font-family: $heading-font-family;
+  font-family: variables.$heading-font-family;
   font-size: 28px;
   line-height: 1;
   font-weight: 900;
@@ -115,7 +118,7 @@
       .nav__link.current {
         color: var(--brand-color);
         font-size:16px;
-        transition: $global-transition;
+        transition: variables.$global-transition;
       }
 
     }
@@ -173,7 +176,7 @@
     backdrop-filter: saturate(180%) blur(24px);
     background-color: var(--tone-09);
   }
-  @media (min-width: $desktop) {
+  @media (min-width: grid.$desktop) {
     display: none;
   }
 }
@@ -212,7 +215,7 @@
     }
   }
 
-  @media (max-width: $tablet) {
+  @media (max-width: grid.$tablet) {
     padding-top: 100px;
 
     .nav__icon-close {
@@ -221,7 +224,7 @@
     }
   }
 
-  @media (max-width: $mobile) {
+  @media (max-width: grid.$mobile) {
     width: 90%;
   }
 }
@@ -245,7 +248,7 @@
         text-transform: uppercase;
       }
 
-      @media (max-width: $mobile) {
+      @media (max-width: grid.$mobile) {
         margin-bottom: 28px;
       }
     }
@@ -260,7 +263,7 @@
 
 .nav-grid__item {
   margin-bottom: 30px;
-  @media (max-width: $tablet) {
+  @media (max-width: grid.$tablet) {
     height: auto;
   }
 }
@@ -282,7 +285,7 @@
     width: 25px;
     height: 2px;
   }
-  @media (max-width: $tablet) {
+  @media (max-width: grid.$tablet) {
     margin-bottom: 30px;
   }
 }

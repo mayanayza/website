@@ -1,3 +1,5 @@
+@use "../1-tools/grid";
+
 /* Post + Page */
 .post,
 .page {
@@ -18,13 +20,13 @@
     margin-left: 32px;
   }
 
-  @media (max-width: $desktop) {
+  @media (max-width: grid.$desktop) {
     .post-head__box {
       margin-left: 16px;
     }
   }
 
-  @media (max-width: $tablet) {
+  @media (max-width: grid.$tablet) {
     margin-bottom: 40px;
 
     .post-head__box {
@@ -55,7 +57,7 @@
   overflow: hidden;
   box-shadow: 0 5px 10px 0px rgba(var(--black),0.15);
 
-  @media (max-width: $tablet) {
+  @media (max-width: grid.$tablet) {
     padding-top: 65%;
     margin-bottom: 40px;
   }
@@ -70,7 +72,7 @@
     font-size: 40px;
   }
 
-  @media (max-width: $mobile) {
+  @media (max-width: grid.$mobile) {
     font-size: 32px;
   }
 }
@@ -187,7 +189,7 @@
       height: 38px;
       border-radius: 4px 0px 0px 4px;
     }
-    @media (max-width: $desktop) {
+    @media (max-width: grid.$desktop) {
       font-size: 24px;
     }
   }

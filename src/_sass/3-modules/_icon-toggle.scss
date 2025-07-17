@@ -1,3 +1,5 @@
+@use "../1-tools/grid";
+
 .toggle-container {
   position: relative;
   z-index: 10;
@@ -118,7 +120,7 @@
 }
 
 /* Improve mobile layout */
-@media (max-width: $mobile) {
+@media (max-width: grid.$mobile) {
   .toggle-group {
     gap: 8px;
   }

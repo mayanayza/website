@@ -1,3 +1,5 @@
+@use "../1-tools/grid";
+
 /* Tags Page */
 .tags {
   &.is-hidden {
@@ -16,7 +18,7 @@
   position: relative;
   margin: 50px 0 80px;
   text-align: center;
-  @media only screen and (max-width: $mobile) {
+  @media only screen and (max-width: grid.$mobile) {
     margin: 20px 0 50px;
   }
 }
@@ -31,7 +33,7 @@
   margin-top: 0;
   font-size: 47px;
   line-height: 57px;
-  @media only screen and (max-width: $mobile) {
+  @media only screen and (max-width: grid.$mobile) {
     font-size: 40px;
     line-height: 52px;
   }
@@ -42,7 +44,7 @@
   margin: 10px auto 0;
   font-size: 16px;
   line-height: 32px;
-  @media only screen and (max-width: $mobile) {
+  @media only screen and (max-width: grid.$mobile) {
     margin: 5px auto 0;
     line-height: 28px;
   }
