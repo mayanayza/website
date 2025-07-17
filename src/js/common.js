@@ -82,6 +82,41 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
+  /* =======================
+  // Contact Form
+  ======================= */
+  document.getElementById('contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message')
+    };
+
+    try {
+      const response = await fetch('https://api.maya.cloud/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+      
+      if (response.ok) {
+        alert('Message sent successfully!');
+        this.reset();
+      } else {
+        alert(`Error: ${result.error}`);
+      }
+    } catch (error) {
+      alert(`${error}`);
+    }
+  });
+
 });
 
 function updateToggleState(toggleCheckbox, checked) {
