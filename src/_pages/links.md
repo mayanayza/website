@@ -2,7 +2,11 @@
 title: Maya's Links
 permalink: /links/
 hide_header: true
-layout: links
+hide_title: true
+layout: page
+hero_social_links: true
+hero_avatar: /media/avatar.jpg
+hero_subtitle: welcome, i've been expecting you... 😏
 ---
 {% assign projects = site.posts | where: "feature_post", true %}
 

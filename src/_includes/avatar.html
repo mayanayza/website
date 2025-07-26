@@ -1,5 +1,6 @@
+{% assign image = include.image | default: '/media/avatar.jpg' %}
 <div class="avatar-container">
   <div class="avatar">
-    <img src={{site.data.settings.avatar}} alt="Profile Avatar">
+    <img src="{{image}}" alt="Profile Avatar">
   </div>
 </div>

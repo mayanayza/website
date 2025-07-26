@@ -23,6 +23,15 @@ layout: default
       {% unless page.hide_title %}
         <h1 class="hero__title">{{ page.title }}</h1>
       {% endunless %}
+      {% if page.hero_avatar %}
+        {% include avatar.html image=page.hero_avatar %}
+      {% endif %}
+      {% if page.hero_subtitle %}
+        <p>{{page.hero_subtitle | newline_to_br }}</p>
+      {% endif %}
+      {% if page.hero_social_links %}
+        {% include social-links.html %}
+      {% endif %}
     </div>
   </div>
 </section>

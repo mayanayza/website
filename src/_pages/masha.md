@@ -1,12 +1,16 @@
 ---
-title: Masha Care Guide
+title: Masha
 permalink: /masha/
-hide_header: true
 layout: page
+hide_header: true
+hide_title: true
+hero_avatar: /media/masha.jpeg
+hero_subtitle: |
+  Thank you for taking care of Masha! 
+  She's a sweet, loving cat who will warm up to you quickly.
 ---
-*Thank you for taking care of Masha! She's a sweet, loving cat who will likely warm up to you quickly. Don't hesitate to reach out if you have any questions.*
-
-*Masha has an automatic water fountain, food dispenser, and litterbox! These should make caretaking pretty easy. I've outlined the main tasks and any supplies you might need below. I've also provided more info about Masha further down in this guide.*
+  
+Masha has an automatic water fountain, food dispenser, and litterbox! These should make caretaking pretty easy. I've outlined the main tasks and any supplies you might need below. I've also provided more info about Masha further down in this guide.
 
 # 📋 Tasks
 
