@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", function() {
   menuOpenIcon = document.querySelector(".nav__icon-menu"),
   menuCloseIcon = document.querySelector(".nav__icon-close"),
   menuList = document.querySelector(".menu-overlay"),
-  btnScrollToTop = document.querySelector(".top");
+  btnScrollToTop = document.querySelector(".top"),
+  contactForm = document.getElementById('contact-form');
   
   // Add a small delay to ensure elements are fully rendered
   initThemeToggle();
@@ -85,37 +86,39 @@ document.addEventListener("DOMContentLoaded", function() {
   /* =======================
   // Contact Form
   ======================= */
-  document.getElementById('contact-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(this);
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      message: formData.get('message')
-    };
-
-    try {
-      const response = await fetch('https://api.maya.cloud/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
       
-      if (response.ok) {
-        alert('Message sent successfully!');
-        this.reset();
-      } else {
-        alert(`Error: ${result.error}`);
+      const formData = new FormData(this);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message')
+      };
+
+      try {
+        const response = await fetch('https://api.maya.cloud/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        const result = await response.json();
+        
+        if (response.ok) {
+          alert('Message sent successfully!');
+          this.reset();
+        } else {
+          alert(`Error: ${result.error}`);
+        }
+      } catch (error) {
+        alert(`${error}`);
       }
-    } catch (error) {
-      alert(`${error}`);
-    }
-  });
+    });
+  }
 
 });
 

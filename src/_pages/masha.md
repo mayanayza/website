@@ -119,4 +119,4 @@ Masha doesn't get treats often, but feel free to give her one if you'd like!
 
 Masha's cat carrier is in the closet next to the bathroom.
 
-Preferred vet is [Bushwick Veterinary Center](https://bushwickveterinarycenter.com/contact-us/).
+Preferred vet is [Bushwick Veterinary Center](https://bushwickveterinarycenter.com/contact-us/){:target="\_blank" :rel="noopener noreferrer"}.
