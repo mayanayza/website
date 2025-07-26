@@ -22,6 +22,7 @@ Masha has an automatic water fountain, food dispenser, and litterbox! These shou
 - **Spare dishrags:** Under the kitchen sink (for spilled water)
 - **Cleaning supplies for messes:** Yellow multisurface antibacterial spray under kitchen sink + paper towels
 - **Treats and extra toys:** wicker cupboard with the orb light on top, second shelf from top
+- **Cat carrier backpack:** Closet next to the bathroom
 
 ## Daily Tasks
 
@@ -113,3 +114,9 @@ Masha doesn't get treats often, but feel free to give her one if you'd like!
 - **Spring toys** (independent play)
 - **Open windows** on nice days (just remember to close before leaving!)
 - **Brushing** with green brush, small white bin in wicker cabinet
+
+# Emergencies
+
+Masha's cat carrier is in the closet next to the bathroom.
+
+Preferred vet is [Bushwick Veterinary Center](https://bushwickveterinarycenter.com/contact-us/).
