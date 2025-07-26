@@ -115,7 +115,7 @@ Masha doesn't get treats often, but feel free to give her one if you'd like!
 - **Open windows** on nice days (just remember to close before leaving!)
 - **Brushing** with green brush, small white bin in wicker cabinet
 
-# Emergencies
+# 🚨 Emergencies
 
 Masha's cat carrier is in the closet next to the bathroom.
 
