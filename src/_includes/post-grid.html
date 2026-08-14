@@ -1,9 +1,7 @@
 <!-- _includes/post-grid.html -->
 {% assign posts = include.posts | default: site.posts %}
-{% assign grid_type = include.grid_type | default: "standard" %}
 {% assign status_filter = include.status | default: "complete" %}
 {% assign filter_tags = include.filter_tags | split: "," %}
-{% assign exclude_tags = include.exclude_tags | split: "," %}
 
 {% assign filtered_posts = posts | where: "status", status_filter %}
 
@@ -16,7 +14,7 @@
 {% if include.related_to != nil %}
   {% assign related_tags = page.tags %}
   {% assign tag_filtered_posts = '' | split: '' %}
-  
+
   {% for post in filtered_posts %}
     {% assign sameTagCount = 0 %}
     {% for tag in post.tags %}
@@ -28,7 +26,7 @@
       {% assign tag_filtered_posts = tag_filtered_posts | push: post %}
     {% endif %}
   {% endfor %}
-  
+
   {% assign filtered_posts = tag_filtered_posts %}
 {% endif %}
 
@@ -49,23 +47,6 @@
   {% assign filtered_posts = tag_filtered_posts %}
 {% endif %}
 
-{% if exclude_tags.size > 0 %}
-  {% assign tag_filtered_posts = '' | split: '' %}
-  {% for post in filtered_posts %}
-    {% assign exclude_post = false %}
-    {% for tag in exclude_tags %}
-      {% if post.tags contains tag %}
-        {% assign exclude_post = true %}
-        {% break %}
-      {% endif %}
-    {% endfor %}
-    {% unless exclude_post %}
-      {% assign tag_filtered_posts = tag_filtered_posts | push: post %}
-    {% endunless %}
-  {% endfor %}
-  {% assign filtered_posts = tag_filtered_posts %}
-{% endif %}
-
 {% if include.max_posts %}
   {% assign filtered_posts = filtered_posts | slice: 0, include.max_posts %}
 {% endif %}
@@ -73,36 +54,9 @@
 
 {% if filtered_posts.size > 0 %}
 <div class="post-grid">
-{% if grid_type == "roadmap" %}
-{% if include.title != nil %}
-  <div class=touch>
-    <h2>{{ include.title }}</h2>
-  </div>
-{% endif %}
-<table class="roadmap">
-  {% for post in filtered_posts %}
-    <tr>
-    <td>
-      {% if post.status == "complete" or post.status == "archive" %}
-      <a href='{{ post.website }}' target='_blank'>{{ post.display_name }}</a>
-      {% else %}
-      {{ post.display_name }}
-      {% endif %}
-    </td>
-    <td>{{ post.tagline | default('') }}</td>
-  </tr>
-  {% endfor %}
-</table>
-{% endif %}
-{% if grid_type == "standard" %}
 {% if include.featured == "true" %}
 <section class="featured-post">
   <div class="container">
-    {% if include.title != nil %}
-      <div class="post-grid__title">
-        <h2>{{ include.title }}</h2>
-      </div>
-    {% endif %}
     <div class="row">
       <div class="col col-12">
         <div class="container__inner">
@@ -118,11 +72,6 @@
 </section>
 {% elsif include.related_to != nil %}
 <div class="container">
-  {% if include.title != nil %}
-    <div class="post-grid__title">
-      <h2>{{ include.title }}</h2>
-    </div>
-  {% endif %}
   <div class="related-posts is-related">
     <div class="row">
       <div class="col col-12">
@@ -140,11 +89,6 @@
 </div>
 {% else %}
 <div class="container animate">
-  {% if include.title != nil %}
-    <div class="post-grid__title">
-      <h2>{{ include.title }}</h2>
-    </div>
-  {% endif %}
   <div class="row grid">
     {% for post in filtered_posts %}
       {% include article-content.html %}
@@ -152,8 +96,5 @@
   </div>
 </div>
 {% endif %}
-{% endif %}
 </div>
-{% elsif include.empty_message != nil %}
-  <p class="empty-message">{{ include.empty_message }}</p>
 {% endif %}
